@@ -27,7 +27,7 @@ export const TechMatrix: React.FC = () => {
             <span className="cyan-gradient-text">Project Evidence.</span>
           </h2>
           <p style={{ fontSize: '1rem', color: 'var(--text-muted)', maxWidth: '700px', marginTop: '0.5rem' }}>
-            Every capability listed below is backed by concrete implementation code in SearchBrite, Createlya, Lodestar, Vantage, or Scrapply.
+            Every capability listed below is backed by concrete implementation code across production systems, enterprise platforms, and verified GitHub repositories.
           </p>
         </div>
 

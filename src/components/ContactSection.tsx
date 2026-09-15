@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Copy, Check, Send, ArrowUpRight } from 'lucide-react';
+import { Mail, Copy, Check, Send, ArrowUpRight, Phone, Download } from 'lucide-react';
 import { IBRAHIM_DATA } from '../data/portfolioData';
 import { GithubIcon } from './GithubIcon';
 
@@ -50,11 +50,11 @@ export const ContactSection: React.FC = () => {
               </h2>
 
               <p style={{ fontSize: '1.05rem', color: 'var(--text-muted)', lineHeight: 1.6, marginBottom: '2rem' }}>
-                Whether you're hiring an AI/ML engineer, building a Generative AI product, or designing intelligent backend architecture — let's connect.
+                Whether you're looking for an AI/ML Software Engineer, building an autonomous agent platform, or deploying robust full-stack web applications—let's connect.
               </p>
 
               {/* One-Click Copy Email Button */}
-              <div style={{ marginBottom: '2rem' }}>
+              <div style={{ marginBottom: '1.25rem' }}>
                 <span className="font-mono" style={{ fontSize: '0.75rem', color: 'var(--text-dim)', display: 'block', marginBottom: '0.5rem' }}>
                   DIRECT CONTACT EMAIL:
                 </span>
@@ -87,8 +87,18 @@ export const ContactSection: React.FC = () => {
                 )}
               </div>
 
+              {/* Phone and Location */}
+              <div style={{ marginBottom: '1.75rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }} className="font-mono">
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-muted)', fontSize: '0.85rem' }}>
+                  <Phone size={15} style={{ color: 'var(--accent-cyan)' }} />
+                  <a href={`tel:${IBRAHIM_DATA.phone}`} style={{ color: '#fff', textDecoration: 'none' }}>
+                    {IBRAHIM_DATA.phone}
+                  </a>
+                </div>
+              </div>
+
               {/* Social Link Badges */}
-              <div style={{ display: 'flex', gap: '0.75rem' }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
                 <a
                   href={IBRAHIM_DATA.githubUrl}
                   target="_blank"
@@ -99,6 +109,27 @@ export const ContactSection: React.FC = () => {
                   <GithubIcon size={16} />
                   <span>GitHub Profile</span>
                   <ArrowUpRight size={14} />
+                </a>
+
+                <a
+                  href={IBRAHIM_DATA.linkedinUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-secondary"
+                  style={{ fontSize: '0.85rem', padding: '0.6rem 1.2rem' }}
+                >
+                  <span>LinkedIn</span>
+                  <ArrowUpRight size={14} />
+                </a>
+
+                <a
+                  href={IBRAHIM_DATA.resumePdfUrl}
+                  download="Ibrahim_Hamid_Resume.pdf"
+                  className="btn-outline-cyan"
+                  style={{ fontSize: '0.85rem', padding: '0.6rem 1.2rem' }}
+                >
+                  <Download size={14} />
+                  <span>Download Resume PDF</span>
                 </a>
               </div>
             </div>
@@ -111,7 +142,7 @@ export const ContactSection: React.FC = () => {
                 </label>
                 <input
                   type="text"
-                  placeholder="e.g. Sarah Jenkins (CTO)"
+                  placeholder="e.g. Lead Engineer / Hiring Manager"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   style={{
@@ -155,7 +186,7 @@ export const ContactSection: React.FC = () => {
                 <textarea
                   rows={4}
                   required
-                  placeholder="Tell me about your product requirements or technical role..."
+                  placeholder="Tell me about your product requirements, engineering challenges, or available roles..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   style={{
@@ -174,12 +205,12 @@ export const ContactSection: React.FC = () => {
 
               <button type="submit" className="btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
                 <Send size={16} />
-                <span>{submitted ? 'Inquiry Sent Successfully!' : 'Send Direct Message'}</span>
+                <span>{submitted ? 'Message Sent Successfully!' : 'Send Direct Message'}</span>
               </button>
 
               {submitted && (
                 <div style={{ padding: '0.75rem', borderRadius: '8px', background: 'rgba(16, 185, 129, 0.15)', border: '1px solid #10b981', color: '#34d399', fontSize: '0.85rem', textAlign: 'center' }} className="font-mono">
-                  Thank you! Your message has been routed to Ibrahim.
+                  Thank you! Your message has been sent to Ibrahim Hamid.
                 </div>
               )}
             </form>

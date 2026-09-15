@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Layers, CheckCircle } from 'lucide-react';
+import { Layers, CheckCircle, Lock } from 'lucide-react';
 import type { Project } from '../data/portfolioData';
 import { IBRAHIM_DATA } from '../data/portfolioData';
 import { SystemArchitectureModal } from './SystemArchitectureModal';
@@ -7,12 +7,19 @@ import { GithubIcon } from './GithubIcon';
 
 export const ProjectShowcase: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [activeCategory, setActiveCategory] = useState<string>('All');
+
+  const categories = ['All', 'AI & Autonomous Agents', 'Full-Stack Platforms', 'Enterprise Case Studies', 'System Automation'];
+
+  const filteredProjects = activeCategory === 'All'
+    ? IBRAHIM_DATA.projects
+    : IBRAHIM_DATA.projects.filter(p => p.category === activeCategory);
 
   return (
     <section id="projects" style={{ padding: '6rem 0', position: 'relative' }}>
       <div className="container">
         {/* Section Header */}
-        <div style={{ marginBottom: '4rem' }}>
+        <div style={{ marginBottom: '3rem' }}>
           <div className="badge-cyan" style={{ marginBottom: '0.75rem' }}>
             <Layers size={14} />
             <span>02 // FEATURED WORK SHOWCASE</span>
@@ -21,14 +28,37 @@ export const ProjectShowcase: React.FC = () => {
             Production Systems & <br />
             <span className="cyan-gradient-text">Architectural Case Studies.</span>
           </h2>
-          <p style={{ fontSize: '1.05rem', color: 'var(--text-muted)', maxWidth: '700px', marginTop: '0.75rem' }}>
-            Curated selection of real-world intelligent software products, custom LLM pipelines, vector search platforms, and anti-bot data engines.
+          <p style={{ fontSize: '1.05rem', color: 'var(--text-muted)', maxWidth: '720px', marginTop: '0.75rem' }}>
+            Curated selection of autonomous AI agents, voice commerce platforms, full-stack workflow engines, and enterprise AI case studies.
           </p>
+        </div>
+
+        {/* Category Filter Pills */}
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.625rem', marginBottom: '3rem' }}>
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              style={{
+                padding: '0.55rem 1.15rem',
+                borderRadius: '100px',
+                border: activeCategory === cat ? '1px solid var(--accent-cyan)' : '1px solid rgba(255, 255, 255, 0.1)',
+                background: activeCategory === cat ? 'rgba(0, 245, 212, 0.12)' : 'rgba(255, 255, 255, 0.03)',
+                color: activeCategory === cat ? 'var(--accent-cyan)' : 'var(--text-muted)',
+                fontSize: '0.85rem',
+                fontWeight: 600,
+                cursor: 'pointer',
+                transition: 'all 0.2s ease'
+              }}
+            >
+              {cat}
+            </button>
+          ))}
         </div>
 
         {/* Project List: Large Editorial Showcase Cards */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '3.5rem' }}>
-          {IBRAHIM_DATA.projects.map((project) => (
+          {filteredProjects.map((project) => (
             <div
               key={project.id}
               className="glass-card"
@@ -37,7 +67,9 @@ export const ProjectShowcase: React.FC = () => {
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
                 gap: '2.5rem',
-                border: '1px solid rgba(255, 255, 255, 0.09)',
+                border: project.isEnterprise
+                  ? '1px solid rgba(59, 130, 246, 0.25)'
+                  : '1px solid rgba(0, 245, 212, 0.25)',
                 background: 'linear-gradient(180deg, rgba(15, 19, 25, 0.95) 0%, rgba(10, 13, 18, 0.95) 100%)'
               }}
             >
@@ -45,13 +77,34 @@ export const ProjectShowcase: React.FC = () => {
               <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                 <div>
                   {/* Top Meta */}
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem', flexWrap: 'wrap', gap: '0.5rem' }}>
                     <span className="font-mono cyan-gradient-text" style={{ fontSize: '1.25rem', fontWeight: 800 }}>
                       PROJECT {project.number}
                     </span>
-                    <span className="badge-blue" style={{ fontSize: '0.75rem' }}>
-                      {project.category}
-                    </span>
+                    <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                      {project.isEnterprise && (
+                        <span
+                          className="font-mono"
+                          style={{
+                            fontSize: '0.7rem',
+                            padding: '0.2rem 0.6rem',
+                            borderRadius: '4px',
+                            background: 'rgba(59, 130, 246, 0.15)',
+                            color: '#60a5fa',
+                            border: '1px solid rgba(59, 130, 246, 0.3)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.3rem'
+                          }}
+                        >
+                          <Lock size={11} />
+                          <span>Enterprise NDA</span>
+                        </span>
+                      )}
+                      <span className="badge-blue" style={{ fontSize: '0.75rem' }}>
+                        {project.category}
+                      </span>
+                    </div>
                   </div>
 
                   {/* Title & Tagline */}
@@ -67,6 +120,7 @@ export const ProjectShowcase: React.FC = () => {
                     {project.summary}
                   </p>
 
+                  {/* Hard Challenge */}
                   <div
                     style={{
                       background: 'rgba(255, 255, 255, 0.02)',
@@ -83,6 +137,24 @@ export const ProjectShowcase: React.FC = () => {
                       {project.problem}
                     </p>
                   </div>
+
+                  {/* NDA Notice if Enterprise */}
+                  {project.ndaNotice && (
+                    <div
+                      style={{
+                        background: 'rgba(59, 130, 246, 0.05)',
+                        border: '1px solid rgba(59, 130, 246, 0.15)',
+                        padding: '0.75rem 1rem',
+                        borderRadius: '8px',
+                        marginBottom: '1.25rem',
+                        fontSize: '0.785rem',
+                        color: '#93c5fd',
+                        lineHeight: 1.5
+                      }}
+                    >
+                      {project.ndaNotice}
+                    </div>
+                  )}
                 </div>
 
                 {/* CTAs */}
@@ -96,16 +168,36 @@ export const ProjectShowcase: React.FC = () => {
                     <span>Dissect Architecture</span>
                   </button>
 
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-secondary"
-                    style={{ fontSize: '0.85rem', padding: '0.6rem 1.2rem' }}
-                  >
-                    <GithubIcon size={16} />
-                    <span>Repository</span>
-                  </a>
+                  {!project.isEnterprise ? (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-secondary"
+                      style={{ fontSize: '0.85rem', padding: '0.6rem 1.2rem' }}
+                    >
+                      <GithubIcon size={16} />
+                      <span>Explore Repository</span>
+                    </a>
+                  ) : (
+                    <span
+                      className="font-mono"
+                      style={{
+                        fontSize: '0.8rem',
+                        padding: '0.6rem 1rem',
+                        borderRadius: '8px',
+                        background: 'rgba(255, 255, 255, 0.03)',
+                        color: 'var(--text-dim)',
+                        border: '1px solid rgba(255, 255, 255, 0.06)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.4rem'
+                      }}
+                    >
+                      <Lock size={13} />
+                      <span>Proprietary Codebase</span>
+                    </span>
+                  )}
                 </div>
               </div>
 

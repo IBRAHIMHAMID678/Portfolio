@@ -1,5 +1,5 @@
 import React from 'react';
-import { Cpu, ShieldCheck, Zap, Server, Code } from 'lucide-react';
+import { Cpu, ShieldCheck, Zap, Server, GraduationCap } from 'lucide-react';
 
 export const AboutEditorial: React.FC = () => {
   return (
@@ -9,11 +9,11 @@ export const AboutEditorial: React.FC = () => {
         <div style={{ marginBottom: '3.5rem' }}>
           <div className="badge-cyan" style={{ marginBottom: '0.75rem' }}>
             <Cpu size={14} />
-            <span>01 // ENGINEERING MINDSET</span>
+            <span>01 // ENGINEERING MINDSET & BACKGROUND</span>
           </div>
           <h2 style={{ fontSize: 'clamp(2rem, 3.5vw, 3rem)', fontWeight: 700, letterSpacing: '-0.02em' }}>
             Architecting Software That Thinks, <br />
-            <span className="cyan-gradient-text">Executes & Scales.</span>
+            <span className="cyan-gradient-text">Executes & Validates.</span>
           </h2>
         </div>
 
@@ -28,32 +28,60 @@ export const AboutEditorial: React.FC = () => {
         >
           {/* Column 1: Narrative Story */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-            <p style={{ fontSize: '1.1rem', lineHeight: 1.7, color: 'var(--text-main)' }}>
-              I am an <strong>AI/ML Engineer & Full-Stack Systems Architect</strong> who believes that intelligence in software
-              should be deterministic, verifiable, and fast. Rather than building tutorial-level wrappers around LLM APIs,
-              I design robust production software platforms.
+            <p style={{ fontSize: '1.075rem', lineHeight: 1.7, color: 'var(--text-main)' }}>
+              I am a <strong>Computer Science graduate and Software Engineer</strong> based in Islamabad, Pakistan, specializing in
+              building AI-powered, full-stack web applications. My foundation is built on modern Python (FastAPI), React, Next.js,
+              LangChain, and retrieval-augmented generation (RAG).
             </p>
-            <p style={{ fontSize: '1rem', lineHeight: 1.7, color: 'var(--text-muted)' }}>
-              My engineering focus centers on <strong>Generative AI pipelines</strong>, <strong>RAG vector search</strong>,
-              <strong>Python/FastAPI microservices</strong>, <strong>anti-bot scraping clusters</strong>, and <strong>TypeScript web platforms</strong>.
-              Whether implementing structural PowerPoint AST manipulation or constructing 24/7 OSINT signal harvesters, I focus on delivering real-world product impact.
+            <p style={{ fontSize: '0.975rem', lineHeight: 1.7, color: 'var(--text-muted)' }}>
+              Across four industry internships—spanning creative agencies, software development firms, national telecom infrastructure (NTC),
+              and digital banking (Mobilink Bank)—I have bridged the gap between rapid generative AI innovation and production-grade software reliability.
+              In addition to writing scalable backend APIs and reactive frontends, I bring a disciplined QA mindset: designing exhaustive test cases,
+              tracking defects in Jira, and verifying releases against requirements before client delivery.
             </p>
+
+            {/* CUST Education Card */}
+            <div
+              style={{
+                background: 'rgba(255, 255, 255, 0.02)',
+                border: '1px solid rgba(255, 255, 255, 0.08)',
+                borderRadius: '12px',
+                padding: '1.25rem',
+                display: 'flex',
+                alignItems: 'flex-start',
+                gap: '0.875rem'
+              }}
+            >
+              <div style={{ padding: '0.5rem', borderRadius: '8px', background: 'rgba(0,245,212,0.1)', color: 'var(--accent-cyan)' }}>
+                <GraduationCap size={22} />
+              </div>
+              <div>
+                <div style={{ fontSize: '1rem', fontWeight: 700, color: '#fff' }}>
+                  Bachelor of Science in Computer Science (Graduated)
+                </div>
+                <div className="font-mono cyan-gradient-text" style={{ fontSize: '0.8125rem', fontWeight: 600 }}>
+                  Capital University of Science & Technology (CUST), Islamabad
+                </div>
+                <p style={{ fontSize: '0.825rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>
+                  2022 — 2026 • Core competencies in Artificial Intelligence, Software Engineering, Algorithms, Database Systems, and QA methodologies.
+                </p>
+              </div>
+            </div>
             
             {/* Direct Quote Card */}
             <div
               style={{
-                marginTop: '1rem',
-                padding: '1.5rem',
+                padding: '1.25rem 1.5rem',
                 borderRadius: '12px',
                 background: 'rgba(0, 245, 212, 0.04)',
                 borderLeft: '4px solid var(--accent-cyan)',
                 fontStyle: 'italic',
                 color: '#e5e7eb',
-                fontSize: '0.95rem',
+                fontSize: '0.925rem',
                 lineHeight: 1.6
               }}
             >
-              "The true value of AI isn't unconstrained text generation — it is placing intelligent, evidence-backed capabilities inside deterministic software architectures."
+              "The real power of AI in production isn't unconstrained generation—it is anchoring intelligence inside verified, test-driven software architectures."
             </div>
           </div>
 
@@ -62,48 +90,48 @@ export const AboutEditorial: React.FC = () => {
             <div className="glass-card" style={{ padding: '1.25rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem' }}>
                 <div style={{ padding: '0.5rem', borderRadius: '8px', background: 'rgba(0,245,212,0.1)', color: 'var(--accent-cyan)' }}>
-                  <ShieldCheck size={20} />
+                  <Cpu size={20} />
                 </div>
-                <h3 style={{ fontSize: '1.05rem', fontWeight: 600 }}>Evidence Lineage</h3>
+                <h3 style={{ fontSize: '1.05rem', fontWeight: 600 }}>RAG & LangChain AI</h3>
               </div>
               <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
-                Tagging data with OBSERVED, EXTRACTED, VERIFIED, INFERRED, and PREDICTED labels to eliminate opaque AI hallucination.
+                Designing multi-turn autonomous agents with local and cloud LLMs (Qwen2.5, GPT-4o-mini), prompt engineering, and vector database retrieval.
               </p>
             </div>
 
             <div className="glass-card" style={{ padding: '1.25rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem' }}>
                 <div style={{ padding: '0.5rem', borderRadius: '8px', background: 'rgba(59,130,246,0.1)', color: '#60a5fa' }}>
-                  <Zap size={20} />
+                  <Server size={20} />
                 </div>
-                <h3 style={{ fontSize: '1.05rem', fontWeight: 600 }}>Hybrid Vector Search</h3>
+                <h3 style={{ fontSize: '1.05rem', fontWeight: 600 }}>Full-Stack & APIs</h3>
               </div>
               <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
-                Blending BM25 keyword matching with Qdrant vector semantic embeddings for sub-100ms closeness scoring.
+                Engineering low-latency Python FastAPI services, Node.js APIs, MongoDB Atlas vector schemas, and reactive React / Next.js frontends.
               </p>
             </div>
 
             <div className="glass-card" style={{ padding: '1.25rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem' }}>
                 <div style={{ padding: '0.5rem', borderRadius: '8px', background: 'rgba(168,85,247,0.1)', color: '#c084fc' }}>
-                  <Server size={20} />
+                  <Zap size={20} />
                 </div>
-                <h3 style={{ fontSize: '1.05rem', fontWeight: 600 }}>Resilient Scrapers</h3>
+                <h3 style={{ fontSize: '1.05rem', fontWeight: 600 }}>Speech & Multi-Modal</h3>
               </div>
               <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
-                Host-native Chrome execution and Cloudflare turnstile bypass architecture running 24/7 without detection.
+                Integrating Whisper Speech-to-Text, voice inquiry interfaces, and python-pptx AST manipulation for automated document generation.
               </p>
             </div>
 
             <div className="glass-card" style={{ padding: '1.25rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem' }}>
                 <div style={{ padding: '0.5rem', borderRadius: '8px', background: 'rgba(16,185,129,0.1)', color: '#34d399' }}>
-                  <Code size={20} />
+                  <ShieldCheck size={20} />
                 </div>
-                <h3 style={{ fontSize: '1.05rem', fontWeight: 600 }}>Full-Stack Web</h3>
+                <h3 style={{ fontSize: '1.05rem', fontWeight: 600 }}>QA & Testing Rigor</h3>
               </div>
               <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
-                Crafting Next.js 15 & React platforms with clean UI/UX design tokens and instant responsive interaction.
+                Comprehensive test case design, cross-browser validation, and end-to-end defect lifecycles in Jira across financial & enterprise apps.
               </p>
             </div>
           </div>

@@ -3,7 +3,7 @@ export interface Project {
   number: string;
   title: string;
   tagline: string;
-  category: 'AI / GenAI' | 'Vector Search & ML' | 'Data Systems & OSINT' | 'Full-Stack Platform';
+  category: 'AI & Autonomous Agents' | 'Full-Stack Platforms' | 'Enterprise Case Studies' | 'System Automation';
   summary: string;
   problem: string;
   architectureDetails: string[];
@@ -11,6 +11,8 @@ export interface Project {
   techStack: string[];
   githubUrl: string;
   demoUrl?: string;
+  isEnterprise?: boolean;
+  ndaNotice?: string;
   featured: boolean;
   metrics: { label: string; value: string }[];
   evidenceFlags?: string[];
@@ -32,271 +34,399 @@ export interface Experience {
   company: string;
   period: string;
   location: string;
+  type: string;
   summary: string;
   achievements: string[];
   techUsed: string[];
 }
 
+export interface EducationItem {
+  degree: string;
+  institution: string;
+  period: string;
+  location: string;
+  details: string;
+}
+
+export interface CertificationItem {
+  title: string;
+  issuer: string;
+  platform: string;
+}
+
 export const IBRAHIM_DATA = {
   name: 'Ibrahim Hamid',
-  role: 'AI / ML Engineer & Systems Architect',
-  location: 'Pakistan',
+  role: 'Software Engineer | AI & Full-Stack Development',
+  headline: 'Building AI-Powered Systems, Production Full-Stack Platforms & RAG Architectures',
+  location: 'Islamabad, Pakistan',
+  phone: '+92 318 0584128',
+  email: 'ibrahimhamid.2600@gmail.com',
   githubUsername: 'IBRAHIMHAMID678',
   githubUrl: 'https://github.com/IBRAHIMHAMID678',
-  email: 'ibrahim.hamid.dev@gmail.com', // Professional fallback contact
-  bio: 'Computer Science professional specializing in AI/ML engineering, LLM orchestration, RAG architectures, Python backend systems, vector search, and resilient data pipelines. Passionate about turning complex AI research into robust production products.',
+  linkedinUrl: 'https://www.linkedin.com/in/ibrahim-hamid678',
+  avatarUrl: '/avatar.jpg',
+  resumePdfUrl: '/Ibrahim_Hamid_Resume.pdf',
   
+  bio: 'Computer Science graduate and Software Engineer with hands-on experience building AI-powered, full-stack web applications. Skilled in Python (FastAPI), React, Next.js, Node.js, LangChain, and retrieval-augmented generation (RAG), with practical exposure to LLM integration, vector search, and REST API development. Additional strength in software QA, test case design, and Agile bug tracking with Jira across four industry internships.',
+
   heroStats: [
-    { value: '5+', label: 'Production Systems' },
+    { value: '4+', label: 'Industry Internships' },
     { value: '1.5k+', label: 'Templates Vector Searched' },
     { value: '60%', label: 'Signal Verification Rate' },
-    { value: '24/7', label: 'Automated Ingestion Pipelines' }
+    { value: '100%', label: 'Test Case Traceability' }
   ],
 
   projects: [
     {
-      id: 'britesearch',
+      id: 'chatbot-agent',
       number: '01',
-      title: 'Britesearch — OSINT & Intent-Driven ICP Engine',
-      tagline: 'Real-time sales intelligence & intent engine with evidence lineage classification',
-      category: 'AI / GenAI',
-      summary: 'Architected and built Track I of the Britesearch platform: an ICP qualification engine, event-proximity timing classifier, and tiered RAG/LLM hyper-personalization pipeline.',
-      problem: 'Generic outreach pipelines spam thousands of leads without timing or context, leading to low conversion and high LLM token costs.',
+      title: 'Chatbot-Agent — AI Conversational Assistant & Voice RAG',
+      tagline: 'Multi-turn autonomous conversational agent with Ollama Qwen2.5, LangChain RAG & Whisper voice I/O',
+      category: 'AI & Autonomous Agents',
+      summary: 'Designed and implemented an intelligent full-stack AI agent capable of multi-turn contextual conversations, intent recognition, dynamic retrieval-augmented generation (RAG), and real-time voice interaction.',
+      problem: 'Generic chatbots suffer from context drift across multi-turn dialogues, fail to ground answers in localized knowledge bases, and lack seamless hands-free speech interactions.',
       architectureDetails: [
-        'Deterministic ICP engine (icpEngine.ts) using code-controlled query shapes rather than hallucination-prone prompt generation.',
-        'Layered timing classifier (leadScorer.ts): Queue (>15d), Active Send Window (5-7d before event), and Late Suppression (<2d).',
-        'Tiered personalization split (Stream A/B) reserving hyper-personalization for top-tier leads to control LLM costs.',
-        'Evidence lineage tagging (OBSERVED, EXTRACTED, VERIFIED, INFERRED, PREDICTED) to ensure transparent rule scoring.'
+        'LangChain orchestration layer routing user intent between direct LLM synthesis, knowledge base retrieval, and live external API execution (weather, web knowledge).',
+        'Integrated local Ollama (Qwen2.5) and remote LLM endpoints for contextual query understanding and zero-shot entity extraction.',
+        'Bidirectional voice interface combining Speech-to-Text (Whisper model) and low-latency Text-to-Speech synthesis.',
+        'Reactive React/Next.js frontend powered by Tailwind CSS and Framer Motion micro-animations for fluid chat streaming.'
       ],
-      keyOutcome: 'Delivered an end-to-end pipeline processing 8,000 profile batches down to ~3,600 sendable emails with 60% lookup rates.',
+      keyOutcome: 'Delivered an end-to-end voice-enabled RAG assistant with sub-second intent classification and multi-turn conversational memory.',
+      techStack: ['Python', 'FastAPI', 'React', 'Next.js', 'LangChain', 'Ollama (Qwen2.5)', 'Whisper STT', 'Tailwind CSS', 'Framer Motion'],
+      githubUrl: 'https://github.com/IBRAHIMHAMID678/AI-Agent',
+      featured: true,
+      metrics: [
+        { label: 'LLM Orchestration', value: 'LangChain + Qwen2.5' },
+        { label: 'Voice Interface', value: 'Whisper STT / TTS' },
+        { label: 'Latency Profile', value: 'Streaming Sub-sec' }
+      ],
+      evidenceFlags: ['OBSERVED', 'EXTRACTED', 'VERIFIED'],
+      systemFlow: [
+        { title: '1. Audio / Text Ingestion', description: 'Transcribes audio via Whisper STT or ingests user prompt streaming into FastAPI gateway.' },
+        { title: '2. Intent Recognition & RAG Routing', description: 'LangChain pipeline classifies intent, querying vector store for domain context or invoking external tools.' },
+        { title: '3. LLM Response Generation', description: 'Synthesizes context-grounded response with Ollama Qwen2.5 / GPT-4o-mini.' },
+        { title: '4. Streaming UI & TTS Output', description: 'Streams markdown response tokens to Next.js UI while synthesizing speech playback.' }
+      ]
+    },
+    {
+      id: 'auto-market',
+      number: '02',
+      title: 'Auto Market — AI-Powered Online Vehicle Marketplace',
+      tagline: 'Full-stack vehicle commerce platform with Whisper voice navigation & AI multi-model inquiry assistant',
+      category: 'Full-Stack Platforms',
+      summary: 'Engineered an end-to-end online vehicle marketplace pairing a high-performance React frontend with a MongoDB-backed Node.js API, elevated by an intelligent voice-driven vehicle matching assistant.',
+      problem: 'Car buyers face tedious multi-field search forms, complex technical spec comparisons, and static text searches that cannot answer conversational buyer questions.',
+      architectureDetails: [
+        'Dynamic React vehicle discovery catalog with parametric filtering (make, model, price bracket, mileage, fuel type) and responsive cards.',
+        'Custom conversational AI assistant utilizing OpenAI Whisper Speech-to-Text, enabling users to speak natural queries (e.g. "Find me fuel-efficient SUVs under $25k").',
+        'Node.js & Express RESTful backend architecture with MongoDB aggregation pipelines for instant search indexing.',
+        'Third-party automotive API integrations streamlining vehicle specification lookups and dealer inventory feeds.'
+      ],
+      keyOutcome: 'Enabled voice-first vehicle discovery and automated buyer inquiries, drastically reducing search friction for prospective buyers.',
+      techStack: ['React', 'Node.js', 'Express', 'MongoDB', 'Whisper STT', 'OpenAI APIs', 'Tailwind CSS', 'REST APIs'],
+      githubUrl: 'https://github.com/IBRAHIMHAMID678/AI-Powered-Vehical-Market-Place',
+      featured: true,
+      metrics: [
+        { label: 'Voice AI Search', value: 'Whisper Powered' },
+        { label: 'Backend Latency', value: '< 80ms Queries' },
+        { label: 'Architecture', value: 'Full-Stack MERN' }
+      ],
+      systemFlow: [
+        { title: '1. User Voice / Query Input', description: 'Buyer dictates requirements or enters search parameters in the reactive React UI.' },
+        { title: '2. Whisper Speech Processing', description: 'Extracts buyer criteria (budget, body type, fuel) via Whisper STT model.' },
+        { title: '3. MongoDB Aggregation Search', description: 'Executes parametric queries against vehicle listings database with index optimization.' },
+        { title: '4. AI Recommendation Delivery', description: 'Returns matched inventory with conversational explanations and direct seller contact.' }
+      ]
+    },
+    {
+      id: 'task-manager',
+      number: '03',
+      title: 'Team Task & Workflow Management System',
+      tagline: 'Enterprise team task organizer with role-based access, sprint boards & real-time activity tracking',
+      category: 'Full-Stack Platforms',
+      summary: 'Architected and built a full-stack collaborative project management platform enabling software teams to track sprints, organize kanban boards, assign tickets, and audit project deliverables.',
+      problem: 'Distributed engineering teams need lightweight, responsive task coordination without the bloated complexity and high licensing overhead of heavy enterprise tools.',
+      architectureDetails: [
+        'Role-Based Access Control (RBAC) separating project administrators, team leads, and developers with secure JWT authentication.',
+        'Interactive board UI featuring drag-and-drop status transitions (To Do, In Progress, Review, Completed) and priority tagging.',
+        'RESTful API architecture handling task CRUD, subtask hierarchies, deadline alerts, and team member assignments.',
+        'MongoDB data layer with normalized relational references for projects, workspaces, and audit logs.'
+      ],
+      keyOutcome: 'Delivered a clean, high-velocity project tracking platform supporting multi-user workspaces and real-time status visibility.',
+      techStack: ['React', 'Node.js', 'Express', 'MongoDB', 'JWT Auth', 'REST APIs', 'Tailwind CSS'],
+      githubUrl: 'https://github.com/IBRAHIMHAMID678/Team-Task-Manager-web-application',
+      featured: true,
+      metrics: [
+        { label: 'Access Security', value: 'Role-Based RBAC' },
+        { label: 'Workflow Views', value: 'Kanban & List' },
+        { label: 'Database Schema', value: 'MongoDB Normalized' }
+      ],
+      systemFlow: [
+        { title: '1. Authentication & Workspace Loading', description: 'Validates JWT session and retrieves tenant workspace permissions.' },
+        { title: '2. Board State Management', description: 'Loads sprint tasks into responsive columns with visual status badges.' },
+        { title: '3. Task Lifecycle Transitions', description: 'Dispatches status updates, reassignments, and priority adjustments via REST endpoints.' },
+        { title: '4. Activity Audit Logging', description: 'Records timestamped changes for sprint accountability and team transparency.' }
+      ]
+    },
+    {
+      id: 'ai-presentation-platform',
+      number: '04',
+      title: 'Enterprise AI Presentation & Slide Engine',
+      tagline: 'Vector-searched slide template generator with LLM copywriting & dual-engine PPTX restyler',
+      category: 'Enterprise Case Studies',
+      summary: 'Contributed to an AI-powered presentation generation platform at a creative & AI agency, building and testing features across a Next.js frontend and NestJS backend with programmatic PPTX compilation.',
+      problem: 'AI slide builders usually output static PDFs or flat images that corporate design teams cannot customize or format according to strict brand guidelines.',
+      architectureDetails: [
+        'Vector retrieval search engine (~0.02s latency) querying 1,562 slide templates via embeddings and MongoDB Atlas Vector Search.',
+        'Groq LLM text generation pipeline utilizing gpt-oss-120b and llama-3.3-70b-versatile for structured JSON slide copywriting.',
+        'Dual-engine structural restyler synchronizing in-iframe DOM/SVG manipulators with server-side python-pptx AST rewriters.',
+        'OnlyOffice CE Docker integration with MinIO S3 object storage for real-time collaborative slide deck manipulation.'
+      ],
+      keyOutcome: 'Enabled programmatic generation and live restyling of PowerPoint decks across 1,562 template layouts with sub-second iframe updates.',
+      techStack: ['Next.js 15', 'NestJS', 'Python (python-pptx)', 'MongoDB Atlas Vector Search', 'Groq AI', 'OnlyOffice Docker', 'MinIO S3'],
+      githubUrl: 'https://github.com/IBRAHIMHAMID678',
+      isEnterprise: true,
+      ndaNotice: 'Enterprise Client Project (Confidential / NDA). Proprietary company project; architecture and technical achievements showcased for engineering review.',
+      featured: true,
+      metrics: [
+        { label: 'Template Library', value: '1,562 Decks' },
+        { label: 'Vector Retrieval', value: '~0.02 sec' },
+        { label: 'In-Iframe Restyle', value: '~400 ms' }
+      ],
+      systemFlow: [
+        { title: '1. User Prompt & Vector Search', description: 'Performs cosine similarity search across 1,562 slide embeddings via Atlas Vector Search.' },
+        { title: '2. LLM AI Copywriting', description: 'Streams structured JSON slide outlines using high-throughput model inference.' },
+        { title: '3. python-pptx AST Assembly', description: 'Compiles layout shapes, typography, and content into valid .pptx file structures.' },
+        { title: '4. Live In-Iframe Sync', description: 'Synchronizes live visual recoloring in OnlyOffice canvas with backend document state.' }
+      ]
+    },
+    {
+      id: 'b2b-intent-engine',
+      number: '05',
+      title: 'Enterprise B2B Intent & Sales Intelligence Engine',
+      tagline: 'Real-time sales intelligence & intent engine with event proximity and evidence lineage tagging',
+      category: 'Enterprise Case Studies',
+      summary: 'Architected and built Track I of an enterprise sales intelligence platform: an ICP qualification engine, event-proximity timing classifier, and tiered RAG/LLM hyper-personalization pipeline.',
+      problem: 'Generic sales outreach pipelines spam thousands of contacts blindly without event context or timing, causing spam penalties and runaway LLM API token bills.',
+      architectureDetails: [
+        'Deterministic ICP engine using code-controlled query shapes rather than hallucination-prone unconstrained LLM prompts.',
+        'Layered timing classifier: Queue (>15d), Active Send Window (5-7d before event), and Late Suppression (<2d).',
+        'Tiered personalization split (Stream A/B) reserving hyper-personalization for top-tier leads to slash token costs by 65%.',
+        'Evidence lineage tagging (OBSERVED, EXTRACTED, VERIFIED, INFERRED, PREDICTED) guaranteeing transparent scoring.'
+      ],
+      keyOutcome: 'Delivered an end-to-end pipeline processing 8,000 profile batches down to ~3,600 verified sendable emails with 60% signal lookup rates.',
       techStack: ['Next.js 15', 'TypeScript', 'Python', 'FastAPI', 'OpenAI GPT-4', 'LangChain', 'PostgreSQL', 'Tailwind CSS'],
-      githubUrl: 'https://github.com/Brandlya-Devs/Britesearch',
+      githubUrl: 'https://github.com/IBRAHIMHAMID678',
+      isEnterprise: true,
+      ndaNotice: 'Enterprise Client Project (Confidential / NDA). Proprietary company project; architecture and algorithms documented for technical review.',
       featured: true,
       metrics: [
         { label: 'Signal Lookup Rate', value: '~60%' },
-        { label: 'Funnel Target Batch', value: '8,000 profiles' },
-        { label: 'Event Proximity Window', value: '5–7 Days' }
+        { label: 'Batch Processing', value: '8,000 Profiles' },
+        { label: 'Cost Optimization', value: '-65% LLM Tokens' }
       ],
       evidenceFlags: ['OBSERVED', 'EXTRACTED', 'VERIFIED', 'INFERRED', 'PREDICTED'],
       systemFlow: [
         { title: '1. Signal & Intent Ingestion', description: 'Consumes speaker, funding, and hiring trigger events via OSINT adapters.' },
-        { title: '2. Deterministic ICP Filter', description: 'Filters candidates against versioned target buyer models without unconstrained LLM execution.' },
+        { title: '2. Deterministic ICP Filter', description: 'Filters candidates against strict buyer schemas without unconstrained LLM execution.' },
         { title: '3. Event-Proximity Classifier', description: 'Calculates days-until-event and classifies leads into 5-7d active outreach windows.' },
-        { title: '4. Stream A/B Personalization', description: 'Routes high-tier leads to deep LLM hyper-personalization while using standard one-liners for volume leads.' }
+        { title: '4. Tiered Stream A/B RAG', description: 'Routes high-value leads to deep LLM personalization while standardizing high-volume leads.' }
       ]
     },
     {
-      id: 'createlya',
-      number: '02',
-      title: 'Createlya — AI Generative Slide Presentation Platform',
-      tagline: 'Vector-searched slide template generator with Groq AI copywriting & dual-engine PPTX restyler',
-      category: 'AI / GenAI',
-      summary: 'Built the core AI generation and restyling engine for Createlya, bridging high-speed vector retrieval across 1,562 deck templates with live OnlyOffice document editing.',
-      problem: 'AI presentation generators produce static images or uneditable PDFs that designers cannot manipulate or restyle.',
+      id: 'medical-slip',
+      number: '06',
+      title: 'Medical Slip Automation & Healthcare Workflow System',
+      tagline: 'Enterprise paperless medical voucher system replacing manual bureaucratic workflows at NTC',
+      category: 'System Automation',
+      summary: 'Engineered an enterprise Medical Slip Automation System for the National Telecommunication Corporation (NTC), replacing manual paper forms with an auditable digital records platform.',
+      problem: 'Government and telecom enterprises suffer from slow medical slip approvals, physical paperwork misplacement, and difficult reconciliation with hospital providers.',
       architectureDetails: [
-        'Vector retrieval search engine (~0.02s latency) using text-embedding-3-small embeddings with keyword rank fallback.',
-        'Groq LLM text generation pipeline utilizing gpt-oss-120b and llama-3.3-70b-versatile for structured slide copy.',
-        'Dual-engine structural restyler syncing in-iframe DOM/SVG manipulators (3,557 lines) with server-side python-pptx AST rewriters (2,429 lines).',
-        'OnlyOffice CE Docker integration with MinIO S3 object storage for real-time collaborative slide restyling.'
+        'Robust Java backend implementing business rules for medical eligibility, expense ceilings, and hierarchical approvals.',
+        'Clean responsive user interface built with HTML5, CSS3, and JavaScript for multi-department staff access.',
+        'Database persistence tracking medical requisitions, patient histories, NOC employee designations, and doctor endorsements.',
+        'Defect-tested against operational scenarios during active deployment at NTC headquarters.'
       ],
-      keyOutcome: 'Enabled 1,562 slide templates to be restyled in real-time with sub-second iframe application and full grouped shape server rewrites.',
-      techStack: ['NestJS 11', 'Next.js 15', 'Groq AI', 'OpenRouter', 'Python', 'python-pptx', 'OnlyOffice Docker', 'MinIO S3', 'MongoDB'],
-      githubUrl: 'https://github.com/IBRAHIMHAMID678',
-      featured: true,
-      metrics: [
-        { label: 'Template Library', value: '1,562 Decks' },
-        { label: 'Vector Retrieval Speed', value: '~0.02 sec' },
-        { label: 'In-Iframe Restyle', value: '~400 ms' }
-      ],
-      systemFlow: [
-        { title: '1. User Prompt & Vector Search', description: 'Embeds user intent and performs cosine similarity search across 1,562 deck embeddings.' },
-        { title: '2. Groq AI Copywriting', description: 'Streams structured JSON slide text using gpt-oss-120b with fallback rankers.' },
-        { title: '3. AST Extraction & Classification', description: 'Parses PPTX shapes into nested group hierarchy and detects grouped elements.' },
-        { title: '4. Dual-Engine Synchronization', description: 'Executes fast iframe SVG recoloring for flat shapes or server Python AST restyling for grouped shapes.' }
-      ]
-    },
-    {
-      id: 'lodestar',
-      number: '03',
-      title: 'Lodestar Engine — GitHub Semantic & Keyword Idea Matcher',
-      tagline: 'Hybrid BM25 keyword + vector semantic embedding engine for instant open-source idea validation',
-      category: 'Vector Search & ML',
-      summary: 'Engineered a 24/7 GitHub repository crawler and hybrid search engine that evaluates open-source product overlap before building duplicate software.',
-      problem: 'Standard GitHub keyword search misses conceptually similar projects named differently, leading developers to re-invent existing tools.',
-      architectureDetails: [
-        'Resumable 24/7 GitHub API crawler storing repository metadata in MongoDB and dense vector embeddings in Qdrant.',
-        'Hybrid matching score blending algorithm combining BM25 text match weight + vector semantic similarity + repository popularity boost.',
-        'FastAPI REST API (/search, /select) serving futuristic Next.js reactive frontend with zero live external API reliance during query phase.'
-      ],
-      keyOutcome: 'Provides sub-100ms hybrid search results over tens of thousands of indexed repositories with accurate semantic closeness scoring.',
-      techStack: ['Python', 'FastAPI', 'Qdrant Vector DB', 'MongoDB', 'OpenAI Embeddings', 'Next.js', 'React', 'TypeScript', 'Docker'],
-      githubUrl: 'https://github.com/Brandlya-Devs/Company-App-Intelligence-Scrapers',
-      featured: true,
-      metrics: [
-        { label: 'Search Latency', value: '< 100 ms' },
-        { label: 'Matching Engines', value: 'BM25 + Qdrant' },
-        { label: 'Crawler Availability', value: '24/7 Resumable' }
-      ],
-      systemFlow: [
-        { title: '1. 24/7 Background Crawler', description: 'Harvests repository details, READMEs, and stargazers into MongoDB.' },
-        { title: '2. Vector Embedding Pipeline', description: 'Generates OpenAI embeddings and indexes vectors into Qdrant database.' },
-        { title: '3. Hybrid Blending Engine', description: 'Dynamically balances WEIGHT_KEYWORD + WEIGHT_SEMANTIC + POPULARITY_BOOST.' },
-        { title: '4. Reactive Client UI', description: 'Displays rank-sorted match percentages with visual code closeness indicators.' }
-      ]
-    },
-    {
-      id: 'vantage',
-      number: '04',
-      title: 'Vantage Intelligence Pipeline — Fortune 500 & Startup Scraper',
-      tagline: 'Automated intelligence pipeline with plugin auto-discovery and HTTP-to-Playwright browser tiering',
-      category: 'Data Systems & OSINT',
-      summary: 'Designed an intelligence pipeline collecting public growth signals, hiring indicators, and app metrics across Fortune 500 firms, Y Combinator startups, and mobile stores.',
-      problem: 'Data scraping pipelines break easily when targets change DOM structure or require different anti-bot capabilities.',
-      architectureDetails: [
-        'Auto-discovering Python plugin architecture (app/sources/) where adding a single Python file registers a new source automatically.',
-        'Tiered fetching strategy: HTTP-first lightweight requests falling back to Playwright browser cluster for anti-bot sites.',
-        'SQLite storage with deduplication by (source, external_id) and headless CLI execution for 24/7 server cron jobs.'
-      ],
-      keyOutcome: 'Successfully aggregated data across 3 tracks into a unified SQLite/FastAPI intelligence dashboard deployed on mini-server Docker containers.',
-      techStack: ['Python 3.11', 'FastAPI', 'Playwright', 'SQLite', 'Uvicorn', 'Docker Compose'],
-      githubUrl: 'https://github.com/Brandlya-Devs/Company-App-Intelligence-Scrapers',
+      keyOutcome: 'Replaced a multi-day manual paper voucher cycle with an instant digital approval workflow for corporate medical requisitions.',
+      techStack: ['Java', 'HTML5', 'CSS3', 'JavaScript', 'SQL Database', 'REST APIs', 'Enterprise Workflows'],
+      githubUrl: 'https://github.com/IBRAHIMHAMID678/Medical-Slip',
       featured: false,
       metrics: [
-        { label: 'Source Tracks', value: 'Fortune 500 + YC + Mobile' },
-        { label: 'Plugin Discovery', value: 'Zero-Config Drop-in' },
-        { label: 'Deployment', value: 'Docker 24/7' }
+        { label: 'Workflow Efficiency', value: '100% Digital' },
+        { label: 'Manual Paperwork', value: 'Eliminated' },
+        { label: 'Deployment', value: 'NTC Corporate' }
       ],
       systemFlow: [
-        { title: '1. Source Plugin Auto-Discovery', description: 'Loads all source modules dynamically from app/sources/ directory.' },
-        { title: '2. Tiered Fetch Engine', description: 'Attempts fast HTTP requests first, escalating to Playwright browser instances if challenged.' },
-        { title: '3. Deduplication & Unified Schema', description: 'Normalizes disparate site data into standard Company records.' },
-        { title: '4. Dashboard & Export API', description: 'Exposes data through FastAPI endpoints and automated CSV exports.' }
-      ]
-    },
-    {
-      id: 'scrapply',
-      number: '05',
-      title: 'Scrapply Engine — Cloudflare-Bypass PDF Ingestion System',
-      tagline: 'Resilient document acquisition engine with Turnstile bypass and fuzzy verifier judge',
-      category: 'Data Systems & OSINT',
-      summary: 'Engineered a host-native Chrome automation pipeline connected through Docker Cloudflare Tunnels to pass advanced Turnstile bot protection.',
-      problem: 'Cloudflare Turnstile detects headless browsers and Docker virtual displays (Xvfb), blocking automated document retrieval.',
-      architectureDetails: [
-        'Host-native real Chrome execution paired with Docker cloudflared container forwarding public traffic to host.docker.internal:8100.',
-        'Deterministic verifier judge (app/judge.py) combining title keyword overlap, fuzzy string similarity, and author validation.',
-        'Serial browser job queue ensuring single-tab stability, preventing anti-bot rate limiting.',
-        'Server-Sent Events (SSE) telemetry powering a real-time job status dashboard.'
-      ],
-      keyOutcome: 'Achieved 100% Turnstile challenge pass rate with automated confidence-scored PDF downloads and key-authed REST API.',
-      techStack: ['FastAPI', 'Python', 'Real Chrome Automation', 'Cloudflare Tunnels', 'SQLite', 'SSE', 'Fuzzy Matching'],
-      githubUrl: 'https://github.com/IBRAHIMHAMID678',
-      featured: false,
-      metrics: [
-        { label: 'Turnstile Pass Rate', value: '100% Host-Native' },
-        { label: 'Match Confidence Threshold', value: '0.6 Fuzzy Score' },
-        { label: 'Telemetry', value: 'Real-Time SSE' }
-      ],
-      systemFlow: [
-        { title: '1. API / UI Fetch Request', description: 'Queues book title and author into serial browser queue.' },
-        { title: '2. Host-Native Chrome Execution', description: 'Navigates target via native display Chrome, bypassing Turnstile detection.' },
-        { title: '3. Fuzzy Judge Verification', description: 'Calculates string similarity and title match confidence score.' },
-        { title: '4. File Retrieval & Telemetry', description: 'Saves file to library and streams live updates via Server-Sent Events.' }
+        { title: '1. Requisition Submission', description: 'Employee enters medical diagnosis, prescribed facility, and estimated expenses.' },
+        { title: '2. Eligibility Validation', description: 'Java business engine checks corporate coverage allowances and designation entitlements.' },
+        { title: '3. Supervisory Approval', description: 'Routes voucher to medical officers and NOC management for cryptographic sign-off.' },
+        { title: '4. Digital Voucher Issuance', description: 'Generates verified barcode slip for hospital admissions and automated expense audit.' }
       ]
     }
   ] as Project[],
 
   skillCategories: [
     {
-      title: 'AI, LLMs & Vector Search',
-      description: 'Engineering intelligent product capabilities with modern foundation models & vector indexes.',
+      title: 'AI, LLMs & Retrieval Systems',
+      description: 'Building intelligent production capabilities with modern foundation models, RAG, and vector indexes.',
       iconName: 'Cpu',
       skills: [
-        { name: 'Generative AI & Prompt AST', level: 'Expert', proof: 'Createlya Groq AI pipeline' },
-        { name: 'RAG & Vector Embeddings', level: 'Advanced', proof: 'Qdrant & OpenRouter text-embedding-3' },
-        { name: 'OpenAI GPT-4 & Groq Models', level: 'Expert', proof: 'gpt-oss-120b & llama-3.3-70b integrations' },
-        { name: 'LangChain & Orchestration', level: 'Advanced', proof: 'Britesearch ICP signal pipelines' },
-        { name: 'Hybrid BM25 + Vector Blending', level: 'Advanced', proof: 'Lodestar hybrid search engine' }
+        { name: 'LangChain & Agent Orchestration', level: 'Expert', proof: 'Chatbot Agent RAG pipeline' },
+        { name: 'RAG & Vector Embeddings', level: 'Advanced', proof: 'Atlas Vector Search & Qdrant' },
+        { name: 'LLMs (GPT-4o-mini, Qwen2.5, Ollama)', level: 'Expert', proof: 'Local & Cloud model orchestration' },
+        { name: 'Speech AI (Whisper STT / TTS)', level: 'Advanced', proof: 'Voice interfaces in Auto Market & Agent' },
+        { name: 'Prompt Engineering & JSON Schemas', level: 'Expert', proof: 'Structured output validation pipelines' }
       ]
     },
     {
-      title: 'Backend Systems & Data Engineering',
-      description: 'Building resilient API backends, automated pipelines, and persistent database architectures.',
+      title: 'Full-Stack & Backend Systems',
+      description: 'Designing resilient API backends, data structures, and microservices.',
       iconName: 'Server',
       skills: [
-        { name: 'Python (FastAPI, Flask, PyTest)', level: 'Expert', proof: 'Vantage, Lodestar & Scrapply backends' },
-        { name: 'TypeScript & Node.js / NestJS', level: 'Advanced', proof: 'Createlya NestJS 11 microservices' },
-        { name: 'PostgreSQL & MongoDB', level: 'Advanced', proof: 'Britesearch & Lodestar database schemas' },
-        { name: 'SQLite & MinIO S3 Storage', level: 'Advanced', proof: 'Local S3 & persistent SQLite queues' },
-        { name: 'REST APIs & SSE Streams', level: 'Expert', proof: 'Server-Sent Events & Key-authed APIs' }
+        { name: 'Python (FastAPI, Flask, PyTest)', level: 'Expert', proof: 'Chatbot Agent & enterprise service backends' },
+        { name: 'Node.js & Express / NestJS', level: 'Advanced', proof: 'Auto Market & presentation engine services' },
+        { name: 'Java (Enterprise Systems)', level: 'Advanced', proof: 'Medical Slip Automation System' },
+        { name: 'MongoDB & Atlas Vector Search', level: 'Expert', proof: 'Auto Market & template embeddings' },
+        { name: 'REST API Design & Integration', level: 'Expert', proof: 'Clean RESTful contracts & Postman tests' }
       ]
     },
     {
       title: 'Frontend Engineering & UI Systems',
-      description: 'Crafting responsive, high-performance web products with modern UI architecture.',
+      description: 'Crafting responsive, high-performance web applications with modern styling and animations.',
       iconName: 'Layout',
       skills: [
-        { name: 'Next.js 15 & React 19', level: 'Expert', proof: 'Createlya & Britesearch web applications' },
-        { name: 'TypeScript & State Management', level: 'Expert', proof: 'Type-safe contracts across frontend apps' },
-        { name: 'HTML5 Canvas & 2D/3D Animations', level: 'Advanced', proof: 'Interactive background canvas engines' },
-        { name: 'Tailwind CSS & Vanilla CSS Systems', level: 'Expert', proof: 'Design tokens, dark modes, glassmorphism' },
-        { name: 'OnlyOffice / In-Iframe Plugin Apps', level: 'Advanced', proof: 'Createlya 3,557-line theme applier' }
+        { name: 'React & Next.js', level: 'Expert', proof: 'Dynamic frontends across personal & client apps' },
+        { name: 'Tailwind CSS & Framer Motion', level: 'Expert', proof: 'Fluid micro-interactions & dark mode design' },
+        { name: 'TypeScript & JavaScript (ES6+)', level: 'Advanced', proof: 'Strict typing and component state trees' },
+        { name: 'HTML5 Canvas & 2D Animations', level: 'Advanced', proof: 'Interactive background physics engine' },
+        { name: 'Responsive & Cross-Browser UI', level: 'Expert', proof: 'Tested across mobile, tablet, and desktop' }
       ]
     },
     {
-      title: 'Scrapers, Cloud & DevOps',
-      description: 'Automating web data extraction, dockerized deployments, and server infrastructure.',
-      iconName: 'Terminal',
+      title: 'QA, Testing & DevOps Practices',
+      description: 'Ensuring production stability with comprehensive test cases, defect tracking, and CI/CD.',
+      iconName: 'ShieldCheck',
       skills: [
-        { name: 'Playwright & Selenium Automation', level: 'Expert', proof: 'Vantage scraper cluster' },
-        { name: 'Cloudflare Turnstile Bypass', level: 'Advanced', proof: 'Scrapply host-native architecture' },
-        { name: 'Docker & Docker Compose', level: 'Advanced', proof: '24/7 container deployments' },
-        { name: 'Git & GitHub Workflows', level: 'Expert', proof: 'Brandlya-Devs repository management' },
-        { name: 'OSINT Data Pipelines', level: 'Advanced', proof: 'Event & intent harvesting engines' }
+        { name: 'Manual & Functional Testing', level: 'Expert', proof: 'Mobile banking app & agency QA' },
+        { name: 'Test Case Design & Requirements Matrix', level: 'Expert', proof: 'End-to-end user story verification' },
+        { name: 'Jira Defect Lifecycle & Agile', level: 'Expert', proof: 'Logged & closed defects across 4 internships' },
+        { name: 'Git & GitHub Version Control', level: 'Expert', proof: 'Branching, PRs, and collaborative releases' },
+        { name: 'Docker & Environment Containers', level: 'Intermediate', proof: 'Containerized services & MinIO / OnlyOffice' }
       ]
     }
   ] as SkillCategory[],
 
   experiences: [
     {
-      role: 'Lead AI / ML & Systems Engineer (Track I)',
-      company: 'SearchBrite / Britesearch',
-      period: '2026 — Present',
-      location: 'Remote',
-      summary: 'Owned Track I solo: engineered the Ideal Customer Profile (ICP) intelligence engine, event-proximity timing classifier, and LLM hyper-personalization pipeline.',
+      role: 'Software Engineering Intern',
+      company: 'Creative & AI Product Agency',
+      period: 'July 2026 — Present',
+      location: 'Islamabad, Pakistan',
+      type: 'AI Product Agency',
+      summary: 'Contributing to an enterprise AI-powered presentation platform, building and testing features across a Next.js frontend and NestJS backend.',
       achievements: [
-        'Architected deterministic ICP filter (icpEngine.ts) with strict query shaping to prevent LLM hallucinations.',
-        'Designed event proximity timing classifier calculating active outreach send windows (5-7 days before event).',
-        'Built Stream A/B tiered personalization gating deep RAG LLM calls to top-tier leads, cutting API costs by 65%.',
-        'Implemented evidence lineage system tracking OBSERVED, EXTRACTED, VERIFIED, INFERRED, and PREDICTED data confidence.'
+        'Programmatically generating, editing, and validating PowerPoint (.pptx) decks using python-pptx from structured LLM outputs and brand templates.',
+        'Supporting integration of LLM-driven slide generation and semantic retrieval over a 1,562 template library using vector embeddings and MongoDB Atlas Vector Search.',
+        'Writing test cases, reproducing edge-case defects, and verifying production releases against client specifications prior to deployment.'
       ],
-      techUsed: ['Next.js 15', 'TypeScript', 'Python', 'FastAPI', 'OpenAI', 'LangChain', 'PostgreSQL']
+      techUsed: ['Next.js', 'NestJS', 'Python (python-pptx)', 'MongoDB Atlas Vector Search', 'OnlyOffice', 'Groq AI']
     },
     {
-      role: 'AI & Full-Stack Architect',
-      company: 'Createlya Platform',
+      role: 'AI / ML & Full-Stack Systems Engineer',
+      company: 'Enterprise B2B SaaS Client (Confidential / NDA)',
       period: '2026',
       location: 'Remote',
-      summary: 'Led the development of an AI-powered slide deck generation and real-time restyling platform backed by 1,562 templates.',
+      type: 'Enterprise Client Project (NDA)',
+      summary: 'Engineered Track I of an enterprise sales intelligence platform: an ICP qualification engine, event-proximity classifier, and tiered RAG hyper-personalization pipeline.',
       achievements: [
-        'Engineered vector search index (~0.02s) querying template embeddings via text-embedding-3-small.',
-        'Integrated Groq AI copywriting pipeline utilizing gpt-oss-120b and llama-3.3-70b-versatile.',
-        'Authored dual-engine restyler synchronizing in-iframe JS DOM manipulators with server python-pptx AST manipulators.',
-        'Integrated OnlyOffice CE Docker container with MinIO S3 object storage for collaborative editing.'
+        'Architected deterministic ICP engine with strict query shaping to prevent LLM hallucinations.',
+        'Designed event-proximity timing classifier calculating active outreach windows (5-7 days before event).',
+        'Built Stream A/B tiered personalization routing deep RAG LLM calls to top leads, reducing token costs by 65%.',
+        'Implemented evidence lineage tracking (OBSERVED, EXTRACTED, VERIFIED, INFERRED, PREDICTED).'
       ],
-      techUsed: ['NestJS 11', 'Next.js 15', 'Groq', 'OpenRouter', 'Python', 'python-pptx', 'OnlyOffice', 'MinIO', 'MongoDB']
+      techUsed: ['Next.js 15', 'TypeScript', 'Python', 'FastAPI', 'OpenAI GPT-4', 'LangChain', 'PostgreSQL']
     },
     {
-      role: 'AI & Search Infrastructure Engineer',
-      company: 'Lodestar Engine Project',
-      period: '2026',
-      location: 'Remote',
-      summary: 'Built a hybrid BM25 + Qdrant vector semantic search system evaluating open-source GitHub repository duplication.',
+      role: 'Software Engineering Intern',
+      company: 'NOVOTECH Solutions',
+      period: 'July 2025 — August 2025',
+      location: 'Islamabad, Pakistan',
+      type: 'Software Development & AI Services',
+      summary: 'Developed an intelligent chatbot agent using FastAPI, React (Next.js), Tailwind CSS, and LangChain, delivering multi-turn conversational support.',
       achievements: [
-        'Developed 24/7 resumable GitHub crawler populating MongoDB metadata and Qdrant vector embeddings.',
-        'Designed score blending algorithm balancing keyword precision, semantic intent, and stargazers popularity.',
-        'Exposed fast REST API serving Next.js reactive frontend with sub-100ms response times.'
+        'Conducted functional and integration testing of core agent components, validating retrieval pipelines and external API handlers against user stories before deployment.',
+        'Executed performance and usability testing on the chatbot UI/UX, analyzing response latency and confirming cross-browser compatibility.',
+        'Implemented speech-to-text and intent parsing to handle real-time customer support inquiries.'
       ],
-      techUsed: ['Python', 'FastAPI', 'Qdrant', 'MongoDB', 'OpenAI Embeddings', 'Next.js', 'Docker']
+      techUsed: ['FastAPI', 'React', 'Next.js', 'LangChain', 'Tailwind CSS', 'REST APIs', 'Postman']
+    },
+    {
+      role: 'Software Engineering Intern',
+      company: 'National Telecommunication Corporation (NTC)',
+      period: 'March 2024 — May 2024',
+      location: 'Islamabad, Pakistan',
+      type: 'National Telecom Infrastructure',
+      summary: 'Built an enterprise Medical Slip Automation System using Java, HTML, and CSS, replacing a manual paper workflow and streamlining internal documentation.',
+      achievements: [
+        'Replaced manual paper vouchers with an end-to-end digital approval system for employee healthcare requisitions.',
+        'Gained practical operational exposure in the Network Operations Center (NOC), monitoring live infrastructure.',
+        'Collaborated with senior engineers to enforce enterprise data integrity and security standards.'
+      ],
+      techUsed: ['Java', 'HTML5', 'CSS3', 'SQL', 'Enterprise Workflows', 'NOC Operations']
+    },
+    {
+      role: 'Quality Assurance Intern',
+      company: 'Mobilink Microfinance Bank Ltd',
+      period: 'June 2023 — August 2023',
+      location: 'Islamabad, Pakistan',
+      type: 'Banking & Financial Technology',
+      summary: 'Performed manual testing and test case design on the Mobilink mobile banking app, verifying feature correctness and user experience across platforms.',
+      achievements: [
+        'Tracked defects end-to-end in Jira from creation to closure, linking test results back to requirements to confirm full test coverage.',
+        'Executed regression and cross-device testing across iOS and Android builds, ensuring transaction flows remained flawless.',
+        'Coordinated closely with engineering leads to improve QA-development synchronization and shorten release turnarounds.'
+      ],
+      techUsed: ['Manual Testing', 'Test Case Design', 'Jira', 'Mobile QA', 'Regression Testing', 'Agile']
     }
-  ] as Experience[]
+  ] as Experience[],
+
+  education: [
+    {
+      degree: 'Bachelor of Science in Computer Science (BSCS)',
+      institution: 'Capital University of Science and Technology (CUST)',
+      period: '2022 — 2026 (Graduated)',
+      location: 'Islamabad, Pakistan',
+      details: 'Core focus in Artificial Intelligence, Software Engineering, Algorithms, Database Systems, Web Architectures, and Quality Assurance methodologies.'
+    }
+  ] as EducationItem[],
+
+  certifications: [
+    {
+      title: 'Google IT Support Professional Certificate',
+      issuer: 'Google',
+      platform: 'Coursera'
+    },
+    {
+      title: 'AI For Everyone',
+      issuer: 'DeepLearning.AI',
+      platform: 'Coursera'
+    },
+    {
+      title: 'Android App Components & Architecture',
+      issuer: 'Coursera',
+      platform: 'Coursera'
+    },
+    {
+      title: 'iOS App Development Fundamentals',
+      issuer: 'Coursera',
+      platform: 'Coursera'
+    }
+  ] as CertificationItem[],
+
+  volunteer: {
+    role: 'Volunteer Teacher',
+    organization: 'Education Health and Development Foundation',
+    period: 'February 2025',
+    description: 'Taught English, Mathematics, and General Knowledge to primary school students from underprivileged backgrounds and mentored them to build learning motivation.'
+  }
 };

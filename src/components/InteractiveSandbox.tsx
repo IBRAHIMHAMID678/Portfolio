@@ -1,24 +1,42 @@
 import React, { useState } from 'react';
-import { Sparkles, Sliders, CheckCircle, RefreshCw, Cpu, Palette } from 'lucide-react';
+import { Sparkles, CheckCircle, RefreshCw, Palette, Mic, MessageSquare, Car } from 'lucide-react';
 
 export const InteractiveSandbox: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'icp' | 'createlya' | 'lodestar'>('icp');
+  const [activeTab, setActiveTab] = useState<'agent' | 'automarket' | 'slides'>('agent');
 
-  // --- Tab 1 State: ICP Engine ---
-  const [triggerType, setTriggerType] = useState<'JOB_CHANGE' | 'FUNDING' | 'HIRING'>('JOB_CHANGE');
-  const [daysUntilEvent, setDaysUntilEvent] = useState<number>(6);
+  // --- Tab 1 State: AI Chatbot Agent ---
+  const [agentQuery, setAgentQuery] = useState('How do I configure RAG vector search with Ollama Qwen2.5?');
+  const [retrievalMode, setRetrievalMode] = useState<'VECTOR_RAG' | 'TOOL_EXECUTION' | 'DIRECT_LLM'>('VECTOR_RAG');
+  const [isProcessingQuery, setIsProcessingQuery] = useState(false);
 
-  const getTimingClassification = (days: number) => {
-    if (days < 2) return { status: 'SUPPRESSED', color: '#ef4444', desc: 'Too late (ignored to preserve domain reputation)' };
-    if (days >= 5 && days <= 7) return { status: 'ACTIVE SEND WINDOW', color: '#10b981', desc: 'Optimal timing window (speakers actively deck building)' };
-    if (days > 15) return { status: 'QUEUED', color: '#f59e0b', desc: 'Queued for future event-proximity approach' };
-    return { status: 'MONITORING', color: '#3b82f6', desc: 'In proximity window, awaiting 5-7d threshold' };
+  const sampleQueries = [
+    { text: 'How do I configure RAG vector search with Ollama Qwen2.5?', mode: 'VECTOR_RAG' as const },
+    { text: 'What is the current weather in Islamabad, Pakistan?', mode: 'TOOL_EXECUTION' as const },
+    { text: 'Explain the difference between FastAPI async and sync handlers.', mode: 'DIRECT_LLM' as const }
+  ];
+
+  const handleSimulateAgent = () => {
+    setIsProcessingQuery(true);
+    setTimeout(() => setIsProcessingQuery(false), 500);
   };
 
-  const timingResult = getTimingClassification(daysUntilEvent);
+  // --- Tab 2 State: Auto Market Voice Search ---
+  const [selectedVoiceQuery, setSelectedVoiceQuery] = useState('Find me fuel-efficient SUVs under $30,000');
+  const [voiceListening, setVoiceListening] = useState(false);
 
-  // --- Tab 2 State: Createlya AI ---
-  const [selectedTopic, setSelectedTopic] = useState<string>('AI Agents in Healthcare');
+  const vehicleInventory = [
+    { name: 'Tesla Model Y Long Range', type: 'Electric SUV', price: '$28,900', mpg: '122 MPGe', score: '98% Match' },
+    { name: 'Toyota RAV4 Hybrid AWD', type: 'Hybrid SUV', price: '$26,400', mpg: '40 MPG', score: '95% Match' },
+    { name: 'Honda CR-V e:HEV', type: 'Hybrid Compact', price: '$27,800', mpg: '38 MPG', score: '91% Match' }
+  ];
+
+  const handleSimulateVoice = () => {
+    setVoiceListening(true);
+    setTimeout(() => setVoiceListening(false), 800);
+  };
+
+  // --- Tab 3 State: Enterprise Slide Restyler ---
+  const [selectedTopic, setSelectedTopic] = useState<string>('Autonomous Multi-Agent Architecture');
   const [palette, setPalette] = useState<'cyan' | 'emerald' | 'purple'>('cyan');
   const [isGenerating, setIsGenerating] = useState(false);
 
@@ -28,31 +46,10 @@ export const InteractiveSandbox: React.FC = () => {
     purple: { bg: '#0f0917', border: '#a855f7', accent: '#a855f7', text: '#f3f4f6', name: 'Deep Violet' }
   };
 
-  const handleSimulateCreatelya = () => {
+  const handleSimulateRestyle = () => {
     setIsGenerating(true);
     setTimeout(() => setIsGenerating(false), 600);
   };
-
-  // --- Tab 3 State: Lodestar Hybrid Search ---
-  const [keywordWeight, setKeywordWeight] = useState<number>(0.4);
-  const [semanticWeight, setSemanticWeight] = useState<number>(0.6);
-
-  const mockRepos = [
-    { name: 'voice-notes-ai-todo', bm25: 0.95, vector: 0.82 },
-    { name: 'audio-task-harvester', bm25: 0.30, vector: 0.94 },
-    { name: 'speech-to-task-pipeline', bm25: 0.60, vector: 0.88 },
-    { name: 'react-voice-recorder', bm25: 0.70, vector: 0.40 }
-  ];
-
-  const calculateBlendScore = (bm25: number, vector: number) => {
-    return (bm25 * keywordWeight + vector * semanticWeight).toFixed(2);
-  };
-
-  const sortedRepos = [...mockRepos].sort((a, b) => {
-    const scoreA = a.bm25 * keywordWeight + a.vector * semanticWeight;
-    const scoreB = b.bm25 * keywordWeight + b.vector * semanticWeight;
-    return scoreB - scoreA;
-  });
 
   return (
     <section id="sandbox" style={{ padding: '6rem 0', position: 'relative' }}>
@@ -66,8 +63,8 @@ export const InteractiveSandbox: React.FC = () => {
           <h2 style={{ fontSize: 'clamp(2rem, 3.5vw, 3rem)', fontWeight: 700, letterSpacing: '-0.02em' }}>
             Live Architectural <span className="cyan-gradient-text">Interactive Sandbox.</span>
           </h2>
-          <p style={{ fontSize: '1rem', color: 'var(--text-muted)', maxWidth: '700px', marginTop: '0.5rem' }}>
-            Test live algorithmic behavior, decision matrices, vector search score blending, and slide AST restyling directly in your browser.
+          <p style={{ fontSize: '1rem', color: 'var(--text-muted)', maxWidth: '720px', marginTop: '0.5rem' }}>
+            Test live algorithmic behavior, RAG intent routing, speech-to-text vehicle parsing, and presentation AST restyling directly in your browser.
           </p>
         </div>
 
@@ -90,13 +87,13 @@ export const InteractiveSandbox: React.FC = () => {
             }}
           >
             <button
-              onClick={() => setActiveTab('icp')}
+              onClick={() => setActiveTab('agent')}
               style={{
                 padding: '1.25rem 1.75rem',
-                background: activeTab === 'icp' ? 'rgba(0, 245, 212, 0.08)' : 'transparent',
+                background: activeTab === 'agent' ? 'rgba(0, 245, 212, 0.08)' : 'transparent',
                 border: 'none',
-                borderBottom: activeTab === 'icp' ? '2px solid var(--accent-cyan)' : '2px solid transparent',
-                color: activeTab === 'icp' ? 'var(--accent-cyan)' : 'var(--text-muted)',
+                borderBottom: activeTab === 'agent' ? '2px solid var(--accent-cyan)' : '2px solid transparent',
+                color: activeTab === 'agent' ? 'var(--accent-cyan)' : 'var(--text-muted)',
                 fontWeight: 600,
                 fontSize: '0.9rem',
                 cursor: 'pointer',
@@ -106,18 +103,39 @@ export const InteractiveSandbox: React.FC = () => {
                 whiteSpace: 'nowrap'
               }}
             >
-              <Cpu size={16} />
-              <span>Britesearch Event Proximity Classifier</span>
+              <MessageSquare size={16} />
+              <span>AI Chatbot & RAG Routing Engine</span>
             </button>
 
             <button
-              onClick={() => setActiveTab('createlya')}
+              onClick={() => setActiveTab('automarket')}
               style={{
                 padding: '1.25rem 1.75rem',
-                background: activeTab === 'createlya' ? 'rgba(0, 245, 212, 0.08)' : 'transparent',
+                background: activeTab === 'automarket' ? 'rgba(0, 245, 212, 0.08)' : 'transparent',
                 border: 'none',
-                borderBottom: activeTab === 'createlya' ? '2px solid var(--accent-cyan)' : '2px solid transparent',
-                color: activeTab === 'createlya' ? 'var(--accent-cyan)' : 'var(--text-muted)',
+                borderBottom: activeTab === 'automarket' ? '2px solid var(--accent-cyan)' : '2px solid transparent',
+                color: activeTab === 'automarket' ? 'var(--accent-cyan)' : 'var(--text-muted)',
+                fontWeight: 600,
+                fontSize: '0.9rem',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                whiteSpace: 'nowrap'
+              }}
+            >
+              <Car size={16} />
+              <span>Auto Market Voice & Query Parser</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('slides')}
+              style={{
+                padding: '1.25rem 1.75rem',
+                background: activeTab === 'slides' ? 'rgba(0, 245, 212, 0.08)' : 'transparent',
+                border: 'none',
+                borderBottom: activeTab === 'slides' ? '2px solid var(--accent-cyan)' : '2px solid transparent',
+                color: activeTab === 'slides' ? 'var(--accent-cyan)' : 'var(--text-muted)',
                 fontWeight: 600,
                 fontSize: '0.9rem',
                 cursor: 'pointer',
@@ -128,151 +146,222 @@ export const InteractiveSandbox: React.FC = () => {
               }}
             >
               <Palette size={16} />
-              <span>Createlya AI Restyler Simulator</span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab('lodestar')}
-              style={{
-                padding: '1.25rem 1.75rem',
-                background: activeTab === 'lodestar' ? 'rgba(0, 245, 212, 0.08)' : 'transparent',
-                border: 'none',
-                borderBottom: activeTab === 'lodestar' ? '2px solid var(--accent-cyan)' : '2px solid transparent',
-                color: activeTab === 'lodestar' ? 'var(--accent-cyan)' : 'var(--text-muted)',
-                fontWeight: 600,
-                fontSize: '0.9rem',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                whiteSpace: 'nowrap'
-              }}
-            >
-              <Sliders size={16} />
-              <span>Lodestar Hybrid Vector Weight Blender</span>
+              <span>Presentation AST Restyler Simulator</span>
             </button>
           </div>
 
           {/* Tab Content Area */}
           <div style={{ padding: '2.5rem' }}>
-            {/* --- TAB 1: BRITESEARCH ICP CLASSIFIER --- */}
-            {activeTab === 'icp' && (
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2.5rem' }}>
+            {/* --- TAB 1: AI CHATBOT & RAG ROUTER --- */}
+            {activeTab === 'agent' && (
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2.5rem' }}>
                 <div>
                   <h3 style={{ fontSize: '1.25rem', fontWeight: 600, color: '#fff', marginBottom: '1.25rem' }}>
-                    Signal Parameters
+                    Agent Prompt & Query Ingestion
                   </h3>
 
                   <div style={{ marginBottom: '1.5rem' }}>
                     <label className="font-mono" style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', display: 'block', marginBottom: '0.5rem' }}>
-                      SELECT TRIGGER TYPE:
+                      SELECT TEST PROMPT:
                     </label>
-                    <div style={{ display: 'flex', gap: '0.5rem' }}>
-                      {(['JOB_CHANGE', 'FUNDING', 'HIRING'] as const).map((t) => (
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                      {sampleQueries.map((sq, idx) => (
                         <button
-                          key={t}
-                          onClick={() => setTriggerType(t)}
+                          key={idx}
+                          onClick={() => {
+                            setAgentQuery(sq.text);
+                            setRetrievalMode(sq.mode);
+                          }}
                           style={{
-                            padding: '0.5rem 1rem',
-                            borderRadius: '6px',
-                            border: triggerType === t ? '1px solid var(--accent-cyan)' : '1px solid rgba(255,255,255,0.1)',
-                            background: triggerType === t ? 'rgba(0, 245, 212, 0.15)' : 'rgba(255,255,255,0.03)',
-                            color: triggerType === t ? 'var(--accent-cyan)' : 'var(--text-muted)',
-                            fontFamily: 'var(--font-mono)',
-                            fontSize: '0.8rem',
+                            textAlign: 'left',
+                            padding: '0.75rem 1rem',
+                            borderRadius: '8px',
+                            background: agentQuery === sq.text ? 'rgba(0, 245, 212, 0.1)' : 'rgba(255, 255, 255, 0.03)',
+                            border: agentQuery === sq.text ? '1px solid var(--accent-cyan)' : '1px solid rgba(255, 255, 255, 0.08)',
+                            color: agentQuery === sq.text ? '#fff' : 'var(--text-muted)',
                             cursor: 'pointer',
-                            fontWeight: 600
+                            fontSize: '0.85rem'
                           }}
                         >
-                          {t}
+                          {sq.text}
                         </button>
                       ))}
                     </div>
                   </div>
 
-                  <div>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                      <label className="font-mono" style={{ fontSize: '0.8125rem', color: 'var(--text-muted)' }}>
-                        DAYS UNTIL EVENT:
-                      </label>
-                      <span className="font-mono" style={{ color: 'var(--accent-cyan)', fontWeight: 700 }}>
-                        {daysUntilEvent} Days
+                  <div style={{ marginBottom: '1.5rem' }}>
+                    <label className="font-mono" style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', display: 'block', marginBottom: '0.5rem' }}>
+                      ACTIVE ROUTING MODE:
+                    </label>
+                    <div style={{ display: 'flex', gap: '0.5rem' }}>
+                      <span className="badge-cyan" style={{ fontSize: '0.75rem', padding: '0.35rem 0.75rem' }}>
+                        {retrievalMode}
+                      </span>
+                      <span className="font-mono" style={{ fontSize: '0.75rem', color: 'var(--text-dim)', alignSelf: 'center' }}>
+                        Memory Buffer: Active
                       </span>
                     </div>
-                    <input
-                      type="range"
-                      min={0}
-                      max={30}
-                      value={daysUntilEvent}
-                      onChange={(e) => setDaysUntilEvent(Number(e.target.value))}
-                      style={{
-                        width: '100%',
-                        accentColor: 'var(--accent-cyan)',
-                        cursor: 'pointer'
-                      }}
-                    />
-                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', color: 'var(--text-dim)', marginTop: '0.25rem' }}>
-                      <span>0d (Too late)</span>
-                      <span>5-7d (Optimal Window)</span>
-                      <span>30d (Far out)</span>
-                    </div>
                   </div>
+
+                  <button onClick={handleSimulateAgent} className="btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
+                    <RefreshCw size={16} className={isProcessingQuery ? 'spin' : ''} />
+                    <span>Simulate Agent Pipeline Execution</span>
+                  </button>
                 </div>
 
-                {/* Classification Output Card */}
+                {/* Agent Execution Telemetry Output */}
                 <div
                   style={{
-                    background: 'rgba(255, 255, 255, 0.02)',
-                    border: `1px solid ${timingResult.color}`,
-                    borderRadius: '12px',
-                    padding: '1.75rem',
+                    background: '#080d14',
+                    border: '1px solid rgba(0, 245, 212, 0.3)',
+                    borderRadius: '16px',
+                    padding: '2rem',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-between'
                   }}
                 >
                   <div>
-                    <span className="font-mono" style={{ fontSize: '0.75rem', color: 'var(--text-dim)', letterSpacing: '0.05em' }}>
-                      TIMING ENGINE OUTPUT CLASSIFICATION
-                    </span>
-                    
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginTop: '0.75rem', marginBottom: '0.75rem' }}>
-                      <div
-                        style={{
-                          width: '12px',
-                          height: '12px',
-                          borderRadius: '50%',
-                          background: timingResult.color,
-                          boxShadow: `0 0 10px ${timingResult.color}`
-                        }}
-                      />
-                      <span className="font-mono" style={{ fontSize: '1.25rem', fontWeight: 800, color: timingResult.color }}>
-                        {timingResult.status}
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
+                      <span className="font-mono" style={{ fontSize: '0.75rem', color: 'var(--accent-cyan)' }}>
+                        AGENT EXECUTION TELEMETRY
+                      </span>
+                      <span className="font-mono" style={{ fontSize: '0.7rem', color: '#10b981' }}>
+                        ● LangChain + Qwen2.5 Online
                       </span>
                     </div>
 
-                    <p style={{ fontSize: '0.9rem', color: 'var(--text-main)', lineHeight: 1.5 }}>
-                      {timingResult.desc}
-                    </p>
+                    <div style={{ marginBottom: '1.25rem' }}>
+                      <span className="font-mono" style={{ fontSize: '0.75rem', color: 'var(--text-dim)', display: 'block', marginBottom: '0.35rem' }}>
+                        INTENT CLASSIFICATION:
+                      </span>
+                      <div style={{ fontSize: '0.95rem', color: '#fff', fontWeight: 600 }}>
+                        {retrievalMode === 'VECTOR_RAG' ? 'Domain Technical Inquiry → Atlas Vector Store' :
+                         retrievalMode === 'TOOL_EXECUTION' ? 'Live External API Action → Weather Tool Adapter' :
+                         'Direct Knowledge Synthesis → Local LLM Engine'}
+                      </div>
+                    </div>
+
+                    <div style={{ marginBottom: '1.25rem' }}>
+                      <span className="font-mono" style={{ fontSize: '0.75rem', color: 'var(--text-dim)', display: 'block', marginBottom: '0.35rem' }}>
+                        SYNTHESIZED RESPONSE:
+                      </span>
+                      <p style={{ fontSize: '0.875rem', color: 'var(--text-main)', lineHeight: 1.6, background: 'rgba(255,255,255,0.02)', padding: '1rem', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.06)' }}>
+                        {retrievalMode === 'VECTOR_RAG' ? 'Queried indexed embeddings via cosine distance. Ollama Qwen2.5 retrieved 3 high-confidence chunks on FastAPI async vector ingestion.' :
+                         retrievalMode === 'TOOL_EXECUTION' ? 'Executed HTTP tool handler in 74ms. Weather parameters extracted: Islamabad, 24°C, Clear Skies.' :
+                         'FastAPI async handlers use Python asyncio event loop to handle concurrent I/O operations without blocking worker threads.'}
+                      </p>
+                    </div>
                   </div>
 
-                  <div style={{ marginTop: '1.5rem', paddingTop: '1rem', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-                    <span className="font-mono" style={{ fontSize: '0.75rem', color: 'var(--text-dim)', display: 'block', marginBottom: '0.5rem' }}>
-                      VERIFIED EVIDENCE FLAGS:
-                    </span>
-                    <div style={{ display: 'flex', gap: '0.375rem', flexWrap: 'wrap' }}>
-                      <span className="badge-cyan" style={{ fontSize: '0.7rem' }}>OBSERVED: LinkedIn Signal</span>
-                      <span className="badge-cyan" style={{ fontSize: '0.7rem' }}>VERIFIED: Email Signal</span>
-                      <span className="badge-blue" style={{ fontSize: '0.7rem' }}>INFERRED: 45-day Decay</span>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.75rem', borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '1rem' }}>
+                    <div>
+                      <span className="font-mono" style={{ fontSize: '0.65rem', color: 'var(--text-dim)' }}>LATENCY</span>
+                      <div className="font-mono cyan-gradient-text" style={{ fontSize: '1rem', fontWeight: 700 }}>42ms</div>
+                    </div>
+                    <div>
+                      <span className="font-mono" style={{ fontSize: '0.65rem', color: 'var(--text-dim)' }}>GROUNDING</span>
+                      <div className="font-mono" style={{ fontSize: '1rem', fontWeight: 700, color: '#10b981' }}>99.2%</div>
+                    </div>
+                    <div>
+                      <span className="font-mono" style={{ fontSize: '0.65rem', color: 'var(--text-dim)' }}>VOICE READY</span>
+                      <div className="font-mono" style={{ fontSize: '1rem', fontWeight: 700, color: '#38bdf8' }}>Whisper STT</div>
                     </div>
                   </div>
                 </div>
               </div>
             )}
 
-            {/* --- TAB 2: CREATELYA AI RESTYLER --- */}
-            {activeTab === 'createlya' && (
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2.5rem' }}>
+            {/* --- TAB 2: AUTO MARKET VOICE SEARCH --- */}
+            {activeTab === 'automarket' && (
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2.5rem' }}>
+                <div>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: 600, color: '#fff', marginBottom: '1.25rem' }}>
+                    Whisper Voice Query Simulation
+                  </h3>
+
+                  <div style={{ marginBottom: '1.5rem' }}>
+                    <label className="font-mono" style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', display: 'block', marginBottom: '0.5rem' }}>
+                      VOICE INQUIRY INPUT:
+                    </label>
+                    <input
+                      type="text"
+                      value={selectedVoiceQuery}
+                      onChange={(e) => setSelectedVoiceQuery(e.target.value)}
+                      style={{
+                        width: '100%',
+                        padding: '0.75rem',
+                        borderRadius: '8px',
+                        background: '#121720',
+                        border: '1px solid rgba(255,255,255,0.15)',
+                        color: '#fff',
+                        fontSize: '0.9rem'
+                      }}
+                    />
+                  </div>
+
+                  <div style={{ display: 'flex', gap: '0.75rem', marginBottom: '1.5rem' }}>
+                    <button onClick={handleSimulateVoice} className="btn-secondary" style={{ flex: 1, justifyContent: 'center' }}>
+                      <Mic size={16} style={{ color: voiceListening ? '#ef4444' : 'var(--accent-cyan)' }} />
+                      <span>{voiceListening ? 'Transcribing Whisper Audio...' : 'Test Speech Input'}</span>
+                    </button>
+                  </div>
+
+                  <div style={{ background: 'rgba(255,255,255,0.02)', padding: '1rem', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.05)' }}>
+                    <div className="font-mono" style={{ fontSize: '0.75rem', color: 'var(--accent-cyan)', marginBottom: '0.35rem' }}>
+                      EXTRACTED PARAMETRIC FILTER:
+                    </div>
+                    <ul style={{ listStyle: 'none', fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
+                      <li>• Category: <strong>SUV / Crossover</strong></li>
+                      <li>• Max Budget: <strong>$30,000</strong></li>
+                      <li>• Powertrain: <strong>Hybrid / EV (Fuel Efficient)</strong></li>
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Auto Market Matching Results */}
+                <div>
+                  <h4 style={{ fontSize: '1rem', fontWeight: 600, color: '#fff', marginBottom: '1rem' }}>
+                    Matched Inventory from MongoDB Aggregation
+                  </h4>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                    {vehicleInventory.map((item, idx) => (
+                      <div
+                        key={idx}
+                        style={{
+                          padding: '1rem',
+                          borderRadius: '10px',
+                          background: 'rgba(255,255,255,0.03)',
+                          border: '1px solid rgba(255,255,255,0.08)',
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center'
+                        }}
+                      >
+                        <div>
+                          <div style={{ fontSize: '0.95rem', fontWeight: 600, color: '#fff' }}>{item.name}</div>
+                          <span className="font-mono" style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
+                            {item.type} • {item.mpg}
+                          </span>
+                        </div>
+                        <div style={{ textAlign: 'right' }}>
+                          <div className="font-mono cyan-gradient-text" style={{ fontWeight: 700, fontSize: '0.95rem' }}>
+                            {item.price}
+                          </div>
+                          <span className="badge-cyan" style={{ fontSize: '0.65rem', padding: '0.15rem 0.4rem' }}>
+                            {item.score}
+                          </span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* --- TAB 3: PRESENTATION RESTYLER --- */}
+            {activeTab === 'slides' && (
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2.5rem' }}>
                 <div>
                   <h3 style={{ fontSize: '1.25rem', fontWeight: 600, color: '#fff', marginBottom: '1.25rem' }}>
                     Deck Restyle Controls
@@ -280,7 +369,7 @@ export const InteractiveSandbox: React.FC = () => {
 
                   <div style={{ marginBottom: '1.5rem' }}>
                     <label className="font-mono" style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', display: 'block', marginBottom: '0.5rem' }}>
-                      TOPIC / AI COPYWRITING PROMPT:
+                      TOPIC / AI COPYWRITING OUTLINE:
                     </label>
                     <select
                       value={selectedTopic}
@@ -295,9 +384,9 @@ export const InteractiveSandbox: React.FC = () => {
                         fontSize: '0.9rem'
                       }}
                     >
-                      <option value="AI Agents in Healthcare">AI Agents in Healthcare (12 Slides)</option>
-                      <option value="Next.js 15 Vector RAG Stack">Next.js 15 Vector RAG Stack (8 Slides)</option>
-                      <option value="Automated Scraper Pipeline">Automated Scraper Pipeline (10 Slides)</option>
+                      <option value="Autonomous Multi-Agent Architecture">Autonomous Multi-Agent Architecture (10 Slides)</option>
+                      <option value="Vector Search & LLM Inference Pipeline">Vector Search & LLM Inference Pipeline (8 Slides)</option>
+                      <option value="Full-Stack System Performance Benchmark">Full-Stack System Performance Benchmark (12 Slides)</option>
                     </select>
                   </div>
 
@@ -327,7 +416,7 @@ export const InteractiveSandbox: React.FC = () => {
                     </div>
                   </div>
 
-                  <button onClick={handleSimulateCreatelya} className="btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
+                  <button onClick={handleSimulateRestyle} className="btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
                     <RefreshCw size={16} className={isGenerating ? 'spin' : ''} />
                     <span>Simulate Dual-Engine Restyle</span>
                   </button>
@@ -349,7 +438,7 @@ export const InteractiveSandbox: React.FC = () => {
                   <div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
                       <span className="font-mono" style={{ fontSize: '0.75rem', color: palettes[palette].accent }}>
-                        CREATELYA GENERATED SLIDE #01
+                        GENERATED PRESENTATION SLIDE #01
                       </span>
                       <span className="font-mono" style={{ fontSize: '0.7rem', opacity: 0.7 }}>
                         Group-Gate: Server Python AST Rewrite
@@ -360,115 +449,13 @@ export const InteractiveSandbox: React.FC = () => {
                       {selectedTopic}
                     </h4>
                     <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.7)', lineHeight: 1.6 }}>
-                      Generated by Groq gpt-oss-120b model with structural vector template matching (~0.02s latency).
+                      Generated by high-throughput LLM model with structural vector template matching across 1,562 slide templates (~0.02s latency).
                     </p>
                   </div>
 
                   <div style={{ marginTop: '2rem', display: 'flex', gap: '0.5rem', alignItems: 'center', fontSize: '0.75rem', opacity: 0.8 }} className="font-mono">
                     <CheckCircle size={14} style={{ color: palettes[palette].accent }} />
                     <span>In-Iframe DOM Applier Synced with python-pptx Engine</span>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* --- TAB 3: LODESTAR HYBRID BLENDER --- */}
-            {activeTab === 'lodestar' && (
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2.5rem' }}>
-                <div>
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: 600, color: '#fff', marginBottom: '1.25rem' }}>
-                    Score Blend Weights
-                  </h3>
-
-                  <div style={{ marginBottom: '1.5rem' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                      <label className="font-mono" style={{ fontSize: '0.8125rem', color: 'var(--text-muted)' }}>
-                        BM25 KEYWORD WEIGHT:
-                      </label>
-                      <span className="font-mono" style={{ color: 'var(--accent-cyan)', fontWeight: 700 }}>
-                        {keywordWeight.toFixed(2)}
-                      </span>
-                    </div>
-                    <input
-                      type="range"
-                      min={0}
-                      max={1}
-                      step={0.05}
-                      value={keywordWeight}
-                      onChange={(e) => {
-                        const kw = Number(e.target.value);
-                        setKeywordWeight(kw);
-                        setSemanticWeight(Number((1 - kw).toFixed(2)));
-                      }}
-                      style={{ width: '100%', accentColor: 'var(--accent-cyan)', cursor: 'pointer' }}
-                    />
-                  </div>
-
-                  <div>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                      <label className="font-mono" style={{ fontSize: '0.8125rem', color: 'var(--text-muted)' }}>
-                        QDRANT VECTOR SEMANTIC WEIGHT:
-                      </label>
-                      <span className="font-mono" style={{ color: '#38bdf8', fontWeight: 700 }}>
-                        {semanticWeight.toFixed(2)}
-                      </span>
-                    </div>
-                    <input
-                      type="range"
-                      min={0}
-                      max={1}
-                      step={0.05}
-                      value={semanticWeight}
-                      onChange={(e) => {
-                        const sem = Number(e.target.value);
-                        setSemanticWeight(sem);
-                        setKeywordWeight(Number((1 - sem).toFixed(2)));
-                      }}
-                      style={{ width: '100%', accentColor: '#38bdf8', cursor: 'pointer' }}
-                    />
-                  </div>
-                </div>
-
-                {/* Ranked Results List */}
-                <div>
-                  <span className="font-mono" style={{ fontSize: '0.75rem', color: 'var(--text-dim)', display: 'block', marginBottom: '1rem' }}>
-                    DYNAMICALLY RE-RANKED CANDIDATE REPOSITORIES:
-                  </span>
-
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                    {sortedRepos.map((repo, idx) => {
-                      const finalScore = calculateBlendScore(repo.bm25, repo.vector);
-                      return (
-                        <div
-                          key={repo.name}
-                          style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'space-between',
-                            padding: '0.85rem 1.25rem',
-                            background: 'rgba(255, 255, 255, 0.03)',
-                            border: idx === 0 ? '1px solid var(--accent-cyan)' : '1px solid rgba(255, 255, 255, 0.06)',
-                            borderRadius: '10px'
-                          }}
-                        >
-                          <div>
-                            <span className="font-mono" style={{ fontSize: '0.9rem', fontWeight: 600, color: idx === 0 ? '#fff' : '#d1d5db' }}>
-                              #{idx + 1} {repo.name}
-                            </span>
-                            <div className="font-mono" style={{ fontSize: '0.75rem', color: 'var(--text-dim)', marginTop: '0.2rem' }}>
-                              BM25: {repo.bm25.toFixed(2)} | Vector: {repo.vector.toFixed(2)}
-                            </div>
-                          </div>
-
-                          <div className="font-mono" style={{ textAlign: 'right' }}>
-                            <span style={{ fontSize: '1.1rem', fontWeight: 800, color: idx === 0 ? 'var(--accent-cyan)' : '#9ca3af' }}>
-                              {Math.round(Number(finalScore) * 100)}%
-                            </span>
-                            <span style={{ fontSize: '0.7rem', display: 'block', color: 'var(--text-dim)' }}>Closeness</span>
-                          </div>
-                        </div>
-                      );
-                    })}
                   </div>
                 </div>
               </div>
