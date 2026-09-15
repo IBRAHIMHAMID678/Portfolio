@@ -1,0 +1,191 @@
+import React, { useState } from 'react';
+import { Mail, Copy, Check, Send, ArrowUpRight } from 'lucide-react';
+import { IBRAHIM_DATA } from '../data/portfolioData';
+import { GithubIcon } from './GithubIcon';
+
+export const ContactSection: React.FC = () => {
+  const [copied, setCopied] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText(IBRAHIM_DATA.email);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2500);
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.email || !formData.message) return;
+    setSubmitted(true);
+    setTimeout(() => {
+      setSubmitted(false);
+      setFormData({ name: '', email: '', message: '' });
+    }, 4000);
+  };
+
+  return (
+    <section id="contact" style={{ padding: '6rem 0', position: 'relative' }}>
+      <div className="container">
+        <div
+          className="glass-card"
+          style={{
+            padding: '3.5rem 2.5rem',
+            background: 'linear-gradient(180deg, #0d1219 0%, #080a0d 100%)',
+            border: '1px solid rgba(0, 245, 212, 0.3)',
+            boxShadow: '0 20px 40px -15px rgba(0, 245, 212, 0.15)'
+          }}
+        >
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem', alignItems: 'start' }}>
+            {/* Left Column: Direct Call to Action */}
+            <div>
+              <div className="badge-cyan" style={{ marginBottom: '1rem' }}>
+                <Mail size={14} />
+                <span>07 // START A CONVERSATION</span>
+              </div>
+              
+              <h2 style={{ fontSize: 'clamp(2.2rem, 4vw, 3.25rem)', fontWeight: 800, letterSpacing: '-0.02em', lineHeight: 1.15, marginBottom: '1.25rem' }}>
+                Let’s Build Something <br />
+                <span className="cyan-gradient-text">Intelligent.</span>
+              </h2>
+
+              <p style={{ fontSize: '1.05rem', color: 'var(--text-muted)', lineHeight: 1.6, marginBottom: '2rem' }}>
+                Whether you're hiring an AI/ML engineer, building a Generative AI product, or designing intelligent backend architecture — let's connect.
+              </p>
+
+              {/* One-Click Copy Email Button */}
+              <div style={{ marginBottom: '2rem' }}>
+                <span className="font-mono" style={{ fontSize: '0.75rem', color: 'var(--text-dim)', display: 'block', marginBottom: '0.5rem' }}>
+                  DIRECT CONTACT EMAIL:
+                </span>
+                <div
+                  onClick={handleCopyEmail}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.75rem',
+                    padding: '0.85rem 1.25rem',
+                    background: 'rgba(0, 245, 212, 0.06)',
+                    border: '1px solid rgba(0, 245, 212, 0.3)',
+                    borderRadius: '10px',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease'
+                  }}
+                >
+                  <Mail size={18} style={{ color: 'var(--accent-cyan)' }} />
+                  <span className="font-mono" style={{ fontSize: '0.95rem', color: '#fff', fontWeight: 600 }}>
+                    {IBRAHIM_DATA.email}
+                  </span>
+                  <div style={{ color: copied ? '#10b981' : 'var(--accent-cyan)' }}>
+                    {copied ? <Check size={18} /> : <Copy size={18} />}
+                  </div>
+                </div>
+                {copied && (
+                  <span className="font-mono" style={{ fontSize: '0.75rem', color: '#10b981', display: 'block', marginTop: '0.35rem' }}>
+                    Email address copied to clipboard!
+                  </span>
+                )}
+              </div>
+
+              {/* Social Link Badges */}
+              <div style={{ display: 'flex', gap: '0.75rem' }}>
+                <a
+                  href={IBRAHIM_DATA.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-secondary"
+                  style={{ fontSize: '0.85rem', padding: '0.6rem 1.2rem' }}
+                >
+                  <GithubIcon size={16} />
+                  <span>GitHub Profile</span>
+                  <ArrowUpRight size={14} />
+                </a>
+              </div>
+            </div>
+
+            {/* Right Column: Direct Message Form */}
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+              <div>
+                <label className="font-mono" style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', display: 'block', marginBottom: '0.5rem' }}>
+                  YOUR NAME:
+                </label>
+                <input
+                  type="text"
+                  placeholder="e.g. Sarah Jenkins (CTO)"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  style={{
+                    width: '100%',
+                    padding: '0.85rem 1rem',
+                    borderRadius: '8px',
+                    background: 'rgba(255, 255, 255, 0.03)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    color: '#fff',
+                    fontSize: '0.95rem'
+                  }}
+                />
+              </div>
+
+              <div>
+                <label className="font-mono" style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', display: 'block', marginBottom: '0.5rem' }}>
+                  YOUR EMAIL ADDRESS:
+                </label>
+                <input
+                  type="email"
+                  required
+                  placeholder="name@company.com"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  style={{
+                    width: '100%',
+                    padding: '0.85rem 1rem',
+                    borderRadius: '8px',
+                    background: 'rgba(255, 255, 255, 0.03)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    color: '#fff',
+                    fontSize: '0.95rem'
+                  }}
+                />
+              </div>
+
+              <div>
+                <label className="font-mono" style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', display: 'block', marginBottom: '0.5rem' }}>
+                  PROJECT OR ROLE DETAILS:
+                </label>
+                <textarea
+                  rows={4}
+                  required
+                  placeholder="Tell me about your product requirements or technical role..."
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  style={{
+                    width: '100%',
+                    padding: '0.85rem 1rem',
+                    borderRadius: '8px',
+                    background: 'rgba(255, 255, 255, 0.03)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    color: '#fff',
+                    fontSize: '0.95rem',
+                    fontFamily: 'var(--font-sans)',
+                    resize: 'vertical'
+                  }}
+                />
+              </div>
+
+              <button type="submit" className="btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
+                <Send size={16} />
+                <span>{submitted ? 'Inquiry Sent Successfully!' : 'Send Direct Message'}</span>
+              </button>
+
+              {submitted && (
+                <div style={{ padding: '0.75rem', borderRadius: '8px', background: 'rgba(16, 185, 129, 0.15)', border: '1px solid #10b981', color: '#34d399', fontSize: '0.85rem', textAlign: 'center' }} className="font-mono">
+                  Thank you! Your message has been routed to Ibrahim.
+                </div>
+              )}
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
