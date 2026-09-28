@@ -64,7 +64,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
         <div className="desktop-links" style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
           <a href="#about" className="nav-link">About</a>
           <a href="#projects" className="nav-link">Work Showcase</a>
-          <a href="#sandbox" className="nav-link">AI Sandbox</a>
           <a href="#skills" className="nav-link">Skills</a>
           <a href="#experience" className="nav-link">Experience</a>
           <a href="#contact" className="nav-link">Contact</a>
@@ -123,7 +122,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
         >
           <a href="#about" onClick={() => setMobileMenuOpen(false)}>About</a>
           <a href="#projects" onClick={() => setMobileMenuOpen(false)}>Work Showcase</a>
-          <a href="#sandbox" onClick={() => setMobileMenuOpen(false)}>AI Sandbox</a>
           <a href="#skills" onClick={() => setMobileMenuOpen(false)}>Skills</a>
           <a href="#experience" onClick={() => setMobileMenuOpen(false)}>Experience</a>
           <a href="#contact" onClick={() => setMobileMenuOpen(false)}>Contact</a>

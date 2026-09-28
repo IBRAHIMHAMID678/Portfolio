@@ -80,11 +80,6 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                 <ArrowRight size={18} />
               </a>
 
-              <a href="#sandbox" className="btn-secondary">
-                <Sparkles size={18} style={{ color: 'var(--accent-cyan)' }} />
-                <span>Try AI Sandbox</span>
-              </a>
-
               <button onClick={onOpenResume} className="btn-outline-cyan">
                 <span>View Resume</span>
               </button>
@@ -215,7 +210,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
               >
                 <GraduationCap size={20} style={{ color: 'var(--accent-cyan)', flexShrink: 0 }} />
                 <div style={{ textAlign: 'left' }}>
-                  <div style={{ fontWeight: 600, color: '#fff' }}>BS Computer Science (Graduated)</div>
+                  <div style={{ fontWeight: 600, color: '#fff' }}>AI Full Stack Developer</div>
                   <div style={{ color: 'var(--text-dim)', fontSize: '0.75rem' }}>Capital University of Science & Technology</div>
                 </div>
               </div>

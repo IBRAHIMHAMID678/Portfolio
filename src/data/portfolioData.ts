@@ -64,8 +64,8 @@ export const IBRAHIM_DATA = {
   githubUsername: 'IBRAHIMHAMID678',
   githubUrl: 'https://github.com/IBRAHIMHAMID678',
   linkedinUrl: 'https://www.linkedin.com/in/ibrahim-hamid678',
-  avatarUrl: `${import.meta.env.BASE_URL}avatar.jpg`,
-  resumePdfUrl: `${import.meta.env.BASE_URL}Ibrahim_Hamid_Resume.pdf`,
+  avatarUrl: '/avatar.jpg',
+  resumePdfUrl: '/Ibrahim_Hamid_Resume.pdf',
   
   bio: 'Computer Science graduate and Software Engineer with hands-on experience building AI-powered, full-stack web applications. Skilled in Python (FastAPI), React, Next.js, Node.js, LangChain, and retrieval-augmented generation (RAG), with practical exposure to LLM integration, vector search, and REST API development. Additional strength in software QA, test case design, and Agile bug tracking with Jira across four industry internships.',
 
@@ -233,36 +233,6 @@ export const IBRAHIM_DATA = {
         { title: '4. Tiered Stream A/B RAG', description: 'Routes high-value leads to deep LLM personalization while standardizing high-volume leads.' }
       ]
     },
-    {
-      id: 'medical-slip',
-      number: '06',
-      title: 'Medical Slip Automation & Healthcare Workflow System',
-      tagline: 'Enterprise paperless medical voucher system replacing manual bureaucratic workflows at NTC',
-      category: 'System Automation',
-      summary: 'Engineered an enterprise Medical Slip Automation System for the National Telecommunication Corporation (NTC), replacing manual paper forms with an auditable digital records platform.',
-      problem: 'Government and telecom enterprises suffer from slow medical slip approvals, physical paperwork misplacement, and difficult reconciliation with hospital providers.',
-      architectureDetails: [
-        'Robust Java backend implementing business rules for medical eligibility, expense ceilings, and hierarchical approvals.',
-        'Clean responsive user interface built with HTML5, CSS3, and JavaScript for multi-department staff access.',
-        'Database persistence tracking medical requisitions, patient histories, NOC employee designations, and doctor endorsements.',
-        'Defect-tested against operational scenarios during active deployment at NTC headquarters.'
-      ],
-      keyOutcome: 'Replaced a multi-day manual paper voucher cycle with an instant digital approval workflow for corporate medical requisitions.',
-      techStack: ['Java', 'HTML5', 'CSS3', 'JavaScript', 'SQL Database', 'REST APIs', 'Enterprise Workflows'],
-      githubUrl: 'https://github.com/IBRAHIMHAMID678/Medical-Slip',
-      featured: false,
-      metrics: [
-        { label: 'Workflow Efficiency', value: '100% Digital' },
-        { label: 'Manual Paperwork', value: 'Eliminated' },
-        { label: 'Deployment', value: 'NTC Corporate' }
-      ],
-      systemFlow: [
-        { title: '1. Requisition Submission', description: 'Employee enters medical diagnosis, prescribed facility, and estimated expenses.' },
-        { title: '2. Eligibility Validation', description: 'Java business engine checks corporate coverage allowances and designation entitlements.' },
-        { title: '3. Supervisory Approval', description: 'Routes voucher to medical officers and NOC management for cryptographic sign-off.' },
-        { title: '4. Digital Voucher Issuance', description: 'Generates verified barcode slip for hospital admissions and automated expense audit.' }
-      ]
-    }
   ] as Project[],
 
   skillCategories: [
@@ -318,7 +288,7 @@ export const IBRAHIM_DATA = {
 
   experiences: [
     {
-      role: 'Software Engineering Intern',
+      role: 'AI Engineer',
       company: 'Creative & AI Product Agency',
       period: 'July 2026 — Present',
       location: 'Islamabad, Pakistan',
@@ -332,22 +302,7 @@ export const IBRAHIM_DATA = {
       techUsed: ['Next.js', 'NestJS', 'Python (python-pptx)', 'MongoDB Atlas Vector Search', 'OnlyOffice', 'Groq AI']
     },
     {
-      role: 'AI / ML & Full-Stack Systems Engineer',
-      company: 'Enterprise B2B SaaS Client (Confidential / NDA)',
-      period: '2026',
-      location: 'Remote',
-      type: 'Enterprise Client Project (NDA)',
-      summary: 'Engineered Track I of an enterprise sales intelligence platform: an ICP qualification engine, event-proximity classifier, and tiered RAG hyper-personalization pipeline.',
-      achievements: [
-        'Architected deterministic ICP engine with strict query shaping to prevent LLM hallucinations.',
-        'Designed event-proximity timing classifier calculating active outreach windows (5-7 days before event).',
-        'Built Stream A/B tiered personalization routing deep RAG LLM calls to top leads, reducing token costs by 65%.',
-        'Implemented evidence lineage tracking (OBSERVED, EXTRACTED, VERIFIED, INFERRED, PREDICTED).'
-      ],
-      techUsed: ['Next.js 15', 'TypeScript', 'Python', 'FastAPI', 'OpenAI GPT-4', 'LangChain', 'PostgreSQL']
-    },
-    {
-      role: 'Software Engineering Intern',
+      role: 'AI Intern',
       company: 'NOVOTECH Solutions',
       period: 'July 2025 — August 2025',
       location: 'Islamabad, Pakistan',

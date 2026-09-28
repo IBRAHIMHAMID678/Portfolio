@@ -3,7 +3,6 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { AboutEditorial } from './components/AboutEditorial';
 import { ProjectShowcase } from './components/ProjectShowcase';
-import { InteractiveSandbox } from './components/InteractiveSandbox';
 import { TechMatrix } from './components/TechMatrix';
 import { ExperienceTimeline } from './components/ExperienceTimeline';
 import { GithubStats } from './components/GithubStats';
@@ -28,7 +27,6 @@ export function App() {
         <Hero onOpenResume={() => setIsResumeOpen(true)} />
         <AboutEditorial />
         <ProjectShowcase />
-        <InteractiveSandbox />
         <TechMatrix />
         <ExperienceTimeline />
         <GithubStats />
