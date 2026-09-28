@@ -68,9 +68,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                 marginBottom: '2rem'
               }}
             >
-              Computer Science graduate specializing in <strong style={{ color: '#fff' }}>Generative AI</strong>,{' '}
-              <strong style={{ color: '#fff' }}>LangChain RAG</strong>, <strong style={{ color: '#fff' }}>Python (FastAPI)</strong>,{' '}
-              <strong style={{ color: '#fff' }}>React / Next.js</strong>, and robust QA testing across 4 industry internships.
+              AI Full Stack Developer building production-grade <strong style={{ color: '#fff' }}>Generative AI</strong> systems —{' '}
+              <strong style={{ color: '#fff' }}>LangChain RAG</strong> pipelines, <strong style={{ color: '#fff' }}>Python (FastAPI)</strong> backends,{' '}
+              <strong style={{ color: '#fff' }}>React / Next.js</strong> frontends, shipped with rigorous QA discipline.
             </p>
 
             {/* Hero CTAs */}
