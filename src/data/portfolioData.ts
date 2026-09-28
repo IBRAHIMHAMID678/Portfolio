@@ -64,8 +64,8 @@ export const IBRAHIM_DATA = {
   githubUsername: 'IBRAHIMHAMID678',
   githubUrl: 'https://github.com/IBRAHIMHAMID678',
   linkedinUrl: 'https://www.linkedin.com/in/ibrahim-hamid678',
-  avatarUrl: '/avatar.jpg',
-  resumePdfUrl: '/Ibrahim_Hamid_Resume.pdf',
+  avatarUrl: `${import.meta.env.BASE_URL}avatar.jpg`,
+  resumePdfUrl: `${import.meta.env.BASE_URL}Ibrahim_Hamid_Resume.pdf`,
   
   bio: 'AI Full Stack Developer with hands-on experience building AI-powered, full-stack web applications. Skilled in Python (FastAPI), React, Next.js, Node.js, LangChain, and retrieval-augmented generation (RAG), with practical exposure to LLM integration, vector search, and REST API development. Additional strength in software QA, test case design, and Agile bug tracking with Jira.',
 
