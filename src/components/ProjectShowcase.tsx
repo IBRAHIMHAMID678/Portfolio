@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Layers, CheckCircle, Lock } from 'lucide-react';
+import { Layers, CheckCircle, Lock, Activity } from 'lucide-react';
 import type { Project } from '../data/portfolioData';
 import { IBRAHIM_DATA } from '../data/portfolioData';
 import { SystemArchitectureModal } from './SystemArchitectureModal';
@@ -164,8 +164,8 @@ export const ProjectShowcase: React.FC = () => {
                     className="btn-outline-cyan"
                     style={{ fontSize: '0.85rem', padding: '0.6rem 1.2rem' }}
                   >
-                    <Layers size={16} />
-                    <span>Dissect Architecture</span>
+                    <Activity size={16} />
+                    <span>Live Dissect</span>
                   </button>
 
                   {!project.isEnterprise ? (
