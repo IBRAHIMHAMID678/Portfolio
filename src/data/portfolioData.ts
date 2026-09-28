@@ -293,13 +293,15 @@ export const IBRAHIM_DATA = {
       period: 'July 2026 — Present',
       location: 'Islamabad, Pakistan',
       type: 'AI Product Agency',
-      summary: 'Contributing to an enterprise AI-powered presentation platform, building and testing features across a Next.js frontend and NestJS backend.',
+      summary: 'AI Engineer building an enterprise AI-powered presentation platform — Next.js frontend, NestJS backend — alongside large-scale scraping and lead-generation pipelines powering ICP-driven prospect harvesting.',
       achievements: [
         'Programmatically generating, editing, and validating PowerPoint (.pptx) decks using python-pptx from structured LLM outputs and brand templates.',
-        'Supporting integration of LLM-driven slide generation and semantic retrieval over a 1,562 template library using vector embeddings and MongoDB Atlas Vector Search.',
+        'Building web scraping pipelines with Cloudflare bypass (headless browsers, TLS fingerprinting, residential proxies) to harvest leads at scale from sites behind bot mitigation.',
+        'Engineering ICP-based lead generation systems — scraping, enrichment, dedup, and scoring — feeding verified prospects into outreach workflows.',
+        'Integrating LLM-driven slide generation and semantic retrieval over a 1,562 template library using vector embeddings and MongoDB Atlas Vector Search.',
         'Writing test cases, reproducing edge-case defects, and verifying production releases against client specifications prior to deployment.'
       ],
-      techUsed: ['Next.js', 'NestJS', 'Python (python-pptx)', 'MongoDB Atlas Vector Search', 'OnlyOffice', 'Groq AI']
+      techUsed: ['Next.js', 'NestJS', 'Python (python-pptx)', 'Web Scraping', 'Cloudflare Bypass', 'Lead Generation', 'MongoDB Atlas Vector Search', 'OnlyOffice', 'Groq AI']
     },
     {
       role: 'AI Intern',
