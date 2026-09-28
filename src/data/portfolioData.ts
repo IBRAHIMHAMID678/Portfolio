@@ -67,7 +67,7 @@ export const IBRAHIM_DATA = {
   avatarUrl: '/avatar.jpg',
   resumePdfUrl: '/Ibrahim_Hamid_Resume.pdf',
   
-  bio: 'Computer Science graduate and Software Engineer with hands-on experience building AI-powered, full-stack web applications. Skilled in Python (FastAPI), React, Next.js, Node.js, LangChain, and retrieval-augmented generation (RAG), with practical exposure to LLM integration, vector search, and REST API development. Additional strength in software QA, test case design, and Agile bug tracking with Jira across four industry internships.',
+  bio: 'AI Full Stack Developer with hands-on experience building AI-powered, full-stack web applications. Skilled in Python (FastAPI), React, Next.js, Node.js, LangChain, and retrieval-augmented generation (RAG), with practical exposure to LLM integration, vector search, and REST API development. Additional strength in software QA, test case design, and Agile bug tracking with Jira.',
 
   heroStats: [
     { value: '4+', label: 'Industry Internships' },
@@ -351,7 +351,7 @@ export const IBRAHIM_DATA = {
     {
       degree: 'Bachelor of Science in Computer Science (BSCS)',
       institution: 'Capital University of Science and Technology (CUST)',
-      period: '2022 — 2026 (Graduated)',
+      period: '2022 — 2026',
       location: 'Islamabad, Pakistan',
       details: 'Core focus in Artificial Intelligence, Software Engineering, Algorithms, Database Systems, Web Architectures, and Quality Assurance methodologies.'
     }

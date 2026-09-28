@@ -29,7 +29,7 @@ export const AboutEditorial: React.FC = () => {
           {/* Column 1: Narrative Story */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
             <p style={{ fontSize: '1.075rem', lineHeight: 1.7, color: 'var(--text-main)' }}>
-              I am a <strong>Computer Science graduate and Software Engineer</strong> based in Islamabad, Pakistan, specializing in
+              I am an <strong>AI Full Stack Developer</strong> based in Islamabad, Pakistan, specializing in
               building AI-powered, full-stack web applications. My foundation is built on modern Python (FastAPI), React, Next.js,
               LangChain, and retrieval-augmented generation (RAG).
             </p>
@@ -57,7 +57,7 @@ export const AboutEditorial: React.FC = () => {
               </div>
               <div>
                 <div style={{ fontSize: '1rem', fontWeight: 700, color: '#fff' }}>
-                  Bachelor of Science in Computer Science (Graduated)
+                  Bachelor of Science in Computer Science
                 </div>
                 <div className="font-mono cyan-gradient-text" style={{ fontSize: '0.8125rem', fontWeight: 600 }}>
                   Capital University of Science & Technology (CUST), Islamabad
