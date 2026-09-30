@@ -139,38 +139,8 @@ export const IBRAHIM_DATA = {
       ]
     },
     {
-      id: 'task-manager',
-      number: '03',
-      title: 'Team Task & Workflow Management System',
-      tagline: 'Enterprise team task organizer with role-based access, sprint boards & real-time activity tracking',
-      category: 'Full-Stack Platforms',
-      summary: 'Architected and built a full-stack collaborative project management platform enabling software teams to track sprints, organize kanban boards, assign tickets, and audit project deliverables.',
-      problem: 'Distributed engineering teams need lightweight, responsive task coordination without the bloated complexity and high licensing overhead of heavy enterprise tools.',
-      architectureDetails: [
-        'Role-Based Access Control (RBAC) separating project administrators, team leads, and developers with secure JWT authentication.',
-        'Interactive board UI featuring drag-and-drop status transitions (To Do, In Progress, Review, Completed) and priority tagging.',
-        'RESTful API architecture handling task CRUD, subtask hierarchies, deadline alerts, and team member assignments.',
-        'MongoDB data layer with normalized relational references for projects, workspaces, and audit logs.'
-      ],
-      keyOutcome: 'Delivered a clean, high-velocity project tracking platform supporting multi-user workspaces and real-time status visibility.',
-      techStack: ['React', 'Node.js', 'Express', 'MongoDB', 'JWT Auth', 'REST APIs', 'Tailwind CSS'],
-      githubUrl: 'https://github.com/IBRAHIMHAMID678/Team-Task-Manager-web-application',
-      featured: true,
-      metrics: [
-        { label: 'Access Security', value: 'Role-Based RBAC' },
-        { label: 'Workflow Views', value: 'Kanban & List' },
-        { label: 'Database Schema', value: 'MongoDB Normalized' }
-      ],
-      systemFlow: [
-        { title: '1. Authentication & Workspace Loading', description: 'Validates JWT session and retrieves tenant workspace permissions.' },
-        { title: '2. Board State Management', description: 'Loads sprint tasks into responsive columns with visual status badges.' },
-        { title: '3. Task Lifecycle Transitions', description: 'Dispatches status updates, reassignments, and priority adjustments via REST endpoints.' },
-        { title: '4. Activity Audit Logging', description: 'Records timestamped changes for sprint accountability and team transparency.' }
-      ]
-    },
-    {
       id: 'ai-presentation-platform',
-      number: '04',
+      number: '03',
       title: 'Enterprise AI Presentation & Slide Engine',
       tagline: 'Vector-searched slide template generator with LLM copywriting & dual-engine PPTX restyler',
       category: 'Enterprise Case Studies',
@@ -202,7 +172,7 @@ export const IBRAHIM_DATA = {
     },
     {
       id: 'b2b-intent-engine',
-      number: '05',
+      number: '04',
       title: 'Enterprise B2B Intent & Sales Intelligence Engine',
       tagline: 'Real-time sales intelligence & intent engine with event proximity and evidence lineage tagging',
       category: 'Enterprise Case Studies',
