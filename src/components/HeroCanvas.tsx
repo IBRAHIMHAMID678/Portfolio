@@ -70,14 +70,15 @@ export const HeroCanvas: React.FC = () => {
 
     setupCanvasSize();
 
-    // Pause the render loop when the hero section scrolls out of view (the canvas
-    // is fixed-position, so observe the parent section instead of the canvas itself)
-    let sectionVisible = true;
+    // Skip drawing when the hero section is fully off-screen (battery/CPU saver).
+    // Evaluated synchronously every frame via getBoundingClientRect, so it can
+    // never get stuck in a paused state.
     const sectionEl = canvas.parentElement;
-    const observer = sectionEl
-      ? new IntersectionObserver(([entry]) => { sectionVisible = entry.isIntersecting; }, { threshold: 0 })
-      : null;
-    if (observer && sectionEl) observer.observe(sectionEl);
+    const isSectionOffscreen = () => {
+      if (!sectionEl) return false;
+      const rect = sectionEl.getBoundingClientRect();
+      return rect.bottom < 0 || rect.top > window.innerHeight;
+    };
 
     // ---- Mouse tracker (smoothed) ----
     const mouse = { x: -1000, y: -1000, targetX: -1000, targetY: -1000, radius: 190 };
@@ -186,13 +187,10 @@ export const HeroCanvas: React.FC = () => {
 
     let time = 0;
     const render = () => {
-      if (!sectionVisible) {
-        // Hero scrolled out of view — skip drawing but keep the loop alive
-        if (!reducedMotion) {
-          animationFrameId = requestAnimationFrame(render);
-        }
-        return;
+      if (!reducedMotion) {
+        animationFrameId = requestAnimationFrame(render);
       }
+      if (isSectionOffscreen()) return; // hero not visible — skip drawing this frame
       time += 0.015;
       ctx.clearRect(0, 0, width, height);
 
@@ -347,7 +345,6 @@ export const HeroCanvas: React.FC = () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseleave', handleMouseLeave);
       window.removeEventListener('resize', handleResize);
-      observer?.disconnect();
       cancelAnimationFrame(animationFrameId);
     };
   }, []);
