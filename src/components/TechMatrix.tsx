@@ -1,5 +1,5 @@
 import React from 'react';
-import { Cpu, Server, Layout, Terminal, CheckCircle2 } from 'lucide-react';
+import { Cpu, Server, Layout, Terminal, ShieldCheck, CheckCircle2 } from 'lucide-react';
 import { IBRAHIM_DATA } from '../data/portfolioData';
 
 export const TechMatrix: React.FC = () => {
@@ -9,6 +9,7 @@ export const TechMatrix: React.FC = () => {
       case 'Server': return <Server size={22} style={{ color: '#60a5fa' }} />;
       case 'Layout': return <Layout size={22} style={{ color: '#c084fc' }} />;
       case 'Terminal': return <Terminal size={22} style={{ color: '#34d399' }} />;
+      case 'ShieldCheck': return <ShieldCheck size={22} style={{ color: '#34d399' }} />;
       default: return <Cpu size={22} />;
     }
   };
@@ -20,7 +21,7 @@ export const TechMatrix: React.FC = () => {
         <div style={{ marginBottom: '3.5rem' }}>
           <div className="badge-cyan" style={{ marginBottom: '0.75rem' }}>
             <Cpu size={14} />
-            <span>04 // VERIFIED SKILL MATRIX</span>
+            <span>03 // VERIFIED SKILL MATRIX</span>
           </div>
           <h2 style={{ fontSize: 'clamp(2rem, 3.5vw, 3rem)', fontWeight: 700, letterSpacing: '-0.02em' }}>
             Technical Capabilities & <br />

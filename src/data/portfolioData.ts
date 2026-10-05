@@ -3,7 +3,7 @@ export interface Project {
   number: string;
   title: string;
   tagline: string;
-  category: 'AI & Autonomous Agents' | 'Full-Stack Platforms' | 'Enterprise Case Studies' | 'System Automation';
+  category: 'AI & Autonomous Agents' | 'Full-Stack Platforms' | 'Enterprise Case Studies';
   summary: string;
   problem: string;
   architectureDetails: string[];
@@ -12,7 +12,6 @@ export interface Project {
   githubUrl: string;
   demoUrl?: string;
   isEnterprise?: boolean;
-  ndaNotice?: string;
   featured: boolean;
   metrics: { label: string; value: string }[];
   evidenceFlags?: string[];
@@ -56,7 +55,7 @@ export interface CertificationItem {
 
 export const IBRAHIM_DATA = {
   name: 'Ibrahim Hamid',
-  role: 'Software Engineer | AI & Full-Stack Development',
+  role: 'AI Full Stack Developer',
   headline: 'Building AI-Powered Systems, Production Full-Stack Platforms & RAG Architectures',
   location: 'Islamabad, Pakistan',
   phone: '+92 318 0584128',
@@ -70,8 +69,8 @@ export const IBRAHIM_DATA = {
   bio: 'AI Full Stack Developer with hands-on experience building AI-powered, full-stack web applications. Skilled in Python (FastAPI), React, Next.js, Node.js, LangChain, and retrieval-augmented generation (RAG), with practical exposure to LLM integration, vector search, and REST API development. Additional strength in software QA, test case design, and Agile bug tracking with Jira.',
 
   heroStats: [
-    { value: '4+', label: 'Industry Internships' },
-    { value: '1.5k+', label: 'Templates Vector Searched' },
+    { value: '8k+', label: 'Profiles Processed' },
+    { value: '1.5k+', label: 'Templates Indexed' },
     { value: '60%', label: 'Signal Verification Rate' },
     { value: '100%', label: 'Test Case Traceability' }
   ],
@@ -144,7 +143,7 @@ export const IBRAHIM_DATA = {
       title: 'Enterprise AI Presentation & Slide Engine',
       tagline: 'Vector-searched slide template generator with LLM copywriting & dual-engine PPTX restyler',
       category: 'Enterprise Case Studies',
-      summary: 'Contributed to an AI-powered presentation generation platform at a creative & AI agency, building and testing features across a Next.js frontend and NestJS backend with programmatic PPTX compilation.',
+      summary: 'Contributed to an AI-powered presentation generation platform at Brandlya Group, building and testing features across a Next.js frontend and NestJS backend with programmatic PPTX compilation.',
       problem: 'AI slide builders usually output static PDFs or flat images that corporate design teams cannot customize or format according to strict brand guidelines.',
       architectureDetails: [
         'Vector retrieval search engine (~0.02s latency) querying 1,562 slide templates via embeddings and MongoDB Atlas Vector Search.',
@@ -156,7 +155,6 @@ export const IBRAHIM_DATA = {
       techStack: ['Next.js 15', 'NestJS', 'Python (python-pptx)', 'MongoDB Atlas Vector Search', 'Groq AI', 'OnlyOffice Docker', 'MinIO S3'],
       githubUrl: 'https://github.com/IBRAHIMHAMID678',
       isEnterprise: true,
-      ndaNotice: 'Enterprise Client Project (Confidential / NDA). Proprietary company project; architecture and technical achievements showcased for engineering review.',
       featured: true,
       metrics: [
         { label: 'Template Library', value: '1,562 Decks' },
@@ -188,7 +186,6 @@ export const IBRAHIM_DATA = {
       techStack: ['Next.js 15', 'TypeScript', 'Python', 'FastAPI', 'OpenAI GPT-4', 'LangChain', 'PostgreSQL', 'Tailwind CSS'],
       githubUrl: 'https://github.com/IBRAHIMHAMID678',
       isEnterprise: true,
-      ndaNotice: 'Enterprise Client Project (Confidential / NDA). Proprietary company project; architecture and algorithms documented for technical review.',
       featured: true,
       metrics: [
         { label: 'Signal Lookup Rate', value: '~60%' },
@@ -225,7 +222,7 @@ export const IBRAHIM_DATA = {
       skills: [
         { name: 'Python (FastAPI, Flask, PyTest)', level: 'Expert', proof: 'Chatbot Agent & enterprise service backends' },
         { name: 'Node.js & Express / NestJS', level: 'Advanced', proof: 'Auto Market & presentation engine services' },
-        { name: 'Java (Enterprise Systems)', level: 'Advanced', proof: 'Medical Slip Automation System' },
+        { name: 'Java (Enterprise Systems)', level: 'Advanced', proof: 'NTC enterprise workflow automation' },
         { name: 'MongoDB & Atlas Vector Search', level: 'Expert', proof: 'Auto Market & template embeddings' },
         { name: 'REST API Design & Integration', level: 'Expert', proof: 'Clean RESTful contracts & Postman tests' }
       ]
@@ -249,7 +246,7 @@ export const IBRAHIM_DATA = {
       skills: [
         { name: 'Manual & Functional Testing', level: 'Expert', proof: 'Mobile banking app & agency QA' },
         { name: 'Test Case Design & Requirements Matrix', level: 'Expert', proof: 'End-to-end user story verification' },
-        { name: 'Jira Defect Lifecycle & Agile', level: 'Expert', proof: 'Logged & closed defects across 4 internships' },
+        { name: 'Jira Defect Lifecycle & Agile', level: 'Expert', proof: 'Logged & closed defects across enterprise QA engagements' },
         { name: 'Git & GitHub Version Control', level: 'Expert', proof: 'Branching, PRs, and collaborative releases' },
         { name: 'Docker & Environment Containers', level: 'Intermediate', proof: 'Containerized services & MinIO / OnlyOffice' }
       ]
@@ -259,10 +256,10 @@ export const IBRAHIM_DATA = {
   experiences: [
     {
       role: 'AI Engineer',
-      company: 'Creative & AI Product Agency',
+      company: 'Brandlya Group',
       period: 'July 2026 — Present',
       location: 'Islamabad, Pakistan',
-      type: 'AI Product Agency',
+      type: 'AI Product Company',
       summary: 'AI Engineer building an enterprise AI-powered presentation platform — Next.js frontend, NestJS backend — alongside large-scale scraping and lead-generation pipelines powering ICP-driven prospect harvesting.',
       achievements: [
         'Programmatically generating, editing, and validating PowerPoint (.pptx) decks using python-pptx from structured LLM outputs and brand templates.',
@@ -293,7 +290,7 @@ export const IBRAHIM_DATA = {
       period: 'March 2024 — May 2024',
       location: 'Islamabad, Pakistan',
       type: 'National Telecom Infrastructure',
-      summary: 'Built an enterprise Medical Slip Automation System using Java, HTML, and CSS, replacing a manual paper workflow and streamlining internal documentation.',
+      summary: 'Built an enterprise workflow automation system using Java, HTML, and CSS, replacing a manual paper workflow and streamlining internal documentation.',
       achievements: [
         'Replaced manual paper vouchers with an end-to-end digital approval system for employee healthcare requisitions.',
         'Gained practical operational exposure in the Network Operations Center (NOC), monitoring live infrastructure.',
@@ -348,12 +345,5 @@ export const IBRAHIM_DATA = {
       issuer: 'Coursera',
       platform: 'Coursera'
     }
-  ] as CertificationItem[],
-
-  volunteer: {
-    role: 'Volunteer Teacher',
-    organization: 'Education Health and Development Foundation',
-    period: 'February 2025',
-    description: 'Taught English, Mathematics, and General Knowledge to primary school students from underprivileged backgrounds and mentored them to build learning motivation.'
-  }
+  ] as CertificationItem[]
 };

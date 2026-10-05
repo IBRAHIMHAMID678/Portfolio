@@ -8,8 +8,20 @@ export const ContactSection: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
 
-  const handleCopyEmail = () => {
-    navigator.clipboard.writeText(IBRAHIM_DATA.email);
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(IBRAHIM_DATA.email);
+    } catch {
+      // Fallback for non-secure contexts where the Clipboard API is unavailable
+      const ta = document.createElement('textarea');
+      ta.value = IBRAHIM_DATA.email;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); } catch { /* noop */ }
+      document.body.removeChild(ta);
+    }
     setCopied(true);
     setTimeout(() => setCopied(false), 2500);
   };
@@ -17,11 +29,11 @@ export const ContactSection: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.email || !formData.message) return;
+    const subject = `Portfolio inquiry from ${formData.name || 'a visitor'}`;
+    const body = `Name: ${formData.name || '—'}\nEmail: ${formData.email}\n\n${formData.message}`;
+    window.location.href = `mailto:${IBRAHIM_DATA.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: '', email: '', message: '' });
-    }, 4000);
+    setTimeout(() => setSubmitted(false), 6000);
   };
 
   return (
@@ -41,7 +53,7 @@ export const ContactSection: React.FC = () => {
             <div>
               <div className="badge-cyan" style={{ marginBottom: '1rem' }}>
                 <Mail size={14} />
-                <span>07 // START A CONVERSATION</span>
+                <span>06 // START A CONVERSATION</span>
               </div>
               
               <h2 style={{ fontSize: 'clamp(2.2rem, 4vw, 3.25rem)', fontWeight: 800, letterSpacing: '-0.02em', lineHeight: 1.15, marginBottom: '1.25rem' }}>
@@ -50,7 +62,7 @@ export const ContactSection: React.FC = () => {
               </h2>
 
               <p style={{ fontSize: '1.05rem', color: 'var(--text-muted)', lineHeight: 1.6, marginBottom: '2rem' }}>
-                Whether you're looking for an AI/ML Software Engineer, building an autonomous agent platform, or deploying robust full-stack web applications—let's connect.
+                Whether you're looking for an AI Full Stack Developer, building an autonomous agent platform, or deploying robust full-stack web applications—let's connect.
               </p>
 
               {/* One-Click Copy Email Button */}
@@ -91,7 +103,7 @@ export const ContactSection: React.FC = () => {
               <div style={{ marginBottom: '1.75rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }} className="font-mono">
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-muted)', fontSize: '0.85rem' }}>
                   <Phone size={15} style={{ color: 'var(--accent-cyan)' }} />
-                  <a href={`tel:${IBRAHIM_DATA.phone}`} style={{ color: '#fff', textDecoration: 'none' }}>
+                  <a href={`tel:${IBRAHIM_DATA.phone.replace(/\s/g, '')}`} style={{ color: '#fff', textDecoration: 'none' }}>
                     {IBRAHIM_DATA.phone}
                   </a>
                 </div>
@@ -137,10 +149,11 @@ export const ContactSection: React.FC = () => {
             {/* Right Column: Direct Message Form */}
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
               <div>
-                <label className="font-mono" style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', display: 'block', marginBottom: '0.5rem' }}>
+                <label htmlFor="contact-name" className="font-mono" style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', display: 'block', marginBottom: '0.5rem' }}>
                   YOUR NAME:
                 </label>
                 <input
+                  id="contact-name"
                   type="text"
                   placeholder="e.g. Lead Engineer / Hiring Manager"
                   value={formData.name}
@@ -158,10 +171,11 @@ export const ContactSection: React.FC = () => {
               </div>
 
               <div>
-                <label className="font-mono" style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', display: 'block', marginBottom: '0.5rem' }}>
+                <label htmlFor="contact-email" className="font-mono" style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', display: 'block', marginBottom: '0.5rem' }}>
                   YOUR EMAIL ADDRESS:
                 </label>
                 <input
+                  id="contact-email"
                   type="email"
                   required
                   placeholder="name@company.com"
@@ -180,10 +194,11 @@ export const ContactSection: React.FC = () => {
               </div>
 
               <div>
-                <label className="font-mono" style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', display: 'block', marginBottom: '0.5rem' }}>
+                <label htmlFor="contact-message" className="font-mono" style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', display: 'block', marginBottom: '0.5rem' }}>
                   PROJECT OR ROLE DETAILS:
                 </label>
                 <textarea
+                  id="contact-message"
                   rows={4}
                   required
                   placeholder="Tell me about your product requirements, engineering challenges, or available roles..."
@@ -205,12 +220,12 @@ export const ContactSection: React.FC = () => {
 
               <button type="submit" className="btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
                 <Send size={16} />
-                <span>{submitted ? 'Message Sent Successfully!' : 'Send Direct Message'}</span>
+                <span>{submitted ? 'Opening Your Email Client…' : 'Send Direct Message'}</span>
               </button>
 
               {submitted && (
                 <div style={{ padding: '0.75rem', borderRadius: '8px', background: 'rgba(16, 185, 129, 0.15)', border: '1px solid #10b981', color: '#34d399', fontSize: '0.85rem', textAlign: 'center' }} className="font-mono">
-                  Thank you! Your message has been sent to Ibrahim Hamid.
+                  Opening your email app with the message addressed to Ibrahim Hamid — just hit send.
                 </div>
               )}
             </form>

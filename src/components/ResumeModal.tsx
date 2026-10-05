@@ -13,7 +13,12 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
       if (e.key === 'Escape') onClose();
     };
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = prevOverflow;
+    };
   }, [onClose]);
 
   if (!isOpen) return null;
@@ -119,7 +124,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
         {/* Experience Highlights */}
         <div style={{ marginBottom: '2rem' }}>
           <h3 className="font-mono" style={{ fontSize: '0.85rem', color: 'var(--accent-cyan)', marginBottom: '1rem', letterSpacing: '0.05em' }}>
-            PROFESSIONAL EXPERIENCE & INTERNSHIPS
+            PROFESSIONAL EXPERIENCE
           </h3>
 
           {IBRAHIM_DATA.experiences.map((exp, idx) => (
@@ -151,6 +156,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
             {[
               'Python (FastAPI)', 'React', 'Next.js', 'Node.js', 'NestJS', 'LangChain', 'RAG',
               'Ollama (Qwen2.5)', 'GPT-4o-mini', 'Whisper STT', 'MongoDB Atlas Vector Search',
+              'Web Scraping', 'Cloudflare Bypass', 'Lead Generation',
               'Java', 'HTML5', 'CSS3', 'Tailwind CSS', 'Framer Motion', 'REST APIs', 'Jira QA',
               'Git & GitHub', 'Docker', 'Postman'
             ].map((skill, idx) => (

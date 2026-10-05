@@ -35,14 +35,6 @@ export const GithubStats: React.FC = () => {
       language: 'JavaScript',
       langColor: '#f1e05a',
       badge: 'Productivity'
-    },
-    {
-      name: 'Medical-Slip',
-      url: 'https://github.com/IBRAHIMHAMID678/Medical-Slip',
-      desc: 'Enterprise workflow automation replacing physical medical paperwork at National Telecommunication Corporation (NTC).',
-      language: 'Java',
-      langColor: '#b07219',
-      badge: 'Enterprise'
     }
   ];
 
@@ -53,7 +45,7 @@ export const GithubStats: React.FC = () => {
         <div style={{ marginBottom: '3.5rem' }}>
           <div className="badge-cyan" style={{ marginBottom: '0.75rem' }}>
             <GithubIcon size={14} />
-            <span>06 // GITHUB ENGINEERING FOOTPRINT</span>
+            <span>05 // GITHUB ENGINEERING FOOTPRINT</span>
           </div>
           <h2 style={{ fontSize: 'clamp(2rem, 3.5vw, 3rem)', fontWeight: 700, letterSpacing: '-0.02em' }}>
             Public Repositories & <br />
