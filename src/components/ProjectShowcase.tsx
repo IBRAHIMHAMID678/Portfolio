@@ -9,7 +9,7 @@ export const ProjectShowcase: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [activeCategory, setActiveCategory] = useState<string>('All');
 
-  const categories = ['All', 'AI & Autonomous Agents', 'Full-Stack Platforms', 'Enterprise Case Studies'];
+  const categories = ['All', 'AI & Autonomous Agents', 'Full-Stack Platforms', 'Enterprise Case Studies', 'System Automation'];
 
   const filteredProjects = activeCategory === 'All'
     ? IBRAHIM_DATA.projects
@@ -98,7 +98,7 @@ export const ProjectShowcase: React.FC = () => {
                           }}
                         >
                           <Lock size={11} />
-                          <span>Enterprise</span>
+                          <span>Enterprise NDA</span>
                         </span>
                       )}
                       <span className="badge-blue" style={{ fontSize: '0.75rem' }}>
@@ -138,6 +138,23 @@ export const ProjectShowcase: React.FC = () => {
                     </p>
                   </div>
 
+                  {/* NDA Notice if Enterprise */}
+                  {project.ndaNotice && (
+                    <div
+                      style={{
+                        background: 'rgba(59, 130, 246, 0.05)',
+                        border: '1px solid rgba(59, 130, 246, 0.15)',
+                        padding: '0.75rem 1rem',
+                        borderRadius: '8px',
+                        marginBottom: '1.25rem',
+                        fontSize: '0.785rem',
+                        color: '#93c5fd',
+                        lineHeight: 1.5
+                      }}
+                    >
+                      {project.ndaNotice}
+                    </div>
+                  )}
                 </div>
 
                 {/* CTAs */}
@@ -214,7 +231,7 @@ export const ProjectShowcase: React.FC = () => {
                   {project.evidenceFlags && (
                     <div style={{ marginBottom: '1.5rem' }}>
                       <span className="font-mono" style={{ fontSize: '0.75rem', color: 'var(--text-dim)', display: 'block', marginBottom: '0.5rem' }}>
-                        EVIDENCE LINEAGE:
+                        EVIDENCE CONFIDENCE CLASSIFIERS:
                       </span>
                       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.375rem' }}>
                         {project.evidenceFlags.map((flag, idx) => (

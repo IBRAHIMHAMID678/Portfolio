@@ -55,7 +55,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <span style={{ fontWeight: 700, fontSize: '1rem', letterSpacing: '-0.02em' }}>IBRAHIM HAMID</span>
             <span className="font-mono" style={{ fontSize: '0.6875rem', color: 'var(--accent-cyan)', opacity: 0.9 }}>
-              AI FULL STACK DEVELOPER
+              AI / ML ENGINEER
             </span>
           </div>
         </a>
@@ -66,7 +66,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
           <a href="#projects" className="nav-link">Work Showcase</a>
           <a href="#skills" className="nav-link">Skills</a>
           <a href="#experience" className="nav-link">Experience</a>
-          <a href="#github" className="nav-link">GitHub</a>
           <a href="#contact" className="nav-link">Contact</a>
         </div>
 
@@ -125,7 +124,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
           <a href="#projects" onClick={() => setMobileMenuOpen(false)}>Work Showcase</a>
           <a href="#skills" onClick={() => setMobileMenuOpen(false)}>Skills</a>
           <a href="#experience" onClick={() => setMobileMenuOpen(false)}>Experience</a>
-          <a href="#github" onClick={() => setMobileMenuOpen(false)}>GitHub</a>
           <a href="#contact" onClick={() => setMobileMenuOpen(false)}>Contact</a>
         </div>
       )}

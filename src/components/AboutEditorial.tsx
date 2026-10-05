@@ -34,7 +34,7 @@ export const AboutEditorial: React.FC = () => {
               LangChain, and retrieval-augmented generation (RAG).
             </p>
             <p style={{ fontSize: '0.975rem', lineHeight: 1.7, color: 'var(--text-muted)' }}>
-              Across industry engagements spanning an AI product company, software development firms, national telecom infrastructure (NTC),
+              Across four industry internships—spanning creative agencies, software development firms, national telecom infrastructure (NTC),
               and digital banking (Mobilink Bank)—I have bridged the gap between rapid generative AI innovation and production-grade software reliability.
               In addition to writing scalable backend APIs and reactive frontends, I bring a disciplined QA mindset: designing exhaustive test cases,
               tracking defects in Jira, and verifying releases against requirements before client delivery.

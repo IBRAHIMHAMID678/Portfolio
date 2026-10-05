@@ -36,7 +36,7 @@ export const Footer: React.FC = () => {
           <div>
             <span style={{ color: '#fff', fontWeight: 700, fontSize: '0.95rem' }}>IBRAHIM HAMID</span>
             <span className="font-mono" style={{ fontSize: '0.75rem', color: 'var(--text-dim)', display: 'block' }}>
-              AI Full Stack Developer
+              AI / ML Engineer & Systems Architect
             </span>
           </div>
         </div>

@@ -10,7 +10,7 @@ export const ExperienceTimeline: React.FC = () => {
         <div style={{ marginBottom: '4rem' }}>
           <div className="badge-cyan" style={{ marginBottom: '0.75rem' }}>
             <Briefcase size={14} />
-            <span>04 // PROFESSIONAL EXPERIENCE</span>
+            <span>05 // PROFESSIONAL EXPERIENCE</span>
           </div>
           <h2 style={{ fontSize: 'clamp(2rem, 3.5vw, 3rem)', fontWeight: 700, letterSpacing: '-0.02em' }}>
             Engineering History & <br />

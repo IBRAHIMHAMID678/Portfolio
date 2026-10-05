@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Sparkles, Code2, Database, ShieldCheck, Download, ExternalLink, MapPin, BrainCircuit } from 'lucide-react';
+import { ArrowRight, Sparkles, Code2, Database, ShieldCheck, Download, ExternalLink, MapPin, GraduationCap } from 'lucide-react';
 import { IBRAHIM_DATA } from '../data/portfolioData';
 import { HeroCanvas } from './HeroCanvas';
 import { GithubIcon } from './GithubIcon';
@@ -186,7 +186,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                   {IBRAHIM_DATA.name}
                 </h3>
                 <p className="font-mono cyan-gradient-text" style={{ fontSize: '0.85rem', fontWeight: 600 }}>
-                  AI Full Stack Developer
+                  AI & Full-Stack Software Engineer
                 </p>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.35rem', marginTop: '0.35rem', color: 'var(--text-muted)', fontSize: '0.8rem' }} className="font-mono">
                   <MapPin size={13} style={{ color: 'var(--accent-cyan)' }} />
@@ -208,10 +208,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                   gap: '0.625rem'
                 }}
               >
-                <BrainCircuit size={20} style={{ color: 'var(--accent-cyan)', flexShrink: 0 }} />
+                <GraduationCap size={20} style={{ color: 'var(--accent-cyan)', flexShrink: 0 }} />
                 <div style={{ textAlign: 'left' }}>
                   <div style={{ fontWeight: 600, color: '#fff' }}>AI Full Stack Developer</div>
-                  <div style={{ color: 'var(--text-dim)', fontSize: '0.75rem' }}>BSCS — Capital University of Science & Technology</div>
+                  <div style={{ color: 'var(--text-dim)', fontSize: '0.75rem' }}>Capital University of Science & Technology</div>
                 </div>
               </div>
 
