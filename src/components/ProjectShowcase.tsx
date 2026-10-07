@@ -4,7 +4,10 @@ import type { Project, ProjectScreenshot } from '../data/portfolioData';
 import { IBRAHIM_DATA } from '../data/portfolioData';
 import { SystemArchitectureModal } from './SystemArchitectureModal';
 import { ScreenshotModal } from './ScreenshotModal';
+import { ChatbotAgent3D } from './ChatbotAgent3D';
 import { JobScraper3D } from './JobScraper3D';
+import { EvalAgent3D } from './EvalAgent3D';
+import { GuardrailLab3D } from './GuardrailLab3D';
 import { GithubIcon } from './GithubIcon';
 
 export const ProjectShowcase: React.FC = () => {
@@ -24,9 +27,12 @@ export const ProjectShowcase: React.FC = () => {
     projectTitle: ''
   });
 
-  // Track active media tab ('3d' vs 'screenshots') per project
+  // Track active media tab ('3d' vs 'screenshots') per project - defaults to '3d' for all
   const [mediaTabs, setMediaTabs] = useState<Record<string, '3d' | 'screenshots'>>({
-    'ai-job-scraper': '3d'
+    'chatbot-agent': '3d',
+    'ai-job-scraper': '3d',
+    'eval-agent': '3d',
+    'guardrail-lab': '3d'
   });
 
   // Track active screenshot thumbnail index per project
@@ -47,6 +53,21 @@ export const ProjectShowcase: React.FC = () => {
     });
   };
 
+  const render3DVisual = (id: string) => {
+    switch (id) {
+      case 'chatbot-agent':
+        return <ChatbotAgent3D height={360} />;
+      case 'ai-job-scraper':
+        return <JobScraper3D height={360} />;
+      case 'eval-agent':
+        return <EvalAgent3D height={360} />;
+      case 'guardrail-lab':
+        return <GuardrailLab3D height={360} />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <section id="projects" style={{ padding: '6rem 0', position: 'relative' }}>
       <div className="container">
@@ -54,14 +75,14 @@ export const ProjectShowcase: React.FC = () => {
         <div style={{ marginBottom: '3rem' }}>
           <div className="badge-cyan" style={{ marginBottom: '0.75rem' }}>
             <Layers size={14} />
-            <span>02 // PRODUCTION ARCHITECTURES & HARNESSES</span>
+            <span>02 // PRODUCTION ARCHITECTURES & 3D INTERACTIVE SIMULATIONS</span>
           </div>
           <h2 style={{ fontSize: 'clamp(2rem, 3.5vw, 3.25rem)', fontWeight: 700, letterSpacing: '-0.02em' }}>
             Production Systems & <br />
             <span className="cyan-gradient-text">Architectural Case Studies.</span>
           </h2>
           <p style={{ fontSize: '1.05rem', color: 'var(--text-muted)', maxWidth: '750px', marginTop: '0.75rem' }}>
-            Four production AI architectures: autonomous multi-turn voice agents, 10-source job harvesting with 3D telemetry, forensic LLM-as-a-judge harnesses, and deterministic AST shell guardrails.
+            Four production AI systems paired with bespoke 3D WebGL physical simulations and full architectural screenshot ledgers.
           </p>
         </div>
 
@@ -91,8 +112,7 @@ export const ProjectShowcase: React.FC = () => {
         {/* Project List: Editorial Cards with 3D and Screenshot Viewports */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
           {filteredProjects.map((project) => {
-            const has3D = project.has3DAnimation;
-            const currentTab = mediaTabs[project.id] || (has3D ? '3d' : 'screenshots');
+            const currentTab = mediaTabs[project.id] || '3d';
             const screenshots = project.screenshots || [];
             const curShotIdx = activeScreenshotIdx[project.id] || 0;
             const currentShot = screenshots[curShotIdx] || screenshots[0];
@@ -248,40 +268,41 @@ export const ProjectShowcase: React.FC = () => {
                       boxShadow: '0 15px 35px rgba(0, 0, 0, 0.5)'
                     }}
                   >
-                    {/* Viewport Header Controls (for projects with both 3D & Screenshots) */}
-                    {has3D && (
-                      <div
-                        style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'space-between',
-                          padding: '0.75rem 1.25rem',
-                          background: 'rgba(18, 24, 32, 0.95)',
-                          borderBottom: '1px solid rgba(255, 255, 255, 0.08)'
-                        }}
-                      >
-                        <div style={{ display: 'flex', gap: '0.5rem' }}>
-                          <button
-                            onClick={() => setMediaTabs(prev => ({ ...prev, [project.id]: '3d' }))}
-                            style={{
-                              padding: '0.4rem 0.85rem',
-                              borderRadius: '6px',
-                              border: currentTab === '3d' ? '1px solid var(--accent-cyan)' : '1px solid transparent',
-                              background: currentTab === '3d' ? 'rgba(0, 245, 212, 0.15)' : 'transparent',
-                              color: currentTab === '3d' ? 'var(--accent-cyan)' : 'var(--text-muted)',
-                              fontSize: '0.785rem',
-                              fontWeight: 700,
-                              fontFamily: 'var(--font-mono)',
-                              cursor: 'pointer',
-                              display: 'flex',
-                              alignItems: 'center',
-                              gap: '0.35rem'
-                            }}
-                          >
-                            <Cpu size={13} />
-                            <span>3D PIPELINE RADAR</span>
-                          </button>
+                    {/* Viewport Header Controls */}
+                    <div
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        padding: '0.75rem 1.25rem',
+                        background: 'rgba(18, 24, 32, 0.95)',
+                        borderBottom: '1px solid rgba(255, 255, 255, 0.08)'
+                      }}
+                    >
+                      <div style={{ display: 'flex', gap: '0.5rem' }}>
+                        <button
+                          onClick={() => setMediaTabs(prev => ({ ...prev, [project.id]: '3d' }))}
+                          style={{
+                            padding: '0.4rem 0.85rem',
+                            borderRadius: '6px',
+                            border: currentTab === '3d' ? '1px solid var(--accent-cyan)' : '1px solid transparent',
+                            background: currentTab === '3d' ? 'rgba(0, 245, 212, 0.15)' : 'transparent',
+                            color: currentTab === '3d' ? 'var(--accent-cyan)' : 'var(--text-muted)',
+                            fontSize: '0.785rem',
+                            fontWeight: 700,
+                            fontFamily: 'var(--font-mono)',
+                            cursor: 'pointer',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.35rem',
+                            transition: 'all 0.2s'
+                          }}
+                        >
+                          <Cpu size={13} />
+                          <span>3D SIMULATION</span>
+                        </button>
 
+                        {screenshots.length > 0 && (
                           <button
                             onClick={() => setMediaTabs(prev => ({ ...prev, [project.id]: 'screenshots' }))}
                             style={{
@@ -296,39 +317,40 @@ export const ProjectShowcase: React.FC = () => {
                               cursor: 'pointer',
                               display: 'flex',
                               alignItems: 'center',
-                              gap: '0.35rem'
+                              gap: '0.35rem',
+                              transition: 'all 0.2s'
                             }}
                           >
                             <ImageIcon size={13} />
                             <span>UI SCREENSHOTS ({screenshots.length})</span>
                           </button>
-                        </div>
-
-                        {currentTab === 'screenshots' && (
-                          <button
-                            onClick={() => openScreenshotModal(screenshots, curShotIdx, project.title)}
-                            style={{
-                              background: 'transparent',
-                              border: 'none',
-                              color: 'var(--accent-cyan)',
-                              cursor: 'pointer',
-                              fontSize: '0.75rem',
-                              fontFamily: 'var(--font-mono)',
-                              display: 'flex',
-                              alignItems: 'center',
-                              gap: '0.25rem'
-                            }}
-                          >
-                            <Maximize2 size={13} />
-                            <span>ENLARGE</span>
-                          </button>
                         )}
                       </div>
-                    )}
+
+                      {currentTab === 'screenshots' && (
+                        <button
+                          onClick={() => openScreenshotModal(screenshots, curShotIdx, project.title)}
+                          style={{
+                            background: 'transparent',
+                            border: 'none',
+                            color: 'var(--accent-cyan)',
+                            cursor: 'pointer',
+                            fontSize: '0.75rem',
+                            fontFamily: 'var(--font-mono)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.25rem'
+                          }}
+                        >
+                          <Maximize2 size={13} />
+                          <span>ENLARGE</span>
+                        </button>
+                      )}
+                    </div>
 
                     {/* Viewport Content */}
-                    {has3D && currentTab === '3d' ? (
-                      <JobScraper3D height={360} />
+                    {currentTab === '3d' ? (
+                      render3DVisual(project.id)
                     ) : (
                       currentShot && (
                         <div>

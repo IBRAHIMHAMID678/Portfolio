@@ -112,8 +112,8 @@ export const IBRAHIM_DATA = {
       screenshots: [
         {
           url: `${import.meta.env.BASE_URL}screenshots/chatbot-agent-ui.png`,
-          title: 'Voice & RAG Conversation Console',
-          caption: 'Interactive multi-turn chat session with Ollama Qwen2.5, LangChain RAG vector source citations, and real-time Whisper speech waveform meter.'
+          title: 'RAG Engineering Workstation & Neural Spectrogram',
+          caption: 'High-tech developer workstation featuring 3D RAG vector embedding cluster visualization, Ollama Qwen2.5 local streaming terminal, and Whisper STT neural audio spectrogram.'
         }
       ],
       systemFlow: [
