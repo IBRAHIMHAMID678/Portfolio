@@ -1,3 +1,9 @@
+export interface ProjectScreenshot {
+  url: string;
+  title: string;
+  caption: string;
+}
+
 export interface Project {
   id: string;
   number: string;
@@ -14,8 +20,10 @@ export interface Project {
   isEnterprise?: boolean;
   ndaNotice?: string;
   featured: boolean;
+  has3DAnimation?: boolean;
   metrics: { label: string; value: string }[];
   evidenceFlags?: string[];
+  screenshots?: ProjectScreenshot[];
   systemFlow: {
     title: string;
     description: string;
@@ -67,13 +75,13 @@ export const IBRAHIM_DATA = {
   avatarUrl: `${import.meta.env.BASE_URL}avatar.jpg`,
   resumePdfUrl: `${import.meta.env.BASE_URL}Ibrahim_Hamid_Resume.pdf`,
   
-  bio: 'AI Full Stack Developer with hands-on experience building AI-powered, full-stack web applications. Skilled in Python (FastAPI), React, Next.js, Node.js, LangChain, and retrieval-augmented generation (RAG), with practical exposure to LLM integration, vector search, and REST API development. Additional strength in software QA, test case design, and Agile bug tracking with Jira.',
+  bio: 'AI Full Stack Developer with hands-on experience building AI-powered, production web applications, autonomous agent workflows, and deterministic security harnesses. Skilled in Python (FastAPI), React, Next.js, LangChain, Three.js WebGL, and retrieval-augmented generation (RAG), with practical expertise in LLM-as-a-judge evaluations, multi-source scraping pipelines, vector search, and AST-level guardrails.',
 
   heroStats: [
-    { value: '4+', label: 'Industry Internships' },
-    { value: '1.5k+', label: 'Templates Vector Searched' },
-    { value: '60%', label: 'Signal Verification Rate' },
-    { value: '100%', label: 'Test Case Traceability' }
+    { value: '4', label: 'Production Architectures' },
+    { value: '10+', label: 'Job Platforms Harvested' },
+    { value: '21/21', label: 'Guardrail Engine Invariants' },
+    { value: '100%', label: 'Forensic Eval Precision' }
   ],
 
   projects: [
@@ -86,13 +94,13 @@ export const IBRAHIM_DATA = {
       summary: 'Designed and implemented an intelligent full-stack AI agent capable of multi-turn contextual conversations, intent recognition, dynamic retrieval-augmented generation (RAG), and real-time voice interaction.',
       problem: 'Generic chatbots suffer from context drift across multi-turn dialogues, fail to ground answers in localized knowledge bases, and lack seamless hands-free speech interactions.',
       architectureDetails: [
-        'LangChain orchestration layer routing user intent between direct LLM synthesis, knowledge base retrieval, and live external API execution (weather, web knowledge).',
+        'LangChain orchestration layer routing user intent between direct LLM synthesis, knowledge base retrieval, and live external API execution.',
         'Integrated local Ollama (Qwen2.5) and remote LLM endpoints for contextual query understanding and zero-shot entity extraction.',
         'Bidirectional voice interface combining Speech-to-Text (Whisper model) and low-latency Text-to-Speech synthesis.',
         'Reactive React/Next.js frontend powered by Tailwind CSS and Framer Motion micro-animations for fluid chat streaming.'
       ],
       keyOutcome: 'Delivered an end-to-end voice-enabled RAG assistant with sub-second intent classification and multi-turn conversational memory.',
-      techStack: ['Python', 'FastAPI', 'React', 'Next.js', 'LangChain', 'Ollama (Qwen2.5)', 'Whisper STT', 'Tailwind CSS', 'Framer Motion'],
+      techStack: ['Python', 'FastAPI', 'React', 'Next.js', 'LangChain', 'Ollama (Qwen2.5)', 'Whisper STT', 'Tailwind CSS'],
       githubUrl: 'https://github.com/IBRAHIMHAMID678/AI-Agent',
       featured: true,
       metrics: [
@@ -101,6 +109,13 @@ export const IBRAHIM_DATA = {
         { label: 'Latency Profile', value: 'Streaming Sub-sec' }
       ],
       evidenceFlags: ['OBSERVED', 'EXTRACTED', 'VERIFIED'],
+      screenshots: [
+        {
+          url: `${import.meta.env.BASE_URL}screenshots/chatbot-agent-ui.png`,
+          title: 'Voice & RAG Conversation Console',
+          caption: 'Interactive multi-turn chat session with Ollama Qwen2.5, LangChain RAG vector source citations, and real-time Whisper speech waveform meter.'
+        }
+      ],
       systemFlow: [
         { title: '1. Audio / Text Ingestion', description: 'Transcribes audio via Whisper STT or ingests user prompt streaming into FastAPI gateway.' },
         { title: '2. Intent Recognition & RAG Routing', description: 'LangChain pipeline classifies intent, querying vector store for domain context or invoking external tools.' },
@@ -109,100 +124,168 @@ export const IBRAHIM_DATA = {
       ]
     },
     {
-      id: 'auto-market',
+      id: 'ai-job-scraper',
       number: '02',
-      title: 'Auto Market — AI-Powered Online Vehicle Marketplace',
-      tagline: 'Full-stack vehicle commerce platform with Whisper voice navigation & AI multi-model inquiry assistant',
-      category: 'Full-Stack Platforms',
-      summary: 'Engineered an end-to-end online vehicle marketplace pairing a high-performance React frontend with a MongoDB-backed Node.js API, elevated by an intelligent voice-driven vehicle matching assistant.',
-      problem: 'Car buyers face tedious multi-field search forms, complex technical spec comparisons, and static text searches that cannot answer conversational buyer questions.',
+      title: 'AI Job Hunter & Autonomous Auto-Apply Orchestrator',
+      tagline: 'Multi-source job scraper, Groq AI evaluation engine, and automated Lever/Greenhouse application agent',
+      category: 'AI & Autonomous Agents',
+      summary: 'Engineered a high-throughput multi-source job harvesting pipeline (LinkedIn, Indeed, Himalayas, RemoteOK, JobSpy) pairing a FastAPI backend with real-time SSE telemetry, local Mongo/in-memory cache, Groq-powered fit scoring, and automated Playwright headless application workflows.',
+      problem: 'Manual job hunting across 10+ fragmented portals is tedious, rate-limited, and filled with location/visa mismatches that waste hundreds of engineering hours.',
       architectureDetails: [
-        'Dynamic React vehicle discovery catalog with parametric filtering (make, model, price bracket, mileage, fuel type) and responsive cards.',
-        'Custom conversational AI assistant utilizing OpenAI Whisper Speech-to-Text, enabling users to speak natural queries (e.g. "Find me fuel-efficient SUVs under $25k").',
-        'Node.js & Express RESTful backend architecture with MongoDB aggregation pipelines for instant search indexing.',
-        'Third-party automotive API integrations streamlining vehicle specification lookups and dealer inventory feeds.'
+        'Multi-platform scraper engine harvesting across 10 sources: JobSpy (LinkedIn, Indeed, Glassdoor, ZipRecruiter), Himalayas API, Remotive API, Remote OK API, WeWorkRemotely RSS, and Python.org.',
+        'Smart local evaluator scoring postings against candidate tech stacks (Python, FastAPI, React, Next.js, LangChain, RAG) with location & visa restriction filters.',
+        'Auto-approval decision gate: auto-qualifies jobs scoring >= 60%, flags borderline cases for manual review, and routes qualified leads to application queues.',
+        'Automated application engine using Playwright to inspect, auto-fill, and submit candidate profiles across Lever and Greenhouse ATS forms.',
+        'Real-time executive control center with EventSource (SSE) streaming live logs, pipeline status trackers, and CSV/DOCX report exports.'
       ],
-      keyOutcome: 'Enabled voice-first vehicle discovery and automated buyer inquiries, drastically reducing search friction for prospective buyers.',
-      techStack: ['React', 'Node.js', 'Express', 'MongoDB', 'Whisper STT', 'OpenAI APIs', 'Tailwind CSS', 'REST APIs'],
-      githubUrl: 'https://github.com/IBRAHIMHAMID678/AI-Powered-Vehical-Market-Place',
+      keyOutcome: 'Harvests hundreds of listings across 10 job platforms within seconds, evaluates matches using Groq (<300ms), and eliminates manual submission overhead.',
+      techStack: ['Python', 'FastAPI', 'Playwright', 'Groq AI', 'MongoDB', 'JobSpy', 'EventSource (SSE)', 'Three.js 3D', 'Docker'],
+      githubUrl: 'https://github.com/IBRAHIMHAMID678/AI-JOB-SCRAPER',
       featured: true,
+      has3DAnimation: true,
       metrics: [
-        { label: 'Voice AI Search', value: 'Whisper Powered' },
-        { label: 'Backend Latency', value: '< 80ms Queries' },
-        { label: 'Architecture', value: 'Full-Stack MERN' }
+        { label: 'Scraper Sources', value: '10 Platforms' },
+        { label: 'Evaluator Speed', value: '< 300ms / Job' },
+        { label: 'Auto-Approval Gate', value: '≥ 60% Match' }
+      ],
+      evidenceFlags: ['OBSERVED', 'EXTRACTED', 'VERIFIED'],
+      screenshots: [
+        {
+          url: `${import.meta.env.BASE_URL}screenshots/job-scraper-dashboard.png`,
+          title: 'Pipeline Control Center & Telemetry',
+          caption: 'Live executive dashboard with active platform status, candidate verifier gates, and export actions.'
+        },
+        {
+          url: `${import.meta.env.BASE_URL}screenshots/job-scraper-lever-form.png`,
+          title: 'Automated Lever Form Injection',
+          caption: 'Headless browser automatically detecting and populating custom ATS form fields.'
+        },
+        {
+          url: `${import.meta.env.BASE_URL}screenshots/job-scraper-applied.png`,
+          title: 'Application Dispatch Confirmation',
+          caption: 'Verified submission receipt and audit logging after end-to-end auto-apply execution.'
+        },
+        {
+          url: `${import.meta.env.BASE_URL}screenshots/job-scraper-canonical.png`,
+          title: 'Canonical Candidate Application State',
+          caption: 'Post-submission audit snapshot confirming zero dropped fields.'
+        }
       ],
       systemFlow: [
-        { title: '1. User Voice / Query Input', description: 'Buyer dictates requirements or enters search parameters in the reactive React UI.' },
-        { title: '2. Whisper Speech Processing', description: 'Extracts buyer criteria (budget, body type, fuel) via Whisper STT model.' },
-        { title: '3. MongoDB Aggregation Search', description: 'Executes parametric queries against vehicle listings database with index optimization.' },
-        { title: '4. AI Recommendation Delivery', description: 'Returns matched inventory with conversational explanations and direct seller contact.' }
+        { title: '1. Multi-Source Ingestion', description: 'Concurrent scraper workers pull live listings from LinkedIn, Indeed, Himalayas, RemoteOK, and RSS feeds.' },
+        { title: '2. Smart AI Evaluator & Filtering', description: 'Evaluates descriptions against candidate tech stack, stripping location-restricted roles and scoring relevance.' },
+        { title: '3. Auto-Approval Gate & Queue', description: 'Roles scoring >= 60% are auto-approved and queued; borderline listings are marked for review.' },
+        { title: '4. Automated ATS Application Engine', description: 'Playwright automation navigates to Lever/Greenhouse forms, maps resume fields, and executes submissions.' }
       ]
     },
     {
-      id: 'ai-presentation-platform',
+      id: 'eval-agent',
       number: '03',
-      title: 'Enterprise AI Presentation & Slide Engine',
-      tagline: 'Vector-searched slide template generator with LLM copywriting & dual-engine PPTX restyler',
-      category: 'Enterprise Case Studies',
-      summary: 'Contributed to an AI-powered presentation generation platform at a creative & AI agency, building and testing features across a Next.js frontend and NestJS backend with programmatic PPTX compilation.',
-      problem: 'AI slide builders usually output static PDFs or flat images that corporate design teams cannot customize or format according to strict brand guidelines.',
+      title: 'Eval-Agent — LLM-as-a-Judge Forensic Evaluation Harness',
+      tagline: 'Forensic evaluation harness scoring agent outputs on faithfulness, relevance & hallucination detection',
+      category: 'AI & Autonomous Agents',
+      summary: 'Built an LLM-as-a-judge evaluation harness that grades AI agent and RAG responses against source documents, decomposing outputs into atomic claims, quoting unsupported spans, and performing pairwise A/B arbitration.',
+      problem: 'Generative AI chatbots frequently introduce subtle hallucinations, misquoted numbers, and unsupported claims that traditional regex or unit tests fail to detect.',
       architectureDetails: [
-        'Vector retrieval search engine (~0.02s latency) querying 1,562 slide templates via embeddings and MongoDB Atlas Vector Search.',
-        'Groq LLM text generation pipeline utilizing gpt-oss-120b and llama-3.3-70b-versatile for structured JSON slide copywriting.',
-        'Dual-engine structural restyler synchronizing in-iframe DOM/SVG manipulators with server-side python-pptx AST rewriters.',
-        'OnlyOffice CE Docker integration with MinIO S3 object storage for real-time collaborative slide deck manipulation.'
+        'Two-phase forensic judge agent (Groq LLaMA-3.1): extracts atomic claims from model outputs, then verifies each claim individually against source documents as SUPPORTED, CONTRADICTED, or UNSUPPORTED.',
+        'Multi-metric evaluation engine scoring Faithfulness, Relevance, and Hallucination (inverse) on 1-5 scales, deriving PASS / BORDERLINE / FAIL verdicts.',
+        'Pairwise A/B comparison engine pitting two candidate agent answers head-to-head and selecting the winner with grounding rationale.',
+        'Curated benchmark test set (20 test cases across RAG faithfulness, instruction following, and adversarial hallucination traps).',
+        'Forensic examination bench UI styled with rubber-stamp verdicts, instrument meters, red-marker span highlights, and typewriter notes.'
       ],
-      keyOutcome: 'Enabled programmatic generation and live restyling of PowerPoint decks across 1,562 template layouts with sub-second iframe updates.',
-      techStack: ['Next.js 15', 'NestJS', 'Python (python-pptx)', 'MongoDB Atlas Vector Search', 'Groq AI', 'OnlyOffice Docker', 'MinIO S3'],
-      githubUrl: 'https://github.com/IBRAHIMHAMID678',
-      isEnterprise: true,
-      ndaNotice: 'Enterprise Client Project (Confidential / NDA). Proprietary company project; architecture and technical achievements showcased for engineering review.',
+      keyOutcome: 'Catches 100% of adversarial hallucination traps with sub-second Groq inference and provides claim-by-claim forensic audit trails.',
+      techStack: ['Python', 'FastAPI', 'Groq AI', 'LLaMA-3.1', 'Pydantic', 'Uvicorn', 'Adversarial Benchmarks'],
+      githubUrl: 'https://github.com/IBRAHIMHAMID678/eval-agent',
       featured: true,
       metrics: [
-        { label: 'Template Library', value: '1,562 Decks' },
-        { label: 'Vector Retrieval', value: '~0.02 sec' },
-        { label: 'In-Iframe Restyle', value: '~400 ms' }
+        { label: 'Grading Latency', value: '< 900ms' },
+        { label: 'Benchmark Suite', value: '20 Test Cases' },
+        { label: 'Evaluation Model', value: 'LLM-as-a-Judge' }
+      ],
+      evidenceFlags: ['OBSERVED', 'EXTRACTED', 'VERIFIED'],
+      screenshots: [
+        {
+          url: `${import.meta.env.BASE_URL}screenshots/dashboard.png`,
+          title: 'Forensic Examination Bench',
+          caption: 'Rubber-stamp FAIL verdict, instrument meters, claim-by-claim ledger, and red-marker unsupported span highlights.'
+        },
+        {
+          url: `${import.meta.env.BASE_URL}screenshots/compare.png`,
+          title: 'Pairwise A/B Answer Arbitration',
+          caption: 'Head-to-head model comparison identifying better-grounded answers with decisive evidence.'
+        },
+        {
+          url: `${import.meta.env.BASE_URL}screenshots/gallery.png`,
+          title: 'Adversarial Trap Gallery',
+          caption: 'Catalog of 6 adversarial hallucination traps testing model vulnerability to edge cases.'
+        },
+        {
+          url: `${import.meta.env.BASE_URL}screenshots/all_views.png`,
+          title: 'Full System Architecture Overview',
+          caption: 'Complete dashboard overview across judge, compare, and adversarial evaluation modes.'
+        }
       ],
       systemFlow: [
-        { title: '1. User Prompt & Vector Search', description: 'Performs cosine similarity search across 1,562 slide embeddings via Atlas Vector Search.' },
-        { title: '2. LLM AI Copywriting', description: 'Streams structured JSON slide outlines using high-throughput model inference.' },
-        { title: '3. python-pptx AST Assembly', description: 'Compiles layout shapes, typography, and content into valid .pptx file structures.' },
-        { title: '4. Live In-Iframe Sync', description: 'Synchronizes live visual recoloring in OnlyOffice canvas with backend document state.' }
+        { title: '1. Claim Decomposition', description: 'Deconstructs candidate response into atomic factual statements, isolating assertions for verification.' },
+        { title: '2. Source Entailment Verification', description: 'Audits each atomic claim against ingested source documents, labeling Supported, Contradicted, or Unsupported.' },
+        { title: '3. Multi-Metric Scoring Engine', description: 'Calculates Faithfulness, Relevance, and Hallucination scores (1-5) and applies strict PASS/FAIL thresholds.' },
+        { title: '4. Forensic Audit & Span Quoting', description: 'Highlights exact unsupported text spans in red and outputs structured JSON audit reports.' }
       ]
     },
     {
-      id: 'b2b-intent-engine',
+      id: 'guardrail-lab',
       number: '04',
-      title: 'Enterprise B2B Intent & Sales Intelligence Engine',
-      tagline: 'Real-time sales intelligence & intent engine with event proximity and evidence lineage tagging',
-      category: 'Enterprise Case Studies',
-      summary: 'Architected and built Track I of an enterprise sales intelligence platform: an ICP qualification engine, event-proximity timing classifier, and tiered RAG/LLM hyper-personalization pipeline.',
-      problem: 'Generic sales outreach pipelines spam thousands of contacts blindly without event context or timing, causing spam penalties and runaway LLM API token bills.',
+      title: 'Guardrail Lab — Adversarial AI Coding Agent Permission Firewall',
+      tagline: 'Deterministic POSIX AST defense interceptor & 3D WebGL physical security pipeline simulator',
+      category: 'System Automation',
+      summary: 'A client-side adversarial test harness and interactive 3D WebGL physical simulator exposing the critical flaw in AI coding agent guardrails (Claude Code, Cursor, Copilot, Aider): naive regex blocklists that miss over 70% of POSIX shell evasion vectors.',
+      problem: 'Security engineers configure agent shell permissions with simple regexes (e.g. "git commit" or "rm -rf"), which catastrophically fail against flag interleaving, subshells, quotes, and process wrappers.',
       architectureDetails: [
-        'Deterministic ICP engine using code-controlled query shapes rather than hallucination-prone unconstrained LLM prompts.',
-        'Layered timing classifier: Queue (>15d), Active Send Window (5-7d before event), and Late Suppression (<2d).',
-        'Tiered personalization split (Stream A/B) reserving hyper-personalization for top-tier leads to slash token costs by 65%.',
-        'Evidence lineage tagging (OBSERVED, EXTRACTED, VERIFIED, INFERRED, PREDICTED) guaranteeing transparent scoring.'
+        'Deterministic POSIX shell AST tokenizer (zero dependencies) correctly parsing quotes, subshell nesting $(...), compound pipelines (&&, ||, ;, |), and binary wrapper prefixes (env, sudo, time).',
+        'Interactive 3D WebGL physical defense interceptor built with Three.js studio lighting: simulates command projectiles fired from Agent Terminal, striking quantum shields or breaching server cores.',
+        '6 OWASP agent threat domain policies (Git Commits, Remote Scripts, Filesystem Wipes, Exfiltration, Reverse Shells, Sudo Escalation) mapped to 49 curated adversarial evasion vectors.',
+        'Automated engine invariant self-test suite (test-engine.js) verifying 21/21 core engine invariants with 100% pass rate.',
+        'One-click export generators producing production-ready configs for Claude Code, Cursor IDE (.cursorrules), AgentSH (agentsh.yaml), POSIX Bash hooks, and Docker/Seccomp.'
       ],
-      keyOutcome: 'Delivered an end-to-end pipeline processing 8,000 profile batches down to ~3,600 verified sendable emails with 60% signal lookup rates.',
-      techStack: ['Next.js 15', 'TypeScript', 'Python', 'FastAPI', 'OpenAI GPT-4', 'LangChain', 'PostgreSQL', 'Tailwind CSS'],
-      githubUrl: 'https://github.com/IBRAHIMHAMID678',
-      isEnterprise: true,
-      ndaNotice: 'Enterprise Client Project (Confidential / NDA). Proprietary company project; architecture and algorithms documented for technical review.',
+      keyOutcome: 'Replaces porous regex filters with a 100% deterministic AST parser, intercepting 100% of the 49 evasion vectors with zero external runtime dependencies.',
+      techStack: ['JavaScript (ES6)', 'Three.js (WebGL)', 'POSIX AST Tokenizer', 'HTML5/CSS3', 'OWASP Agent Standards'],
+      githubUrl: 'https://github.com/IBRAHIMHAMID678/GUARDRAIL',
       featured: true,
       metrics: [
-        { label: 'Signal Lookup Rate', value: '~60%' },
-        { label: 'Batch Processing', value: '8,000 Profiles' },
-        { label: 'Cost Optimization', value: '-65% LLM Tokens' }
+        { label: 'Engine Invariants', value: '21 / 21 Passing' },
+        { label: 'Threat Vectors', value: '49 Curated Cases' },
+        { label: 'Runtime Deps', value: 'Zero (Pure ES6)' }
       ],
-      evidenceFlags: ['OBSERVED', 'EXTRACTED', 'VERIFIED', 'INFERRED', 'PREDICTED'],
+      evidenceFlags: ['OBSERVED', 'EXTRACTED', 'VERIFIED'],
+      screenshots: [
+        {
+          url: `${import.meta.env.BASE_URL}screenshots/guardrail_lab_3d_studio.png`,
+          title: '3D Physical Security Air-Gap Interceptor',
+          caption: 'Interactive 3D WebGL quantum shield intercepting agent command projectiles with real-time deflection sparks.'
+        },
+        {
+          url: `${import.meta.env.BASE_URL}screenshots/app-flightdeck.png`,
+          title: 'Security Flightdeck & AST Inspector',
+          caption: 'Live command tokenizer, vector attack chips, and Naive Regex vs Hardened AST comparison.'
+        },
+        {
+          url: `${import.meta.env.BASE_URL}screenshots/app-scoreboard.png`,
+          title: 'Adversarial Threat Matrix & Scoreboard',
+          caption: 'Full benchmark results across 6 OWASP security policies showing 100% intercept rates.'
+        },
+        {
+          url: `${import.meta.env.BASE_URL}screenshots/guardrail_lab_attack_matrix.png`,
+          title: 'Evasion Vector Analysis Matrix',
+          caption: 'Detailed breakdown of evasion techniques: flag insertion, subshells, quotes, and compound pipelines.'
+        }
+      ],
       systemFlow: [
-        { title: '1. Signal & Intent Ingestion', description: 'Consumes speaker, funding, and hiring trigger events via OSINT adapters.' },
-        { title: '2. Deterministic ICP Filter', description: 'Filters candidates against strict buyer schemas without unconstrained LLM execution.' },
-        { title: '3. Event-Proximity Classifier', description: 'Calculates days-until-event and classifies leads into 5-7d active outreach windows.' },
-        { title: '4. Tiered Stream A/B RAG', description: 'Routes high-value leads to deep LLM personalization while standardizing high-volume leads.' }
+        { title: '1. Lexical Tokenization & AST Parsing', description: 'Deconstructs command strings preserving quotes, subshell nesting $(...), pipelines, and compound chains.' },
+        { title: '2. Canonical Executable & Flag Normalization', description: 'Strips wrappers (env, sudo), extracts canonical binaries, decomposes flags (-rf -> -r, -f), and isolates subcommands.' },
+        { title: '3. Dual Security Matcher Evaluation', description: 'Simultaneously evaluates input against industry Naive Regex and Hardened AST policies to expose evasion gaps.' },
+        { title: '4. 3D Physical Deflection / Breach Simulation', description: 'Dispatches 3D WebGL projectile in real-time, showing emerald ricochet on interception or crimson alarm on breach.' }
       ]
-    },
+    }
   ] as Project[],
 
   skillCategories: [
@@ -212,46 +295,46 @@ export const IBRAHIM_DATA = {
       iconName: 'Cpu',
       skills: [
         { name: 'LangChain & Agent Orchestration', level: 'Expert', proof: 'Chatbot Agent RAG pipeline' },
-        { name: 'RAG & Vector Embeddings', level: 'Advanced', proof: 'Atlas Vector Search & Qdrant' },
-        { name: 'LLMs (GPT-4o-mini, Qwen2.5, Ollama)', level: 'Expert', proof: 'Local & Cloud model orchestration' },
-        { name: 'Speech AI (Whisper STT / TTS)', level: 'Advanced', proof: 'Voice interfaces in Auto Market & Agent' },
+        { name: 'LLM-as-a-Judge & Eval Harnesses', level: 'Expert', proof: 'Eval-Agent forensic benchmark suite' },
+        { name: 'LLMs (GPT-4o-mini, Qwen2.5, LLaMA-3.1, Groq)', level: 'Expert', proof: 'Local & Cloud model orchestration' },
+        { name: 'Speech AI (Whisper STT / TTS)', level: 'Advanced', proof: 'Voice interfaces in Chatbot Agent' },
         { name: 'Prompt Engineering & JSON Schemas', level: 'Expert', proof: 'Structured output validation pipelines' }
       ]
     },
     {
       title: 'Full-Stack & Backend Systems',
-      description: 'Designing resilient API backends, data structures, and microservices.',
+      description: 'Designing resilient API backends, automated scrapers, and microservices.',
       iconName: 'Server',
       skills: [
-        { name: 'Python (FastAPI, Flask, PyTest)', level: 'Expert', proof: 'Chatbot Agent & enterprise service backends' },
-        { name: 'Node.js & Express / NestJS', level: 'Advanced', proof: 'Auto Market & presentation engine services' },
-        { name: 'Java (Enterprise Systems)', level: 'Advanced', proof: 'Medical Slip Automation System' },
-        { name: 'MongoDB & Atlas Vector Search', level: 'Expert', proof: 'Auto Market & template embeddings' },
-        { name: 'REST API Design & Integration', level: 'Expert', proof: 'Clean RESTful contracts & Postman tests' }
+        { name: 'Python (FastAPI, Flask, PyTest)', level: 'Expert', proof: 'Chatbot Agent & AI Job Hunter backends' },
+        { name: 'Automated Scraping & Playwright', level: 'Expert', proof: 'Multi-source job harvester & ATS auto-apply' },
+        { name: 'JavaScript & Three.js (WebGL 3D)', level: 'Advanced', proof: 'Guardrail Lab & 3D Radar engines' },
+        { name: 'MongoDB & In-Memory Caching', level: 'Expert', proof: 'Job scraping persistence & eval caches' },
+        { name: 'REST API Design & SSE Telemetry', level: 'Expert', proof: 'EventSource streaming & Postman suites' }
       ]
     },
     {
       title: 'Frontend Engineering & UI Systems',
-      description: 'Crafting responsive, high-performance web applications with modern styling and animations.',
+      description: 'Crafting responsive, high-performance web applications with modern styling and 3D WebGL.',
       iconName: 'Layout',
       skills: [
-        { name: 'React & Next.js', level: 'Expert', proof: 'Dynamic frontends across personal & client apps' },
+        { name: 'React & Next.js', level: 'Expert', proof: 'Dynamic frontends across personal & production apps' },
         { name: 'Tailwind CSS & Framer Motion', level: 'Expert', proof: 'Fluid micro-interactions & dark mode design' },
         { name: 'TypeScript & JavaScript (ES6+)', level: 'Advanced', proof: 'Strict typing and component state trees' },
-        { name: 'HTML5 Canvas & 2D Animations', level: 'Advanced', proof: 'Interactive background physics engine' },
+        { name: 'Three.js & HTML5 Canvas', level: 'Advanced', proof: '3D defense air-gap and interactive radar' },
         { name: 'Responsive & Cross-Browser UI', level: 'Expert', proof: 'Tested across mobile, tablet, and desktop' }
       ]
     },
     {
-      title: 'QA, Testing & DevOps Practices',
-      description: 'Ensuring production stability with comprehensive test cases, defect tracking, and CI/CD.',
+      title: 'QA, Security & DevOps Practices',
+      description: 'Ensuring production stability with deterministic guardrails, comprehensive test cases, and CI/CD.',
       iconName: 'ShieldCheck',
       skills: [
-        { name: 'Manual & Functional Testing', level: 'Expert', proof: 'Mobile banking app & agency QA' },
+        { name: 'POSIX Shell AST Security & Guardrails', level: 'Expert', proof: 'Guardrail Lab 21/21 passing invariants' },
+        { name: 'Manual & Functional Testing', level: 'Expert', proof: 'Banking app QA & agency release verification' },
         { name: 'Test Case Design & Requirements Matrix', level: 'Expert', proof: 'End-to-end user story verification' },
-        { name: 'Jira Defect Lifecycle & Agile', level: 'Expert', proof: 'Logged & closed defects across 4 internships' },
-        { name: 'Git & GitHub Version Control', level: 'Expert', proof: 'Branching, PRs, and collaborative releases' },
-        { name: 'Docker & Environment Containers', level: 'Intermediate', proof: 'Containerized services & MinIO / OnlyOffice' }
+        { name: 'Jira Defect Lifecycle & Agile', level: 'Expert', proof: 'Logged & closed defects across engineering roles' },
+        { name: 'Git & GitHub Version Control', level: 'Expert', proof: 'Branching, PRs, and collaborative releases' }
       ]
     }
   ] as SkillCategory[],
@@ -263,15 +346,15 @@ export const IBRAHIM_DATA = {
       period: 'July 2026 — Present',
       location: 'Islamabad, Pakistan',
       type: 'AI Product Agency',
-      summary: 'AI Engineer building an enterprise AI-powered presentation platform — Next.js frontend, NestJS backend — alongside large-scale scraping and lead-generation pipelines powering ICP-driven prospect harvesting.',
+      summary: 'AI Engineer building enterprise AI systems, high-throughput automated scraping pipelines, and LLM-as-a-judge evaluation harnesses for robust production deployments.',
       achievements: [
-        'Programmatically generating, editing, and validating PowerPoint (.pptx) decks using python-pptx from structured LLM outputs and brand templates.',
-        'Building web scraping pipelines with Cloudflare bypass (headless browsers, TLS fingerprinting, residential proxies) to harvest leads at scale from sites behind bot mitigation.',
-        'Engineering ICP-based lead generation systems — scraping, enrichment, dedup, and scoring — feeding verified prospects into outreach workflows.',
-        'Integrating LLM-driven slide generation and semantic retrieval over a 1,562 template library using vector embeddings and MongoDB Atlas Vector Search.',
-        'Writing test cases, reproducing edge-case defects, and verifying production releases against client specifications prior to deployment.'
+        'Engineered high-throughput web scraping pipelines with bot-mitigation bypass (headless browsers, TLS fingerprinting, residential proxies) to harvest opportunities at scale.',
+        'Built automated qualification and scoring engines — multi-source extraction, LLM fit evaluation, deduplication, and automated application dispatch.',
+        'Developed deterministic guardrail and evaluation pipelines validating model outputs against strict ground-truth schemas and AST rules.',
+        'Implemented vector search retrieval architectures and semantic indexing for high-speed document search.',
+        'Wrote end-to-end test cases and verified production releases against stringent reliability benchmarks.'
       ],
-      techUsed: ['Next.js', 'NestJS', 'Python (python-pptx)', 'Web Scraping', 'Cloudflare Bypass', 'Lead Generation', 'MongoDB Atlas Vector Search', 'OnlyOffice', 'Groq AI']
+      techUsed: ['FastAPI', 'Python', 'Three.js', 'Playwright', 'Groq AI', 'LangChain', 'MongoDB', 'Docker', 'Web Scraping']
     },
     {
       role: 'AI Intern',
@@ -293,9 +376,9 @@ export const IBRAHIM_DATA = {
       period: 'March 2024 — May 2024',
       location: 'Islamabad, Pakistan',
       type: 'National Telecom Infrastructure',
-      summary: 'Built an enterprise Medical Slip Automation System using Java, HTML, and CSS, replacing a manual paper workflow and streamlining internal documentation.',
+      summary: 'Built an enterprise internal workflow automation portal using Java, HTML, and CSS, replacing manual paper requisitions and digitizing inter-departmental approval workflows.',
       achievements: [
-        'Replaced manual paper vouchers with an end-to-end digital approval system for employee healthcare requisitions.',
+        'Replaced manual paper vouchers with an end-to-end digital approval system for employee departmental requisitions.',
         'Gained practical operational exposure in the Network Operations Center (NOC), monitoring live infrastructure.',
         'Collaborated with senior engineers to enforce enterprise data integrity and security standards.'
       ],

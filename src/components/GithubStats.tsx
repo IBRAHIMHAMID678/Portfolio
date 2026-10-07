@@ -5,10 +5,10 @@ import { GithubIcon } from './GithubIcon';
 
 export const GithubStats: React.FC = () => {
   const languages = [
-    { name: 'Python', percentage: 42, color: '#3572A5' },
-    { name: 'JavaScript & TypeScript', percentage: 38, color: '#3178C6' },
-    { name: 'Java', percentage: 12, color: '#b07219' },
-    { name: 'HTML / CSS / Shell', percentage: 8, color: '#E34F26' }
+    { name: 'Python', percentage: 48, color: '#3572A5' },
+    { name: 'JavaScript & TypeScript', percentage: 36, color: '#3178C6' },
+    { name: 'WebGL & Three.js', percentage: 10, color: '#00f5d4' },
+    { name: 'HTML & POSIX Shell', percentage: 6, color: '#89e051' }
   ];
 
   const publicRepos = [
@@ -18,31 +18,31 @@ export const GithubStats: React.FC = () => {
       desc: 'Autonomous multi-turn AI conversational agent with LangChain orchestration, Ollama Qwen2.5, RAG, and Whisper STT voice support.',
       language: 'Python',
       langColor: '#3572A5',
-      badge: 'Featured AI'
+      badge: 'Conversational RAG'
     },
     {
-      name: 'AI-Powered-Vehical-Market-Place',
-      url: 'https://github.com/IBRAHIMHAMID678/AI-Powered-Vehical-Market-Place',
-      desc: 'Full-stack vehicle marketplace featuring Whisper-driven voice queries, parametric filtering, and MongoDB search indexing.',
+      name: 'AI-JOB-SCRAPER',
+      url: 'https://github.com/IBRAHIMHAMID678/AI-JOB-SCRAPER',
+      desc: 'High-throughput multi-source job harvesting pipeline across 10 platforms with Groq AI candidate fit scoring and automated Lever/Greenhouse apply.',
+      language: 'Python',
+      langColor: '#3572A5',
+      badge: 'Orchestrator'
+    },
+    {
+      name: 'eval-agent',
+      url: 'https://github.com/IBRAHIMHAMID678/eval-agent',
+      desc: 'Forensic LLM-as-a-judge eval harness grading agent responses on faithfulness, relevance, and hallucination with atomic claim extraction.',
+      language: 'Python',
+      langColor: '#3572A5',
+      badge: 'Forensic Judge'
+    },
+    {
+      name: 'GUARDRAIL',
+      url: 'https://github.com/IBRAHIMHAMID678/GUARDRAIL',
+      desc: 'Adversarial AI coding agent permission firewall with deterministic POSIX AST parser and interactive 3D WebGL defense interceptor.',
       language: 'JavaScript',
       langColor: '#f1e05a',
-      badge: 'Full-Stack'
-    },
-    {
-      name: 'Team-Task-Manager-web-application',
-      url: 'https://github.com/IBRAHIMHAMID678/Team-Task-Manager-web-application',
-      desc: 'Collaborative team task and sprint management system with role-based access, kanban boards, and audit history.',
-      language: 'JavaScript',
-      langColor: '#f1e05a',
-      badge: 'Productivity'
-    },
-    {
-      name: 'Medical-Slip',
-      url: 'https://github.com/IBRAHIMHAMID678/Medical-Slip',
-      desc: 'Enterprise workflow automation replacing physical medical paperwork at National Telecommunication Corporation (NTC).',
-      language: 'Java',
-      langColor: '#b07219',
-      badge: 'Enterprise'
+      badge: 'Security & 3D WebGL'
     }
   ];
 
