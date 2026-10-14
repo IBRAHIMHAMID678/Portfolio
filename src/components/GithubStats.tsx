@@ -1,5 +1,5 @@
 import React from 'react';
-import { ExternalLink, BookOpen } from 'lucide-react';
+import { ExternalLink, BookOpen, ArrowUpRight } from 'lucide-react';
 import { IBRAHIM_DATA } from '../data/portfolioData';
 import { GithubIcon } from './GithubIcon';
 
@@ -47,184 +47,190 @@ export const GithubStats: React.FC = () => {
   ];
 
   return (
-    <section id="github" style={{ padding: '6rem 0', position: 'relative' }}>
+    <section id="github" style={{ padding: '7rem 0', position: 'relative' }}>
       <div className="container">
         {/* Header */}
         <div style={{ marginBottom: '3.5rem' }}>
-          <div className="badge-cyan" style={{ marginBottom: '0.75rem' }}>
-            <GithubIcon size={14} />
-            <span>06 // GITHUB ENGINEERING FOOTPRINT</span>
+          <div className="badge-eyebrow" style={{ marginBottom: '1rem' }}>
+            <span className="pulse-dot" />
+            <GithubIcon size={13} />
+            <span>06 // OPEN-SOURCE FOOTPRINT</span>
           </div>
-          <h2 style={{ fontSize: 'clamp(2rem, 3.5vw, 3rem)', fontWeight: 700, letterSpacing: '-0.02em' }}>
+          <h2 style={{ fontSize: 'clamp(2.2rem, 3.8vw, 3.5rem)', fontWeight: 800, letterSpacing: '-0.025em', lineHeight: 1.15 }}>
             Public Repositories & <br />
             <span className="cyan-gradient-text">Open-Source Codebase.</span>
           </h2>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2.5rem' }}>
           {/* Column 1: Profile Summary & Stats */}
-          <div
-            className="glass-card"
-            style={{
-              padding: '2rem',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'space-between',
-              background: 'rgba(15, 19, 25, 0.9)',
-              border: '1px solid rgba(255, 255, 255, 0.08)'
-            }}
-          >
-            <div>
-              {/* Profile Card Header with Real Photo */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', marginBottom: '1.5rem' }}>
-                <div
-                  style={{
-                    position: 'relative',
-                    width: '64px',
-                    height: '64px',
-                    borderRadius: '50%',
-                    padding: '3px',
-                    background: 'linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-blue) 100%)'
-                  }}
-                >
-                  <img
-                    src={IBRAHIM_DATA.avatarUrl}
-                    alt={IBRAHIM_DATA.name}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      borderRadius: '50%',
-                      objectFit: 'cover'
-                    }}
-                    onError={(e) => {
-                      // Fallback if image fails to render
-                      e.currentTarget.style.display = 'none';
-                    }}
-                  />
+          <div className="double-bezel">
+            <div
+              className="double-bezel-inner"
+              style={{
+                padding: '2.25rem',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                height: '100%',
+                background: 'linear-gradient(180deg, rgba(16, 21, 30, 0.96) 0%, rgba(9, 12, 17, 0.98) 100%)'
+              }}
+            >
+              <div>
+                {/* Profile Card Header with Real Photo */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', marginBottom: '1.75rem' }}>
                   <div
                     style={{
-                      position: 'absolute',
-                      bottom: '2px',
-                      right: '2px',
-                      width: '14px',
-                      height: '14px',
+                      position: 'relative',
+                      width: '64px',
+                      height: '64px',
                       borderRadius: '50%',
-                      backgroundColor: '#10b981',
-                      border: '2px solid #0a0d12'
+                      padding: '3px',
+                      background: 'linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-blue) 100%)',
+                      boxShadow: '0 0 20px rgba(0, 245, 212, 0.25)'
                     }}
-                    title="Active Contributor"
-                  />
-                </div>
-                <div>
-                  <h3 style={{ fontSize: '1.35rem', fontWeight: 700, color: '#fff' }}>{IBRAHIM_DATA.name}</h3>
-                  <a
-                    href={IBRAHIM_DATA.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-mono"
-                    style={{ fontSize: '0.85rem', color: 'var(--accent-cyan)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.25rem' }}
                   >
-                    @{IBRAHIM_DATA.githubUsername}
-                    <ExternalLink size={12} />
-                  </a>
-                  <span className="font-mono" style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
-                    Islamabad, Pakistan
-                  </span>
-                </div>
-              </div>
-
-              {/* Language Distribution Progress Bar */}
-              <div style={{ marginBottom: '1.5rem' }}>
-                <span className="font-mono" style={{ fontSize: '0.75rem', color: 'var(--text-muted)', display: 'block', marginBottom: '0.5rem' }}>
-                  CORE STACK DISTRIBUTION:
-                </span>
-                
-                <div style={{ height: '8px', width: '100%', borderRadius: '4px', overflow: 'hidden', display: 'flex', marginBottom: '0.75rem' }}>
-                  {languages.map((lang) => (
-                    <div
-                      key={lang.name}
+                    <img
+                      src={IBRAHIM_DATA.avatarUrl}
+                      alt={IBRAHIM_DATA.name}
                       style={{
-                        width: `${lang.percentage}%`,
-                        backgroundColor: lang.color
+                        width: '100%',
+                        height: '100%',
+                        borderRadius: '50%',
+                        objectFit: 'cover'
+                      }}
+                      onError={(e) => {
+                        e.currentTarget.style.display = 'none';
                       }}
                     />
-                  ))}
+                    <div
+                      style={{
+                        position: 'absolute',
+                        bottom: '2px',
+                        right: '2px',
+                        width: '14px',
+                        height: '14px',
+                        borderRadius: '50%',
+                        backgroundColor: '#10b981',
+                        border: '2px solid #0a0d12',
+                        boxShadow: '0 0 8px #10b981'
+                      }}
+                      title="Active Contributor"
+                    />
+                  </div>
+                  <div>
+                    <h3 style={{ fontSize: '1.35rem', fontWeight: 700, color: '#fff' }}>{IBRAHIM_DATA.name}</h3>
+                    <a
+                      href={IBRAHIM_DATA.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-mono"
+                      style={{ fontSize: '0.85rem', color: 'var(--accent-cyan)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.35rem' }}
+                    >
+                      @{IBRAHIM_DATA.githubUsername}
+                      <ExternalLink size={12} />
+                    </a>
+                    <span className="font-mono" style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
+                      Islamabad, Pakistan
+                    </span>
+                  </div>
                 </div>
 
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
-                  {languages.map((lang) => (
-                    <div key={lang.name} style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }} className="font-mono">
-                      <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: lang.color }} />
-                      <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
-                        {lang.name} ({lang.percentage}%)
-                      </span>
-                    </div>
-                  ))}
+                {/* Language Distribution Progress Bar */}
+                <div style={{ marginBottom: '2rem' }}>
+                  <span className="font-mono" style={{ fontSize: '0.75rem', color: 'var(--text-dim)', display: 'block', marginBottom: '0.6rem', letterSpacing: '0.05em' }}>
+                    CORE STACK CODE DISTRIBUTION:
+                  </span>
+                  
+                  <div style={{ height: '8px', width: '100%', borderRadius: '4px', overflow: 'hidden', display: 'flex', marginBottom: '0.85rem' }}>
+                    {languages.map((lang) => (
+                      <div
+                        key={lang.name}
+                        style={{
+                          width: `${lang.percentage}%`,
+                          backgroundColor: lang.color
+                        }}
+                      />
+                    ))}
+                  </div>
+
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.85rem' }}>
+                    {languages.map((lang) => (
+                      <div key={lang.name} style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }} className="font-mono">
+                        <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: lang.color }} />
+                        <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
+                          {lang.name} ({lang.percentage}%)
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <a
-              href={IBRAHIM_DATA.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-outline-cyan"
-              style={{ width: '100%', justifyContent: 'center' }}
-            >
-              <GithubIcon size={16} />
-              <span>Explore GitHub Repositories</span>
-            </a>
+              <a
+                href={IBRAHIM_DATA.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-island-primary"
+                style={{ width: '100%', justifyContent: 'center' }}
+              >
+                <span>Explore Full GitHub Profile</span>
+                <span className="btn-icon-bubble">
+                  <ArrowUpRight size={15} />
+                </span>
+              </a>
+            </div>
           </div>
 
-          {/* Column 2: Highlights of Verified Public Repositories */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          {/* Column 2: Highlights of Verified Public Repositories in Double-Bezel Cards */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
             {publicRepos.map((repo, idx) => (
-              <div
-                key={idx}
-                className="glass-card"
-                style={{
-                  padding: '1.25rem',
-                  border: '1px solid rgba(255, 255, 255, 0.08)',
-                  transition: 'transform 0.2s ease, border-color 0.2s ease'
-                }}
-              >
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.5rem' }}>
-                  <a
-                    href={repo.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      textDecoration: 'none',
-                      color: '#fff',
-                      fontWeight: 600,
-                      fontSize: '0.975rem',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '0.5rem'
-                    }}
-                  >
-                    <BookOpen size={16} style={{ color: 'var(--accent-cyan)' }} />
-                    <span>{repo.name}</span>
-                  </a>
-                  <span className="badge-cyan" style={{ fontSize: '0.65rem' }}>{repo.badge}</span>
-                </div>
-                <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '0.75rem', lineHeight: 1.5 }}>
-                  {repo.desc}
-                </p>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }} className="font-mono">
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.75rem', color: repo.langColor }}>
-                    <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: repo.langColor }} />
-                    <span>{repo.language}</span>
+              <div key={idx} className="double-bezel">
+                <div
+                  className="double-bezel-inner"
+                  style={{
+                    padding: '1.5rem',
+                    background: 'linear-gradient(180deg, rgba(16, 21, 30, 0.95) 0%, rgba(10, 13, 18, 0.98) 100%)'
+                  }}
+                >
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.6rem', gap: '0.5rem', flexWrap: 'wrap' }}>
+                    <a
+                      href={repo.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        textDecoration: 'none',
+                        color: '#fff',
+                        fontWeight: 700,
+                        fontSize: '1.05rem',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.5rem'
+                      }}
+                    >
+                      <BookOpen size={16} style={{ color: 'var(--accent-cyan)' }} />
+                      <span>{repo.name}</span>
+                    </a>
+                    <span className="badge-cyan" style={{ fontSize: '0.65rem', padding: '0.2rem 0.55rem' }}>{repo.badge}</span>
                   </div>
-                  <a
-                    href={repo.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ fontSize: '0.75rem', color: 'var(--accent-cyan)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.2rem' }}
-                  >
-                    <span>View Repo</span>
-                    <ExternalLink size={12} />
-                  </a>
+                  <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', marginBottom: '0.85rem', lineHeight: 1.55 }}>
+                    {repo.desc}
+                  </p>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }} className="font-mono">
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', fontSize: '0.75rem', color: repo.langColor }}>
+                      <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: repo.langColor }} />
+                      <span>{repo.language}</span>
+                    </div>
+                    <a
+                      href={repo.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ fontSize: '0.75rem', color: 'var(--accent-cyan)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.25rem', fontWeight: 600 }}
+                    >
+                      <span>View Code</span>
+                      <ExternalLink size={12} />
+                    </a>
+                  </div>
                 </div>
               </div>
             ))}

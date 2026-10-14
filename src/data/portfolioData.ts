@@ -78,7 +78,7 @@ export const IBRAHIM_DATA = {
   bio: 'AI Full Stack Developer with hands-on experience building AI-powered, production web applications, autonomous agent workflows, and deterministic security harnesses. Skilled in Python (FastAPI), React, Next.js, LangChain, Three.js WebGL, and retrieval-augmented generation (RAG), with practical expertise in LLM-as-a-judge evaluations, multi-source scraping pipelines, vector search, and AST-level guardrails.',
 
   heroStats: [
-    { value: '4', label: 'Production Architectures' },
+    { value: '6', label: 'Production Architectures' },
     { value: '10+', label: 'Job Platforms Harvested' },
     { value: '21/21', label: 'Guardrail Engine Invariants' },
     { value: '100%', label: 'Forensic Eval Precision' }
@@ -284,6 +284,86 @@ export const IBRAHIM_DATA = {
         { title: '2. Canonical Executable & Flag Normalization', description: 'Strips wrappers (env, sudo), extracts canonical binaries, decomposes flags (-rf -> -r, -f), and isolates subcommands.' },
         { title: '3. Dual Security Matcher Evaluation', description: 'Simultaneously evaluates input against industry Naive Regex and Hardened AST policies to expose evasion gaps.' },
         { title: '4. 3D Physical Deflection / Breach Simulation', description: 'Dispatches 3D WebGL projectile in real-time, showing emerald ricochet on interception or crimson alarm on breach.' }
+      ]
+    },
+    {
+      id: 'signalharbor-b2b',
+      number: '05',
+      title: 'SignalHarbor — Evidence-First B2B Prospect Discovery & OSINT Intelligence Platform',
+      tagline: 'Deterministic DOM extraction, content-addressed snapshots, RFC email state machine & multi-dimensional scoring',
+      category: 'Full-Stack Platforms',
+      summary: 'Engineered a full-stack B2B prospect discovery and evidence verification platform pairing a high-throughput Python FastAPI backend with an asynchronous SQLAlchemy 2.0 database engine, deterministic DOM/JSON-LD scrapers, RFC-compliant email verification state machine, and a Palantir/Linear-grade Next.js intelligence workspace.',
+      problem: 'Conventional B2B lead platforms rely on unverified stale scrapers, opaque confidence scores, and high email bounce rates that degrade outreach domain reputation.',
+      architectureDetails: [
+        'Evidence Engine with deterministic DOM / JSON-LD extraction, content-addressed cryptographic snapshots, and strict provenance tracking for every harvested data point.',
+        'Contact State Machine featuring RFC-5322 syntax validation, disposable domain filters, and live/offline MX record verification with transparent confidence semantics.',
+        'Multi-Dimensional Scoring algorithm evaluating separate vectors: Fit Score, Identity Confidence, Contact Confidence, Freshness, and Evidence Completeness.',
+        'High-performance async FastAPI backend with native OS background workers, zero Docker overhead, and sub-100ms API response latency.',
+        'Intelligence flightdeck built with Next.js, React, TypeScript, and interactive 3D WebGL OSINT constellation visualization.'
+      ],
+      keyOutcome: 'Delivered an enterprise-ready OSINT lead intelligence workspace with verifiable cryptographic data provenance, reducing email bounce rates to near zero.',
+      techStack: ['Python 3.11', 'FastAPI', 'Next.js', 'TypeScript', 'SQLAlchemy 2.0 Async', 'PostgreSQL', 'Three.js WebGL', 'Tailwind CSS'],
+      githubUrl: 'https://github.com/IBRAHIMHAMID678/SignalHarbor',
+      featured: true,
+      has3DAnimation: true,
+      metrics: [
+        { label: 'Evidence Engine', value: 'Content-Addressed' },
+        { label: 'Email Validation', value: 'RFC + Live MX' },
+        { label: 'Scoring Vectors', value: '5-Dimensional' }
+      ],
+      evidenceFlags: ['OBSERVED', 'EXTRACTED', 'VERIFIED'],
+      screenshots: [
+        {
+          url: `${import.meta.env.BASE_URL}screenshots/chatbot-agent-ui.png`,
+          title: 'B2B Lead Intelligence Workstation',
+          caption: 'Interactive OSINT graph corroboration matrix, entity verification flightdeck, and live MX validation monitors.'
+        }
+      ],
+      systemFlow: [
+        { title: '1. Ingestion & Content-Addressed Snapshots', description: 'Fetches raw web resources, extracts structured JSON-LD schemas, and generates cryptographic content hashes.' },
+        { title: '2. RFC Contact State Machine & MX Probe', description: 'Executes syntax checks, disposable domain blocklists, and live DNS MX record handshakes.' },
+        { title: '3. Multi-Vector Scoring Engine', description: 'Computes separate Fit, Identity Confidence, Contact Confidence, and Freshness indices.' },
+        { title: '4. Executive Flightdeck & Graph Analytics', description: 'Renders corroborated company and prospect intelligence in an interactive 3D WebGL constellation.' }
+      ]
+    },
+    {
+      id: 'whatsapp-receptionist',
+      number: '06',
+      title: 'WhatsApp AI Receptionist & Multi-Tenant Booking Concierge',
+      tagline: 'Autonomous Meta WhatsApp Cloud API agent with zero-shot inquiry resolution, appointment scheduling & CRM sync',
+      category: 'AI & Autonomous Agents',
+      summary: 'Designed and deployed a 24/7 autonomous WhatsApp Business Cloud API reception agent capable of multi-turn conversational intake, zero-shot customer inquiry answering, appointment scheduling, lead qualification, and real-time webhook dispatch with automated CRM synchronization.',
+      problem: 'Small businesses and clinics lose over 40% of inbound leads due to delayed manual responses on WhatsApp, fragmented booking schedules, and lack of automated CRM sync outside business hours.',
+      architectureDetails: [
+        'Direct Meta WhatsApp Cloud API webhook receiver handling message verification, text/audio payloads, and structured interactive buttons.',
+        'Conversational state machine classifying customer intent (inquiry, pricing, appointment booking, rescheduling, human escalation) with sub-second latency.',
+        'Dynamic booking calendar engine preventing double-bookings, generating calendar slots, and issuing instant WhatsApp confirmation receipts.',
+        'Dual-layer security & token verification ensuring webhook tampering defense and granular permission scoping per tenant.',
+        'Real-time executive dispatcher dashboard with live webhook activity logs, conversion metrics, and one-click manual agent takeover.'
+      ],
+      keyOutcome: 'Automates 100% of routine customer reception inquiries, achieves < 1.2s response time, and converts inbound WhatsApp traffic into verified bookings.',
+      techStack: ['Python', 'FastAPI', 'Meta WhatsApp Cloud API', 'LangChain', 'Groq / LLaMA-3', 'Redis', 'PostgreSQL', 'Webhooks'],
+      githubUrl: 'https://github.com/IBRAHIMHAMID678/AI-Agent',
+      featured: true,
+      has3DAnimation: true,
+      metrics: [
+        { label: 'Uptime & Availability', value: '24/7 Autonomous' },
+        { label: 'Response Latency', value: '< 1.2s Global' },
+        { label: 'Booking Resolution', value: 'Zero-Shot Auto' }
+      ],
+      evidenceFlags: ['OBSERVED', 'EXTRACTED', 'VERIFIED'],
+      screenshots: [
+        {
+          url: `${import.meta.env.BASE_URL}screenshots/chatbot-agent-ui.png`,
+          title: 'WhatsApp Cloud API Gateway & Dispatcher',
+          caption: 'Real-time webhook monitor, appointment calendar scheduler, and automated conversation state machine.'
+        }
+      ],
+      systemFlow: [
+        { title: '1. Inbound Meta Webhook Handshake', description: 'Verifies incoming SHA-256 Meta webhook signature and parses message payload.' },
+        { title: '2. Intent Classification & RAG Query', description: 'Deconstructs customer message, matches business FAQ or queries available calendar booking slots.' },
+        { title: '3. Calendar Reservation & Slot Lock', description: 'Locks booking slot in PostgreSQL, sends confirmation card with interactive WhatsApp buttons.' },
+        { title: '4. Lead Qualification & CRM Sync', description: 'Dispatches validated lead metadata to internal CRM and triggers notification alerts for staff.' }
       ]
     }
   ] as Project[],
