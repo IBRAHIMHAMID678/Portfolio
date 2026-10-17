@@ -1,20 +1,404 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Ibrahim Hamid — AI/ML Engineer & Full-Stack Systems Architect. Specialized in Generative AI, RAG, LLM Pipelines, Vector Search, and High-Performance Web Applications." />
-    <meta name="keywords" content="Ibrahim Hamid, AI Engineer, ML Engineer, Python, FastAPI, Next.js, React, RAG, LLM, Vector DB, Qdrant, TypeScript, Full Stack" />
-    <title>Ibrahim Hamid — AI/ML Engineer & Systems Architect</title>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Ibrahim Hamid | AI &amp; Autonomous Agents, POSIX Guardrails and Systems Architecture</title>
+  <meta name="description" content="Ibrahim Hamid builds deterministic POSIX AST guardrails, high-throughput scraping pipelines and forensic LLM-as-a-judge harnesses. Read the portfolio as a magazine: one chapter per craft, every system live.">
+  <meta name="theme-color" content="#f2efe7">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ibrahim Hamid | Issue 01">
+  <meta property="og:description" content="AI & Autonomous Agents, POSIX AST Guardrails, Scraping and Forensic Evals. A portfolio you read like a magazine.">
+  <meta property="og:image" content="/screenshots/guardrail_lab_3d_studio.png">
+  <meta property="og:url" content="https://github.com/IBRAHIMHAMID678">
+  <meta name="twitter:card" content="summary_large_image">
+  <script>document.documentElement.classList.remove('no-js')</script>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/fonts/fonts.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Ibrahim Hamid",
+    "jobTitle": "AI Full Stack Developer & Systems Engineer",
+    "email": "mailto:ibrahimhamid.2600@gmail.com",
+    "url": "https://github.com/IBRAHIMHAMID678",
+    "sameAs": ["https://github.com/IBRAHIMHAMID678", "https://www.linkedin.com/in/ibrahim-hamid678"],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Islamabad",
+      "addressCountry": "PK"
+    }
+  }
+  </script>
+</head>
+<body class="is-loading">
+
+<div class="loader" id="loader" aria-hidden="true">
+  <p class="loader__mast">Ibrahim<i>.</i></p>
+  <p class="loader__line"><span>Issue 01</span><span id="loader-n">0</span></p>
+</div>
+
+<canvas id="scene" aria-hidden="true"></canvas>
+
+<header class="mast" id="mast">
+  <div class="mast__top wrap">
+    <span>Issue 01 &middot; 2026</span>
+    <span class="mast__mid">Ibrahim Hamid &middot; Islamabad, Pakistan &middot; Working remotely &amp; on-site worldwide</span>
+    <a href="#contact"><span class="mast__dot"></span>Available for work</a>
+  </div>
+  <div class="mast__bar wrap">
+    <a href="#top" class="mast__logo" aria-label="Ibrahim Hamid, back to the cover">Ibrahim<i>.</i></a>
+    <nav class="mast__nav" aria-label="Chapters">
+      <a href="#guardrails"><span>01</span>Guardrails</a>
+      <a href="#scraping"><span>02</span>Scraping &amp; ATS</a>
+      <a href="#evals"><span>03</span>AI Evals</a>
+      <a href="#platforms"><span>04</span>Platforms &amp; OSINT</a>
+      <a href="#about">About</a>
+    </nav>
+    <a class="btn btn--ink btn--sm" href="#contact">Hire me</a>
+    <button class="mast__burger" aria-label="Open menu" aria-expanded="false" aria-controls="sheet"><span></span><span></span></button>
+  </div>
+  <div class="mast__sheet" id="sheet">
+    <a href="#guardrails">01 Guardrails</a>
+    <a href="#scraping">02 Scraping &amp; ATS</a>
+    <a href="#evals">03 AI Evals</a>
+    <a href="#platforms">04 Platforms &amp; OSINT</a>
+    <a href="#about">About</a>
+    <a class="btn btn--ink" href="#contact">Hire me</a>
+  </div>
+</header>
+
+<div class="folio" id="folio" aria-hidden="true">
+  <span class="folio__n" id="folio-n">01</span>
+  <span class="folio__t" id="folio-t">Cover</span>
+</div>
+
+<main id="main">
+
+<!-- COVER (HERO) -->
+<section class="cover" id="top" data-spread="0" data-folio="Cover">
+  <div class="cover__inner wrap">
+    <p class="cover__kicker" data-intro>Issue 01. The systems edition.</p>
+    <h1 class="cover__title">
+      <span class="ln"><span>Ibrahim</span></span>
+      <span class="ln"><span><em>Hamid.</em></span></span>
+    </h1>
+    <div class="cover__foot" data-intro>
+      <div>
+        <p>I engineer the systems a modern AI team runs on: <b>deterministic guardrails</b> that intercept shell attacks before execution, <b>scraping harvesters</b> that extract thousands of opportunities without getting blocked, and <b>forensic evaluation harnesses</b> that catch hallucinations with mathematical precision.</p>
+        <p class="cover__roles">
+          <span>AI &amp; Autonomous Agents</span>
+          <span>POSIX AST Guardrails</span>
+          <span>Multi-Source Scraping</span>
+          <span>LLM-as-a-Judge</span>
+        </p>
+      </div>
+      <div class="cover__ctas">
+        <a class="btn btn--ink" href="#contact">Hire me</a>
+        <a class="btn btn--line" href="#letter">Start reading &rarr;</a>
+        <a class="btn btn--line" href="/Ibrahim_Hamid_Resume.pdf" target="_blank" rel="noopener">Download CV</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDITOR'S LETTER -->
+<section class="sec" id="letter" data-spread="1" data-folio="Editor's letter">
+  <div class="wrap"><div class="col">
+    <p class="sec__no"><em>02</em> Editor's letter</p>
+    <h2 class="h2" data-lines>Software that keeps working <em>after I log off.</em></h2>
+    <p class="dropcap" data-reveal>Most of what I build runs unattended. A job posting drops at 3 a.m. and an evaluator parses its requirements, a multi-source scraper cleans duplicates against MongoDB, and a Playwright bot fills the application. An agent terminal issues a dangerous command and an AST interceptor kills the process before a shell opens. I like that kind of work because it has to be right every time, not just in the demo.</p>
+    <p class="dropcap dropcap--plain" data-reveal>The other half is craft: deterministic security harnesses, three.js WebGL scenes, and scroll choreography for websites that feel like physical places. This magazine is one of them. Every chapter turns a page of the publication on the right, and every project inside is real, tested and running.</p>
+    <dl class="facts" data-reveal>
+      <div><dt>21 / 21</dt><dd>engine invariants passing with zero external runtime dependencies</dd></div>
+      <div><dt>10+</dt><dd>live job platforms harvested concurrently with proxy rotation</dd></div>
+      <div><dt>100%</dt><dd>adversarial hallucination traps intercepted in forensic evaluation</dd></div>
+    </dl>
+  </div></div>
+</section>
+
+<!-- 01 GUARDRAILS & AST SECURITY -->
+<section class="sec" id="guardrails" data-spread="2" data-folio="POSIX Guardrails">
+  <div class="wrap"><div class="col">
+    <p class="sec__no"><em>01</em> System Security &middot; POSIX AST Interceptor</p>
+    <h2 class="h2" data-lines>Stopping coding agents from <em>breaking the system.</em></h2>
+    <p class="lede" data-reveal>Security teams protect AI coding agents (Claude Code, Cursor, Copilot) with naive regexes like <code>git commit</code> or <code>rm -rf</code>. Attackers evade these with subshells <code>$()</code>, quotes, flag interleaving, and wrapper binaries. Guardrail Lab implements a zero-dependency AST tokenizer that analyzes the canonical AST and stops execution at the gate.</p>
+
+    <figure class="flow" id="flow" data-reveal>
+      <div class="flow__head"><b id="flow-title">POSIX AST Defense Interceptor</b><span id="flow-meta">10 nodes</span></div>
+      <div class="flow__tabs" id="flow-tabs" role="tablist" aria-label="Workflows"></div>
+      <div class="flow__scroll"><svg class="flow__svg" id="flow-svg" role="img" aria-labelledby="flow-title"></svg></div>
+      <figcaption class="flow__cap" id="flow-cap"></figcaption>
+    </figure>
+
+    <ul class="works">
+      <li class="work work--lead" data-reveal>
+        <a class="work__img" href="https://github.com/IBRAHIMHAMID678/GUARDRAIL" target="_blank" rel="noopener">
+          <img src="/screenshots/guardrail_lab_3d_studio.png" alt="Guardrail Lab 3D physical defense simulator with quantum shield" loading="lazy" width="1200" height="750">
+        </a>
+        <div>
+          <p class="work__tag">Guardrail Lab &middot; Open Source</p>
+          <h3>Deterministic POSIX AST defense &amp; 3D physical air-gap</h3>
+          <p>An interactive 3D WebGL simulator and deterministic AST tokenizer exposing the critical flaw in AI agent permission models. Intercepts 49 curated evasion vectors across 6 OWASP threat policies with zero runtime dependencies. Verified with an automated invariant test suite passing 21/21 assertions.</p>
+          <ul class="chips"><li>Three.js WebGL</li><li>POSIX AST Tokenizer</li><li>ES6 (Zero Deps)</li><li>OWASP Standards</li><li>Docker Seccomp</li></ul>
+          <p class="work__links">
+            <a class="link" href="https://github.com/IBRAHIMHAMID678/GUARDRAIL" target="_blank" rel="noopener">github.com/IBRAHIMHAMID678/GUARDRAIL</a>
+          </p>
+        </div>
+      </li>
+      <li class="work" data-reveal>
+        <span class="work__img work__img--type"><b>21 / 21</b><i>invariants</i></span>
+        <div>
+          <p class="work__tag">Engine Invariant Verification</p>
+          <h3>Subshell nesting &amp; binary wrappers neutralized</h3>
+          <p>Normalizes flag decomposition (e.g. <code>-rf</code> into <code>-r</code> and <code>-f</code>), expands subshell evaluation trees, and strips wrapper binaries (<code>sudo</code>, <code>env</code>, <code>time</code>) to isolate the true executable target before policy evaluation.</p>
+          <ul class="chips"><li>Lexical Parsing</li><li>AST Normalization</li><li>Test Runner</li><li>Export Generators</li></ul>
+        </div>
+      </li>
+    </ul>
+  </div></div>
+</section>
+
+<!-- 02 BROWSER AUTOMATION & SCRAPING -->
+<section class="sec" id="scraping" data-spread="3" data-folio="Scraping &amp; ATS">
+  <div class="wrap"><div class="col">
+    <p class="sec__no"><em>02</em> Browser Automation &middot; AI Job Hunter</p>
+    <h2 class="h2" data-lines>Browsers that work <em>the night shift.</em></h2>
+    <p class="lede" data-reveal>Manual job hunting across 10+ fragmented portals is tedious and rate-limited. AI Job Hunter couples a concurrent multi-source harvesting backend with Groq LLM fit scoring and an automated Playwright engine that navigates, auto-populates, and submits applications across Lever and Greenhouse ATS forms.</p>
+
+    <ul class="works">
+      <li class="work work--lead" data-reveal>
+        <a class="work__img" href="https://github.com/IBRAHIMHAMID678/AI-JOB-SCRAPER" target="_blank" rel="noopener">
+          <img src="/screenshots/job-scraper-lever-form.png" alt="Automated Lever form field injection with Playwright" loading="lazy" width="1200" height="750">
+        </a>
+        <div>
+          <p class="work__tag">AI Job Hunter &middot; Live Architecture</p>
+          <h3>Multi-source scraping &amp; automated ATS auto-apply orchestrator</h3>
+          <p>Harvests postings from 10 platforms: JobSpy (LinkedIn, Indeed, Glassdoor, ZipRecruiter), Himalayas, RemoteOK, Remotive, and WeWorkRemotely RSS feeds. Evaluates technical fit using Groq (&lt; 300ms/job), auto-qualifies candidates scoring &ge;60%, and auto-fills Lever/Greenhouse ATS applications with audit verification receipts.</p>
+          <ul class="chips"><li>Python</li><li>FastAPI</li><li>Playwright</li><li>Groq AI</li><li>JobSpy</li><li>MongoDB</li><li>SSE Telemetry</li></ul>
+          <p class="work__links">
+            <a class="link" href="https://github.com/IBRAHIMHAMID678/AI-JOB-SCRAPER" target="_blank" rel="noopener">github.com/IBRAHIMHAMID678/AI-JOB-SCRAPER</a>
+          </p>
+        </div>
+      </li>
+      <li class="work" data-reveal>
+        <span class="work__img work__img--type work__img--night"><b>10</b><i>sources</i></span>
+        <div>
+          <p class="work__tag">High-Throughput Extraction</p>
+          <h3>Concurrent harvesting &amp; live SSE telemetry</h3>
+          <p>Runs parallel asynchronous extraction workers with residential proxy rotation and exponential backoff. Streams real-time pipeline status, qualification gates, and audit logs to an executive control center via Server-Sent Events (SSE).</p>
+          <ul class="chips"><li>FastAPI SSE</li><li>Proxy Pools</li><li>Deduplication</li><li>MongoDB</li></ul>
+        </div>
+      </li>
+      <li class="work" data-reveal>
+        <span class="work__img work__img--type"><b>&lt; 300ms</b><i>eval speed</i></span>
+        <div>
+          <p class="work__tag">Groq Fit Evaluation Engine</p>
+          <h3>Real-time resume-to-job matching</h3>
+          <p>Evaluates parsed job listings against candidate tech stacks (Python, FastAPI, React, LangChain, RAG) with hard filters on location and visa constraints, routing qualified leads to application queues.</p>
+          <ul class="chips"><li>Groq LLaMA-3</li><li>JSON Schema</li><li>Decision Gates</li><li>Async Workers</li></ul>
+        </div>
+      </li>
+    </ul>
+  </div></div>
+</section>
+
+<!-- ARCHIVE: EVERY LIVE BUILD PINNED HORIZONTAL STRIP -->
+<section class="archive" data-spread="3" data-folio="The archive" aria-label="Every live build">
+  <div class="wrap archive__head">
+    <p class="sec__no"><em>&rarr;</em> The archive</p>
+    <p>Every system architecture, in one continuous strip. Click any card: they are verified and running.</p>
+  </div>
+  <div class="archive__track" id="archive"></div>
+</section>
+
+<!-- 03 AI ENGINEERING & EVALUATION -->
+<section class="sec" id="evals" data-spread="4" data-folio="AI Evals">
+  <div class="wrap"><div class="col">
+    <p class="sec__no"><em>03</em> AI Engineering &middot; Forensic Evaluation</p>
+    <h2 class="h2" data-lines>An evaluation harness, <em>engineered.</em></h2>
+    <p class="lede" data-reveal>Generative AI and RAG agents frequently introduce subtle hallucinations and unsupported assertions that unit tests miss. Eval-Agent is an LLM-as-a-judge harness that extracts atomic claims from model outputs, audits each statement against source evidence, and arbitrates candidate answers head-to-head.</p>
+    <a class="work__img work__img--wide" href="https://github.com/IBRAHIMHAMID678/eval-agent" target="_blank" rel="noopener" data-reveal>
+      <img src="/screenshots/dashboard.png" alt="Eval-Agent forensic examination bench with claim-by-claim ledger" loading="lazy" width="1200" height="750">
+    </a>
+    <ol class="stats" data-reveal>
+      <li><b>100%</b><span>Pass rate across 20 curated benchmark test cases including adversarial hallucination traps and instruction adherence.</span></li>
+      <li><b>&lt; 900ms</b><span>Forensic grading latency on Groq LLaMA-3.1 inference with claim-by-claim evidence audit trails.</span></li>
+      <li><b>Pairwise A/B</b><span>Arbitration engine that pits two candidate agent responses against ground-truth docs and declares a grounded winner.</span></li>
+      <li><b>Atomic Claims</b><span>Deconstructs candidate text into atomic assertions labeled SUPPORTED, CONTRADICTED, or UNSUPPORTED.</span></li>
+      <li><b>Span Quoting</b><span>Highlights exact unsupported text spans in red and compiles structured JSON forensic audit reports.</span></li>
+    </ol>
+    <figure class="arch" data-reveal>
+      <svg id="arch-svg" viewBox="0 0 560 300" role="img" aria-labelledby="arch-cap"></svg>
+      <figcaption id="arch-cap">System topology: Next.js/React frontend, async FastAPI gateway, worker pool, Groq LLaMA models, MongoDB persistence, and external ATS targets.</figcaption>
+    </figure>
+    <p class="work__links" data-reveal>
+      <a class="link" href="https://github.com/IBRAHIMHAMID678/eval-agent" target="_blank" rel="noopener">github.com/IBRAHIMHAMID678/eval-agent</a>
+      <a class="link" href="https://github.com/IBRAHIMHAMID678/AI-Agent" target="_blank" rel="noopener">Chatbot-Agent (Voice RAG)</a>
+    </p>
+  </div></div>
+</section>
+
+<!-- 04 PRODUCTION PLATFORMS & AGENTS -->
+<section class="sec" id="platforms" data-spread="5" data-folio="Platforms &amp; OSINT">
+  <div class="wrap"><div class="col">
+    <p class="sec__no"><em>04</em> Production Platforms &middot; OSINT &amp; Agents</p>
+    <h2 class="h2" data-lines>Platforms with <em>verifiable evidence.</em></h2>
+    <p class="lede" data-reveal>SignalHarbor replaces unverified B2B scrapers with deterministic DOM extraction, content-addressed cryptographic snapshots, and RFC email state machines. Coupled with an autonomous Meta WhatsApp Cloud API receptionist that operates 24/7 without manual intervention.</p>
+    <ul class="works">
+      <li class="work work--lead" data-reveal>
+        <a class="work__img" href="https://github.com/IBRAHIMHAMID678/SignalHarbor" target="_blank" rel="noopener">
+          <img src="/screenshots/chatbot-agent-ui.png" alt="SignalHarbor B2B intelligence workstation and graph corroboration" loading="lazy" width="1200" height="750">
+        </a>
+        <div>
+          <p class="work__tag">SignalHarbor &middot; Open Source Platform</p>
+          <h3>Evidence-first B2B intelligence &amp; OSINT platform</h3>
+          <p>Pairs an async Python FastAPI backend with SQLAlchemy 2.0, cryptographic content hashing, and an RFC-5322 email state machine with live DNS MX probes, rendering corroborated company intelligence in an interactive 3D WebGL constellation.</p>
+          <ul class="chips"><li>Python 3.11</li><li>FastAPI</li><li>Next.js</li><li>SQLAlchemy 2.0</li><li>Three.js WebGL</li><li>RFC Email State</li></ul>
+          <p class="work__links">
+            <a class="link" href="https://github.com/IBRAHIMHAMID678/SignalHarbor" target="_blank" rel="noopener">github.com/IBRAHIMHAMID678/SignalHarbor</a>
+          </p>
+        </div>
+      </li>
+      <li class="work" data-reveal>
+        <span class="work__img work__img--type work__img--night"><b>24/7</b><i>autonomous</i></span>
+        <div>
+          <p class="work__tag">WhatsApp AI Receptionist</p>
+          <h3>Meta Cloud API booking concierge &amp; CRM dispatcher</h3>
+          <p>24/7 customer receptionist handling multi-turn conversational intake, zero-shot FAQ answering, calendar reservation locks, and webhook CRM dispatch with sub-1.2s response times.</p>
+          <ul class="chips"><li>Meta Cloud API</li><li>FastAPI</li><li>LangChain</li><li>PostgreSQL</li><li>Webhooks</li></ul>
+        </div>
+      </li>
+    </ul>
+  </div></div>
+</section>
+
+<!-- 05 ABOUT -->
+<section class="sec" id="about" data-spread="6" data-folio="About">
+  <div class="wrap"><div class="col">
+    <p class="sec__no"><em>05</em> About</p>
+    <h2 class="h2" data-lines>Nearly three years <em>of shipping.</em></h2>
+    <p class="lede" data-reveal>I am an AI Full Stack Developer based in Islamabad, Pakistan with hands-on production experience in autonomous agent workflows, deterministic security harnesses, high-throughput web scraping, and RAG architectures. I write things down, test invariants, and hand over systems other engineers can run.</p>
+    <ol class="cv" data-reveal>
+      <li>
+        <time>2026 &ndash; now</time>
+        <div>
+          <b>Creative AI Agency</b>
+          <span>AI Engineer &middot; Remote</span>
+          <p>Building production harvesters with bot-mitigation bypass (headless browsers, residential proxies), Groq qualification gates, and forensic evaluation suites.</p>
+        </div>
+      </li>
+      <li>
+        <time>2025</time>
+        <div>
+          <b>NOVOTECH Solutions</b>
+          <span>AI Intern &middot; Islamabad</span>
+          <p>Developed multi-turn conversational agents with FastAPI, React (Next.js), LangChain, and Whisper STT with cross-browser latency benchmarks.</p>
+        </div>
+      </li>
+      <li>
+        <time>2024</time>
+        <div>
+          <b>National Telecommunication Corporation (NTC)</b>
+          <span>Software Engineering Intern &middot; Islamabad</span>
+          <p>Built enterprise workflow approval portals replacing manual paper requisitions; NOC infrastructure monitoring.</p>
+        </div>
+      </li>
+      <li>
+        <time>2022 &ndash; 2026</time>
+        <div>
+          <b>Capital University of Science &amp; Technology (CUST)</b>
+          <span>BS Computer Science &middot; Islamabad</span>
+          <p>Focus in Artificial Intelligence, Software Engineering, Algorithms, Database Systems, and Deterministic Security.</p>
+        </div>
+      </li>
+    </ol>
+    <div class="stack" data-reveal>
+      <div>
+        <h4>AI, LLMs &amp; RAG</h4>
+        <ul class="chips"><li>LangChain</li><li>Ollama Qwen2.5</li><li>Groq AI</li><li>LLaMA-3.1</li><li>Whisper STT</li><li>Vector Search</li><li>LLM-as-a-Judge</li></ul>
+      </div>
+      <div>
+        <h4>Scraping &amp; Automation</h4>
+        <ul class="chips"><li>Playwright</li><li>JobSpy</li><li>FastAPI SSE</li><li>Proxy Pools</li><li>BeautifulSoup</li><li>Docker</li></ul>
+      </div>
+      <div>
+        <h4>Full-Stack &amp; 3D</h4>
+        <ul class="chips"><li>Three.js WebGL</li><li>React</li><li>Next.js</li><li>TypeScript</li><li>Tailwind CSS</li><li>GSAP</li><li>Lenis</li></ul>
+      </div>
+      <div>
+        <h4>Backend &amp; Security</h4>
+        <ul class="chips"><li>Python 3.11</li><li>POSIX AST</li><li>SQLAlchemy 2.0</li><li>PostgreSQL</li><li>MongoDB</li><li>Redis</li><li>Meta Webhooks</li></ul>
+      </div>
+    </div>
+    <div class="creds" data-reveal>
+      <h4>Credentials &amp; Certifications</h4>
+      <ul>
+        <li>Google IT Support Professional Certificate &middot; Google (Coursera)</li>
+        <li>AI For Everyone &middot; DeepLearning.AI</li>
+        <li>Android App Components &amp; Architecture &middot; Coursera</li>
+        <li>iOS App Development Fundamentals &middot; Coursera</li>
+        <li>Volunteer Teacher &middot; Education Health &amp; Development Foundation</li>
+      </ul>
+    </div>
+  </div></div>
+</section>
+
+<!-- 06 CONTACT (BACK COVER) -->
+<section class="sec start" id="contact" data-spread="7" data-folio="Back cover">
+  <div class="wrap"><div class="col">
+    <p class="sec__no"><em>06</em> Back cover</p>
+    <h2 class="h2" data-lines>Got something that should <em>run itself?</em></h2>
+    <p class="lede" data-reveal>Tell me what process you are doing by hand today, or what security or evaluation harness your AI agents are missing. I work from Islamabad, Pakistan (UTC+5) with teams in the US and Europe, overlapping with your working day.</p>
+    <nav class="paths" aria-label="Contact" data-reveal>
+      <a href="mailto:ibrahimhamid.2600@gmail.com?subject=Project%20Enquiry">
+        <b>ibrahimhamid.2600@gmail.com</b>
+        <span>The fastest way to reach me</span>
+        <i>&nearr;</i>
+      </a>
+      <a href="https://github.com/IBRAHIMHAMID678" target="_blank" rel="noopener">
+        <b>GitHub</b>
+        <span>github.com/IBRAHIMHAMID678</span>
+        <i>&nearr;</i>
+      </a>
+      <a href="https://www.linkedin.com/in/ibrahim-hamid678" target="_blank" rel="noopener">
+        <b>LinkedIn</b>
+        <span>linkedin.com/in/ibrahim-hamid678</span>
+        <i>&nearr;</i>
+      </a>
+      <a href="tel:+923180584128">
+        <b>+92 318 0584128</b>
+        <span>Direct phone &amp; WhatsApp line</span>
+        <i>&nearr;</i>
+      </a>
+    </nav>
+  </div></div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p class="foot__mark" aria-hidden="true">Ibrahim Hamid<i>.</i></p>
+    <div class="foot__base">
+      <span>&copy; 2026 Ibrahim Hamid</span>
+      <span>Built by hand: three.js, GSAP and pages typeset on canvas.</span>
+      <a href="#top">Back to the cover &uarr;</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/lib/lenis.min.js"></script>
+<script src="/lib/gsap.min.js"></script>
+<script src="/lib/ScrollTrigger.min.js"></script>
+<script src="/lib/SplitText.min.js"></script>
+<script src="/lib/three.min.js"></script>
+<script src="/js/flows.js"></script>
+<script src="/js/arch.js"></script>
+<script src="/js/scene.js"></script>
+<script src="/js/app.js"></script>
+<script type="module" src="/src/main.ts"></script>
+</body>
 </html>
